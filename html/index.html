@@ -78,33 +78,37 @@
         <!-- \//TODO: tarjetas báscias sobre los productos, obtenidos de Firebase que sigue con la base de datos de la app pública
              \//TODO: añadir funcionalidad para que esto sea automatico; es decir, que dependa del numero de pulsaciones en el boton lo plantaré en el modal -->
         <h2>Productos Destacados</h2>
+        <div id="cards"></div>
       </div>
-      <br> <!-- Esto más adelante habrá que borrarlo para que quede un poco más limpio -->
+
+      <br />
+      <!-- Esto más adelante habrá que borrarlo para que quede un poco más limpio -->
+
       <h2>Productos Recomendados</h2>
       <div class="filtersMenu">
         <form id="filterRecomends" class="filterRecomends">
-            <label for="atentionLvl">Nivel de atención a dar: </label>
-            <input type="range">
-            <label for="maxDuration">Espera máxima: </label>
-            <select name="maxDuration" id="maxDuration">
-                <option value="index">Selecciona una cantidad</option>
-                <option value="1">1 semana</option>
-                <option value="2">2 semanas</option>
-                <option value="3">3 semanas</option>
-                <option value="4">4 semanas</option>
-                <option value="5">5 semanas</option>
-                <option value="6">6 semanas</option>
-            </select>
+          <label for="atentionLvl">Nivel de atención a dar: </label>
+          <input type="range" />
+          <label for="maxDuration">Espera máxima: </label>
+          <select name="maxDuration" id="maxDuration">
+            <option value="index">Selecciona una cantidad</option>
+            <option value="1">1 semana</option>
+            <option value="2">2 semanas</option>
+            <option value="3">3 semanas</option>
+            <option value="4">4 semanas</option>
+            <option value="5">5 semanas</option>
+            <option value="6">6 semanas</option>
+          </select>
 
-            <label for="typeProduct">Tipo de producto: </label>
-            <select name="typeProduct" id="typeProduct">
-                <option value="index">Selecciona un tipo</option>               
-            </select>
-
+          <label for="typeProduct">Tipo de producto: </label>
+          <select name="typeProduct" id="typeProduct">
+            <option value="index">Selecciona un tipo</option>
+          </select>
         </form>
       </div>
       <div id="productosRecomendados" class="containerProdcuts">
-        
+        <div id="cards"></div>
+
         <!-- \//TODO: que las recomendacions vayan según el mes en el que nos encontremos y se podría poner un filtro para  -->
       </div>
     </main>
