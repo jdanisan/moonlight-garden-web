@@ -1,0 +1,114 @@
+<!doctype html>
+<!-- 
+    \//FIXME:¿Qué quiero que muestre?
+        \//TODO:Anuncios en la parte de arriba
+        \//TODO:Un apartado de plantas más populares
+        \//TODO:Productos del mes destacados
+
+        \//TODO:Quiero una parte en el que el usuario se registre y se pueda guardar las plantaciones que ha hecho o futuras plantaciones que hará
+        \//TODO:Dentro del foro quiero que se guarden las conversaciones
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MoonLight Garden</title>
+    <link rel="icon" type="image/x-icon" href="/img/iconTFG.ico" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/main.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="navbar" id="navMenu">
+        <a href="">Inicio</a>
+        <a href="">Documentación</a>
+        <a href="">Busqueda</a>
+        <a href="">Estadística</a>
+        <a href="">Calendario</a>
+        <a href="">Foro</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div id="slider" class="slider">
+          <figure>
+            <img
+              src="https://cdn.wallapop.com/images/10420/ip/v7/__/c10420p1131837575/i5643468376.jpg?pictureSize=W640"
+              alt="Generador"
+              onclick="abrirModal('anuncio1')"
+            />
+            <img
+              src="https://cdn.wallapop.com/images/10420/kb/kf/__/c10420p1228752416/i6309806661.jpg?pictureSize=W640"
+              alt=""
+              onclick="abrirModal('anuncio2')"
+            />
+            <img
+              src="https://cdn.wallapop.com/images/10420/ke/uj/__/c10420p1234262845/i6316983174.jpg?pictureSize=W640"
+              alt=""
+              onclick="abrirModal('anuncio3')"
+            />
+            <img
+              src="https://cdn.wallapop.com/images/10420/kf/cp/__/c10420p1235110467/i6329881967.jpg?pictureSize=W640"
+              alt=""
+              onclick="abrirModal('anuncio4')"
+            />
+            <img
+              src="https://cdn.wallapop.com/images/10420/kf/qu/__/c10420p1235770709/i6325819249.jpg?pictureSize=W640"
+              alt=""
+              onclick="abrirModal('anuncio5')"
+            />
+          </figure>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div id="modalAnuncio" class="modal">
+        <div class="modal-content">
+          <span class="cerrar" onclick="cerrarModal()">&times;</span>
+          <div id="contenidoAnuncio"></div>
+        </div>
+      </div>
+
+      <div id="productosDestacados" class="containerProdcuts">
+        <!-- \//TODO: tarjetas báscias sobre los productos, obtenidos de Firebase que sigue con la base de datos de la app pública
+             \//TODO: añadir funcionalidad para que esto sea automatico; es decir, que dependa del numero de pulsaciones en el boton lo plantaré en el modal -->
+        <h2>Productos Destacados</h2>
+      </div>
+      <div class="filtersMenu">
+        <form id="filterRecomends" class="filterRecomends">
+            <label for="atentionLvl">Nivel de atención a dar: </label>
+            <input type="range">
+            <label for="maxDuration">Espera máxima: </label>
+            <select name="maxDuration" id="maxDuration">
+                <option value="index">Selecciona una cantidad</option>
+                <option value="1">1 semana</option>
+                <option value="2">2 semanas</option>
+                <option value="3">3 semanas</option>
+                <option value="4">4 semanas</option>
+                <option value="5">5 semanas</option>
+                <option value="6">6 semanas</option>
+            </select>
+
+            <label for="typeProduct">Tipo de producto: </label>
+            <select name="typeProduct" id="typeProduct">
+                <option value="index">Selecciona un tipo</option>               
+            </select>
+
+        </form>
+      </div>
+      <div id="productosRecomendados" class="containerProdcuts">
+        <h2>Productos Recomendados</h2>
+        <!-- \//TODO: que las recomendacions vayan según el mes en el que nos encontremos y se podría poner un filtro para  -->
+      </div>
+    </main>
+
+    <footer>
+      <!-- \//TODO: Poner un enlace para la parte de contacto y que sea también para descargar la app -->
+    </footer>
+  </body>
+</html>

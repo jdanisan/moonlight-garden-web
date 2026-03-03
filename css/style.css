@@ -1,0 +1,187 @@
+/* ------------------------------------------------------ */
+/* ---------------------- GENERAL ------------------------ */
+/* ------------------------------------------------------ */
+
+body {
+  margin: 0;
+  margin-top: 60px;
+  background-color: #FAF3DD;
+  font-family: Arial, sans-serif;
+
+}
+
+/* ------------------------------------------------------ */
+/* ----------------- PALETA DE COLORES ------------------ */
+/* ------------------------------------------------------ */
+
+/* *Claro */
+/* #FAF3DD */
+/* #C8D5B9 */
+/* #8FC0A9 */
+/* #68B0AB */
+/* #4A7C59 */
+
+/* *Oscuro */
+/* #2A261F / #292723 — versión oscura del crema #FAF3DD */
+/* #3E4A36 — versión oscura del verde suave #C8D5B9 */
+/* #2F5A4D — versión oscura del verde medio #8FC0A9 */
+/* #1F4A48 — versión oscura del verde azulado #68B0AB */
+/* #0F2E1F — versión más profunda del verde oscuro #4A7C59 */
+
+/* ------------------------------------------------------ */
+/* ----------------------- NAVBAR ----------------------- */
+/* ------------------------------------------------------ */
+
+.navbar {
+  background-color: #68B0AB;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #8FC0A9;
+}
+
+.navbar .icon {
+  display: none;
+}
+
+@media screen and (max-width: 710px) {
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+
+  .navbar a.icon {
+    display: block;
+    margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .navbar.responsive {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .navbar.responsive a {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* ------------------------------------------------------ */
+/* ----------------------- SLIDER ----------------------- */
+/* ------------------------------------------------------ */
+
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+#slider {
+  width: 70%;
+  /* \//TODO FIXED: ver como arreglar el tema de las imagenes para que no se recorten y muestre la imagen completa*/
+  max-height: 700px;
+  height: 100%;  
+  border: 3px solid #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #8FC0A9;
+}
+
+#slider figure {
+  width: 500%;
+  margin: 0;
+  left: 0;
+  position: relative;
+  animation: 30s slidy infinite;
+  /* \//TODO FIXED: hacer que las imagenes se queden en el centro del div, para que se vean todas a la misma altura 
+  y si hay espacios en blanco que se rellenen de negro por ejemplo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#slider figure img {
+  width: 20%;
+  height: 100%;
+  max-height: 600px;
+  float: left;
+  display: block;
+}
+
+@keyframes slidy {
+  0%, 20% { left: 0%; }
+  25%, 45% { left: -100%; }
+  50%, 70% { left: -200%; }
+  75%, 95% { left: -300%; }  
+  100% { left: -400%; }
+  
+}
+
+/* ------------------------------------------------------ */
+/* ----------------------- MODAL ------------------------ */
+/* ------------------------------------------------------ */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  width: 70%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.cerrar {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------ */
+/* -------------- MENU FILTER RECOMMENDS ---------------- */
+/* ------------------------------------------------------ */
+.filtersMenu {
+  width: 70%;
+  border: 3px solid #ffffff;
+  padding: 20px;
+  margin: auto;
+  border-radius: 10px;
+  display: grid;
+  gap: 15px;
+  color: #292723;
+}
+.filterRecomends {
+  display: flex;
+  flex-direction: row; /* Mantener row en pantallas grandes */
+  gap: 10px;
+  justify-content: center;
+}
