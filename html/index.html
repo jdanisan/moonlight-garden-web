@@ -88,10 +88,10 @@
       <div class="filtersMenu">
         <form id="filterRecomends" class="filterRecomends">
           <label for="atentionLvl">Nivel de atención a dar: </label>
-          <input type="range" />
+          <input type="range" id="atentionLvl"/>
           <label for="maxDuration">Espera máxima: </label>
           <select name="maxDuration" id="maxDuration">
-            <option value="index">Selecciona una cantidad</option>
+            <option value="index">Selecciona n semanas</option>
             <option value="1">1 semana</option>
             <option value="2">2 semanas</option>
             <option value="3">3 semanas</option>
@@ -110,6 +110,16 @@
         <div id="cards"></div>
 
         <!-- \//TODO: que las recomendacions vayan según el mes en el que nos encontremos y se podría poner un filtro para  -->
+      </div>
+
+      <!-- MODAL for info products -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span id="closeModal" class="close">&times;</span>
+          <h2>Character Info:</h2>
+          <div id="modalProducts" class="modalProducts"></div>
+          <div id="modalLoader" class="loader">Cargando...</div>
+        </div>
       </div>
     </main>
 

@@ -109,7 +109,7 @@ function renderCards(products) { //TODO: Averiguar como traer los productos desd
         const btn = card.querySelector('.loadInfoProduct');
 
         btn.addEventListener('click', () => {
-            openCharcatersModal(product);
+            openProductsModal(product);
         });
         container.appendChild(card);
     });
@@ -119,3 +119,53 @@ function renderCards(products) { //TODO: Averiguar como traer los productos desd
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* ---------------------------------------- Function for render the modal info of the products -------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
+async function openProductsModal(product) {
+    const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modalProducts");
+    const loader = document.getElementById("modalLoader");
+    const closeBtn = document.getElementById("closeModal");
+
+    // Mostrar modal inmediatamente
+    modal.style.display = "flex";
+
+    // Mostrar loader y ocultar contenido
+    loader.style.display = "block";
+    modalContent.innerHTML = "";
+    modalContent.style.display = "none";
+
+    // Evitar que el usuario pulse varias veces
+    const allButtons = document.querySelectorAll(".loadInfoProducts");
+    allButtons.forEach(btn => btn.disabled = true);
+
+    // Ocultar loader y mostrar contenido
+    loader.style.display = "none";
+    modalContent.style.display = "grid";
+
+
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    //TODO: Change this information for product
+    card.innerHTML = `
+            <img src="${product.image}" alt="${character.name}">
+            <h4>Name: ${character.name}</h4>
+            <p>Specie: ${character.species} - ${character.type}</p>
+            <p>Status: ${character.status}</p>
+            <p>Origin: ${character.origin.name} - Actual location: ${character.location.name}</p>
+        `;
+
+    //modalContent.appendChild(card);
+
+    // Close modal
+    closeBtn.onclick = () => {
+        modal.style.display = "none";
+        allButtons.forEach(btn => btn.disabled = false);
+    };
+
+    modal.onclick = e => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+            allButtons.forEach(btn => btn.disabled = false);
+        }
+    };
+}
