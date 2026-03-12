@@ -1,14 +1,22 @@
 /* ------------------------------------------------------ */
 /* ---------------------- GENERAL ------------------------ */
 /* ------------------------------------------------------ */
-
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; 
+}
+body {
   margin-top: 60px;
-  background: linear-gradient(45deg, #FAF3DD, #68B0AB);
-  /* background-color: #FAF3DD; */
+  background: linear-gradient(45deg, #faf3dd, #68b0ab);
   font-family: Arial, sans-serif;
-
+}
+main {
+  width: 100%;
+  min-height: calc(100vh - 60px); 
+  padding-top: 60px; 
+  box-sizing: border-box; 
 }
 
 /* ------------------------------------------------------ */
@@ -35,7 +43,7 @@ body {
 /* ------------------------------------------------------ */
 
 .navbar {
-  background-color: #68B0AB;
+  background-color: #68b0ab;
   position: fixed;
   top: 0;
   width: 100%;
@@ -53,7 +61,7 @@ body {
 }
 
 .navbar a:hover {
-  background-color: #8FC0A9;
+  background-color: #8fc0a9;
 }
 
 .navbar .icon {
@@ -87,7 +95,6 @@ body {
 /* ------------------------------------------------------ */
 /* ----------------------- SLIDER ----------------------- */
 /* ------------------------------------------------------ */
-
 .container {
   width: 100%;
   height: auto;
@@ -97,14 +104,14 @@ body {
 }
 
 #slider {
-  width: 70%;
+  width: 55%;
   /* \//TODO FIXED: ver como arreglar el tema de las imagenes para que no se recorten y muestre la imagen completa*/
   max-height: 700px;
-  height: 100%;  
+  height: 100%;
   border: 3px solid #ffffff;
   border-radius: 10px;
   overflow: hidden;
-  background: #8FC0A9;
+  background: #8fc0a9;
 }
 
 #slider figure {
@@ -129,18 +136,91 @@ body {
 }
 
 @keyframes slidy {
-  0%, 16% { left: 0%; }
-  20%, 36% { left: -100%; }
-  40%, 56% { left: -200%; }
-  60%, 76% { left: -300%; }
-  80%, 96% { left: -400%; }
-  100% { left: -400%; }
+  0%,
+  16% {
+    left: 0%;
+  }
+  20%,
+  36% {
+    left: -100%;
+  }
+  40%,
+  56% {
+    left: -200%;
+  }
+  60%,
+  76% {
+    left: -300%;
+  }
+  80%,
+  96% {
+    left: -400%;
+  }
+  100% {
+    left: -400%;
+  }
+}
+@media (max-width: 768px) {
+  #slider {
+    width: 100%;
+  }
+}
+
+/* ------------------------------------------------------ */
+/* ----------------------- CARDS ------------------------ */
+/* ------------------------------------------------------ */
+.cards {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 16px;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  margin: 10px;
+  background: white;
+  min-width: 300px;
+  min-height: 300px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  
+}
+
+.card .title {
+  position: absolute;
+  bottom: 35%; /* Poner en la parte inferior */
+  width: 100%;
+  background-color: rgba(67, 66, 65, 0.75); /* gris oscuro con transparencia */
+  color: white;
+  font-weight: bold;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.1em;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .card {
+    min-width: 90%;
+  }
 }
 
 /* ------------------------------------------------------ */
 /* ----------------------- MODAL ------------------------ */
 /* ------------------------------------------------------ */
-
 .modal {
   display: none;
   position: fixed;
@@ -149,28 +229,38 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow: auto;
 }
 
 .modal-content {
-  background-color: white;  
+  background-color: white;
   margin: 5% auto;
   padding: 20px;
-  width: auto;
+  width: 90%;
   max-width: 600px;
-  max-height: 600px;
+  max-height: 90vh;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* evita overflow del contenido */
 }
-.modal-content img{
-  width: 95%;
-  height: 80%;
+
+.modal-content img {
+  max-width: 100%; /* no superar ancho modal */
+  max-height: 60vh; /* no superar 80% de altura ventana */
+  height: auto; /* mantener proporción */
+  border-radius: 8px;
+  object-fit: contain; /* asegura que no se recorte ni deforme */
 }
 
 .cerrar {
-  float: right;
+  align-self: flex-end;
   font-size: 28px;
   cursor: pointer;
+  user-select: none;
 }
 
 /* ------------------------------------------------------ */
@@ -191,4 +281,66 @@ body {
   flex-direction: row; /* Mantener row en pantallas grandes */
   gap: 10px;
   justify-content: center;
+}
+@media (max-width: 768px) {
+  .filtersMenu {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .filterRecomends {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterRecomends select,
+  .filterRecomends input[type="range"] {
+    width: 100%;
+  }
+}
+
+.filtersMenu {
+  width: 70%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: rgba(133, 212, 199, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+.filterChat {
+  display: flex;
+  gap: 15px;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.inputGroup label {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* ------------------------------------------------------ */
+/* ---------- CARDS PRODUCTS IN SEARCH PAGE ------------- */
+/* ------------------------------------------------------ */
+.products{
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.cards-search{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }

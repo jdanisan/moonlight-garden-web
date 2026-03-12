@@ -1,4 +1,43 @@
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------- Function for bring the data of firebase ----------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
+import { db } from "./firebase.js";
+import { ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+const cards = document.getElementById("cards");
+
+const datosRef = ref(db, "/food");
+
+onValue(datosRef, (snapshot) => {
+    const data = snapshot.val();
+    cards.innerHTML = "";
+
+    if (data) {
+        Object.keys(data).forEach((key) => {
+            const food = data[key];
+
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            card.innerHTML = `
+                <div class="contentCard">
+                    <div class="title">
+                        <h3>${food.food_name}</h3>
+                    </div>
+                    <img src=${food.food_image_url} alt="${food.food_name}"></img>
+                </div>
+                `;
+
+            cards.appendChild(card);
+            
+        });
+    } else {
+        cards.innerHTML = "<p>No hay datos disponibles</p>"
+
+    }
+
+});
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* ---------------------------------------------Function for navbar and hamburger menu----------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 function myFunction() {
@@ -10,10 +49,12 @@ function myFunction() {
     }
 }
 
+
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* ---------------------------------------------Anuncios (Opción 2: Objeto centralizado)--------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
-//TODO: Arreglar que la imagen rompa el modal  
+//TODO FIXED¿?: Arreglar que la imagen rompa el modal  
+//TODO: Estudiar como hacer para que la descripción sea dinámica, actualmente es a mano y con fetch no se puede por politicas de wallapop
 const anuncios = {
     anuncio1: {
         titulo: "Generador eléctrico",
@@ -51,7 +92,8 @@ const anuncios = {
 /* ---------------------------------------------Function for advertisement modal----------------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 
-function abrirModal(id) {
+// Attach abrirModal to the global window object
+window.abrirModal = function (id) {
     const modal = document.getElementById("modalAnuncio");
     const contenido = document.getElementById("contenidoAnuncio");
 
@@ -59,15 +101,15 @@ function abrirModal(id) {
 
     contenido.innerHTML = `
     <h2>${anuncio.titulo}</h2>
-    <img src="${anuncio.urlIMG}"></img>
+    <img src="${anuncio.urlIMG}" />
     <p>${anuncio.descripcion}</p>
     <a href="${anuncio.url}" target="_blank">Ver anuncio</a>
   `;
 
     modal.style.display = "block";
-}
+};
 
-function cerrarModal() {
+window.cerrarModal=function() {
     document.getElementById("modalAnuncio").style.display = "none";
 }
 
