@@ -1,5 +1,6 @@
 import favoriteFilled from "/src/assets/favorite_filled.svg";
 import favoriteOutline from "/src/assets/favorite_outline.svg";
+import { Button } from "./Button";
 import { useState, useEffect } from "react";
 
 export function Favorite({ idCharacter }) {
@@ -53,8 +54,7 @@ export function Favorite({ idCharacter }) {
   }
 
   return (
-    <button className="card-favorite" onClick={handleToggle}>
-      <img src={icon} className="favorite-icon" alt="Favorite Heart" />
-    </button>
+    <Button icon={icon} className="card-favorite" onClick={handleToggle}>     
+    </Button>
   );
 }

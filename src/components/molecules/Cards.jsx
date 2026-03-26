@@ -1,7 +1,18 @@
 import { Favorite } from "../atoms/Favorite";
-
+import { LoadMoreBTN } from "../atoms/LoadMore";
+import { Modal } from "../organism/Modal";
+import { Button } from "../atoms/Button";
+import { useState, useEffect } from "react";
+/* \//TODO: make this more comun for the both types of card in the project */
 export function Cards({ character }) {
   if (character <= 0) return null;
+
+  const [showModal, setShowModal] = useState(false);
+  // Función for open the modal
+  const handleClick = () => {
+    setShowModal(true);
+  };
+  const handleClose = () => setShowModal(false);
 
   return (
     <div className="card">
@@ -12,17 +23,25 @@ export function Cards({ character }) {
       <div className="card-content">
         <div className="card-title">
           <h3>
-            <strong>${character.name}</strong>
+            <strong>{character.name}</strong>
           </h3>
           <p>
-            <strong>Specie: </strong>${character.species}
+            <strong>Specie: </strong>{character.species}
           </p>
           <p>
-            <strong>Status: </strong> ${character.status}
+            <strong>Status: </strong>{character.status}
           </p>
         </div>
 
-        <button className="load-info-char">Load Information</button>
+        {/* <!-- MODAL for info of characters --> */}
+        <Button
+          label={"Load Info"}
+          className="load-info-char"
+          onClick={handleClick}
+        />
+        {showModal && <Modal characters={character} onClose={handleClose} />}
+
+        <LoadMoreBTN characters={3} />
       </div>
     </div>
   );
