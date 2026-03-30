@@ -1,30 +1,50 @@
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------- Colors variables -------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
+:root{
+  --text-color:#1B4B8C;
+  --stars-fil-color:gold;
+  --hoover-color:#1976d2;
+  --filters-color:#0c62b8;
+  --header-gradient: linear-gradient(20deg, #571261, #2B4E86);
+  ---color-back-white: #ffffff;
+  --font-weight:700;
+  --borders-blacks:black;
+  --backgorund-color-cards:#f8f5f5;
+  --list-element-back: #f0eeee;
+  --accent-filters: #00bfff;
+}
+
+
 body {
   margin: 0;
   padding-top: 60px;
-  /* background-color: rgb(24, 10, 69); */
-  background-color: #8ce5ff;
+  background-color:var(---color-back-white);
   font-family: Verdana, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* vh is "viewport height", ensures the full height */
-  color: #000000;
+  color: var(--borders-blacks);
 }
 
 h1,
 h2,
-h3,
 h4,
 h5,
 h6 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Segoe UI", Arial, sans-serif;
-  font-weight: 400;
+  font-weight: var(--font-weight);
 }
 
 main h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color:var(--text-color);
+  font-weight: var(--font-weight);
 }
 .center-button {
   display: flex;
@@ -52,11 +72,12 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e011cf;
+  background-color: var(--hoover-color);
   padding: 3px;
   width: 100%;
   margin-top: 20px;
-  color: white;
+  font-weight: var(--font-weight);
+  color: var(---color-back-white);
 }
 footer p {
   width: 100%;
@@ -96,8 +117,7 @@ footer p {
 /* -----------------------------------Style for Navbar in pages (Home|Location|Characters|Episode)----------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 header {
-  /* background-color: rgb(0, 0, 0); */
-  background-color: #bd05ae;
+  background:var(--header-gradient);
   top: 0px;
   position: fixed;
   width: 100%;
@@ -113,10 +133,7 @@ header {
 header a {
   float: left;
   display: block;
-  color: black;
-  /* color: rgb(218, 195, 239); */
-  /* text-align: center; */
-  /* width: 60%; */
+  color: var(---color-back-white);
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
@@ -124,22 +141,19 @@ header a {
   flex-shrink: 0;
 }
 header .icon {
-  float: right;
-
+  float: right;  
   flex-shrink: 0;
   cursor: pointer;
 }
 
 header a:hover {
   background-color: #e011cf;
-  color: #000000;
-  /* background-color: rgb(28, 28, 71); */
-  /* color: rgb(0, 153, 255); */
+  color: var(---color-back-white);
 }
 
 header a.active {
   background-color: aquamarine;
-  color: white;
+  color: var(---color-back-white);
 }
 
 header .icon {
@@ -167,7 +181,6 @@ header .icon {
     position: absolute;
     right: 16px;
     top: 4px;
-    color: rgb(255, 166, 0);
   }
   header.responsive a {
     float: none;
@@ -185,18 +198,18 @@ header .icon {
 .content {
   width: 70%;
   height: 300px;
-  border: 3px solid #000000;
+  border: 3px solid var(--filters-color);
   padding: 20px;
   margin: auto;
   border-radius: 10px;
   display: block;
   justify-content: center;
-  color: rgb(0, 0, 0);
+  font-weight: var(--font-weight);
+  color: var(--filters-color);
 }
 
 #btn-top {
-  /* display: none; */
-  display: block;
+  display: none;
   position: fixed;
   bottom: 20px;
   right: 30px;
@@ -204,7 +217,7 @@ header .icon {
   border: none;
   outline: none;
   background-color: #45f72a;
-  color: white;
+  color: var(---color-back-white);
   cursor: pointer;
   padding: 15px;
   border-radius: 10px;
@@ -228,10 +241,10 @@ header .icon {
   gap: 20px;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--filters-color);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  color: #fff;
+  color:var(---color-back-white);
 }
 
 .filter-chat,
@@ -248,16 +261,16 @@ header .icon {
   min-width: 150px;
   padding: 8px 12px;
   border-radius: 6px;
-  border: 1px solid #ccc;
-  background-color: #222;
-  color: #fff;
+  border: 1px solid var(--backgorund-color-cards);
+  background-color: var(--text-color);
+  color: var(---color-back-white);
   font-size: 14px;
   outline: none;
   transition: 0.2s all;
 }
 
 #browser-name:focus {
-  border-color: #00bfff;
+  border-color: var(--accent-filters);
   box-shadow: 0 0 5px #00bfff;
 }
 
@@ -273,14 +286,8 @@ header .icon {
   font-size: 14px;
 }
 
-.input-group input[type="radio"] {
-  accent-color: #00bfff;
-}
-
 @media screen and (max-width: 1600px) and (min-width: 560px) {
   .filter-chat {
-    /* display: grid; 
-    grid-template-columns: repeat(3, minmax(140px, 1fr)); */
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
@@ -332,23 +339,26 @@ header .icon {
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  background: #222;
-  color: #ffffff;
-  cursor: pointer;
+  background: var(--backgorund-color-cards);
   position: relative;
 }
 
 .card-favorite {
   padding: 8px;
-  border-radius: 50%;
-  border: 0;
+  border-radius: 100%;
+  border-color: rgba(255, 255, 255, 0.5); ;
   background-color: rgba(255, 255, 255, 0.5);
   position: absolute;
   top: 10px;
   right: 10px;
   z-index: 5;
 }
+/* Hacer el header gradient para que vaya de un magenta a un azul
+pasar a los fondos blancos con las tarjetas con gris muy claro
+letras en azul camiseta de rick igual un poco más oscuro
 
+header como template
+Atomo elementos de lista, lista como organismos*/
 .favorite-icon {
   width: 30px;
   height: 30px;
@@ -395,9 +405,9 @@ This make the content be in a block of content */
   width: 100%;
 }
 
-/* On mouse-over, add a deeper shadow */
+/* On mouse-over, add a deeper shadow  */
 .card:hover {
-  box-shadow: 0 8px 16px #43e02b;
+  box-shadow: 3px 3px 10px var(--hoover-color);
 }
 
 /* Add some padding inside the card container */
@@ -412,12 +422,12 @@ This make the content be in a block of content */
 #container-list {
   width: 100%;
   padding: 20px;
-  background: #222;
+  background:var(--backgorund-color-cards);
   margin: auto;
   border-radius: 10px;
   display: grid;
   gap: 15px;
-  color: white;
+  color: var(--borders-blacks);
 }
 
 #seasons-lists {
@@ -441,7 +451,7 @@ This make the content be in a block of content */
   position: relative;
   display: inline-block;
   font-size: 22px;
-  color: #444; /* gris base */
+  color: var(--accent-filters);
 }
 
 .star::before {
@@ -456,7 +466,7 @@ This make the content be in a block of content */
   top: 0;
   width: calc(var(--fill) * 100%);
   overflow: hidden;
-  color: gold;
+  color: var(--stars-fil-color);
 }
 
 .season-item.active .episode-list {
@@ -465,25 +475,26 @@ This make the content be in a block of content */
 
 .season-header {
   cursor: pointer;
-  font-weight: bold;
+  font-weight: var(--font-weight);
   padding: 10px;
-  background: #222;
-  color: white;
-  border-bottom: 1px solid #ccc;
+  color: var(--text-color);
+  border-bottom: 1px solid var(---color-back-white);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 
 .season-average {
   margin-left: 10px;
 }
 
 .list-element {
-  color: white;
-  background-color: #443c3c;
+  color: var(--text-color);
+  font-weight:var(--font-weight);
+  background-color: var(--list-element-back);
   padding: 5px 20px;
-  border-bottom: 1px solid #fafafa;
+  border-bottom: 1px solid var(---color-back-white);
 }
 
 .episodes {
@@ -500,7 +511,7 @@ This make the content be in a block of content */
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: var(--font-weight);
 }
 
 .stars {
@@ -523,20 +534,21 @@ This make the content be in a block of content */
 }
 
 .stars i {
-  color: lightgray;
+  color: var(--accent-filters);
+  /* //TODO:Añadir contorno */
   margin-right: 2px;
 }
 
 .stars i.full,
 .stars i.star-half {
-  color: gold;
+  color: var(--stars-fil-color);
 }
 
 .stars button {
   cursor: pointer;
   border-radius: 10px;
-  background: linear-gradient(45deg, rgb(57, 32, 154), rgb(10, 0, 82));
-  color: white;
+  background: var(--header-gradient);
+  color: var(---color-back-white);
 }
 
 .stars select {
@@ -551,14 +563,14 @@ This make the content be in a block of content */
 }
 
 .stars i.active {
-  color: #ff9c1a;
+  color: var(--stars-fil-color);
 }
 
 #container-list {
   max-width: 800px;
   margin: 20px auto;
   font-family: "Arial", sans-serif;
-  color: #333;
+  color: var(--list-element-back);
 }
 
 .location-list {
@@ -566,11 +578,11 @@ This make the content be in a block of content */
   padding: 0;
   margin: 0;
 }
-.icons-locations {
+.icons-locations{
   width: 30px;
   height: 30px;
 }
-.info-locations {
+.info-locations{
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
@@ -581,16 +593,14 @@ This make the content be in a block of content */
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.3s ease;
-  background-color: #443c3c;
+  background-color: var(---color-back-white);
 }
 
 .location-header {
   padding: 10px;
-  cursor: pointer;
-  /* background-color: #0FF935;
-    color: black; */
-  background-color: #443c3c;
-  color: white;
+  background-color: var(--list-element-back);
+  color: var(--text-color);
+  font-weight: var(--font-weight);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -600,21 +610,20 @@ This make the content be in a block of content */
 .location-header h3 {
   margin: 0;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: var(--font-weight);
+}
+.label-location{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
-.sub-location-list {
-  list-style: none;
-  padding: 0 20px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
 
 .list-element-epi {
   padding: 10px 0;
-  color: white;
-  background-color: #443c3c;
+  color: var(---color-back-white);
+  background-color: var(--list-element-back);
   /* padding: 5px 20px; */
 }
 
@@ -632,17 +641,19 @@ This make the content be in a block of content */
 
 .load-residents {
   padding: 5px 10px;
-  background-color: #8ff6f3;
   border: none;
   border-radius: 4px;
-  color: black;
+  display: flex;
+  align-items: center;
+  gap:4px;
+  color: var(--borders-blacks);
   cursor: pointer;
-  font-weight: bold;
+  font-weight: var(--font-weight);
   transition: background-color 0.2s ease;
 }
 
 .load-residents:hover {
-  background-color: #1976d2;
+  background-color:var(--hoover-color)
 }
 
 .location-item.active .sub-location-list {
@@ -701,8 +712,7 @@ This make the content be in a block of content */
 /* ------------------------------------------------Modal popUp for residents in locations-------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 .modal {
-  display: flex;
-  /* display: none; */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -719,20 +729,13 @@ This make the content be in a block of content */
 }
 
 .modal-content {
-  background: white;
-  color: #000000;
+  background: var(---color-back-white);
   padding: 20px;
   border-radius: 10px;
   width: 80%;
   max-height: 80%;
   overflow-y: auto;
   position: relative;
-}
-.close {
-  cursor: pointer;
-  float: right;
-  font-size: 24px;
-  color: #000000;
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
@@ -742,8 +745,9 @@ This make the content be in a block of content */
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #333;
-  color: white;
+  background: var(--backgorund-color-cards);
+  color: var(--text-color);
+  font-weight: var(--font-weight);
   border-radius: 10px;
   transition: all 0.3s ease;
 }
@@ -787,7 +791,7 @@ This make the content be in a block of content */
 .info-char p {
   margin: 0;
   font-size: 0.95rem;
-  color: #ddd;
+  color: var(--text-color);
 }
 
 /* ----------------------------- Responsive view: on mobile, it's stacked in a column ----------------------------- */

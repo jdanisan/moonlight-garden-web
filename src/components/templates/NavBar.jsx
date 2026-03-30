@@ -1,3 +1,5 @@
+import CharactersPage from "../pages/CharactersPage";
+
 export function NavBar() {
   return (
     <header>
@@ -6,7 +8,8 @@ export function NavBar() {
         <a href="/Ejercicio JS.pdf">Documentation</a>
         <a href="/statement.md">Statement</a>
         <a href="/locations.html">Locations</a>
-        <a href="/characters.html">Characters</a>
+        {/* //TODO: Investigar como se hacen este tipo de referencias */}
+        <a href="<CharactersPage/>">Characters</a>
         <a href="/episodes.html">Episodes</a>
       </div>
       <img className="icon" id="icon-nav-bar" src="/img/icon-original.ico" />

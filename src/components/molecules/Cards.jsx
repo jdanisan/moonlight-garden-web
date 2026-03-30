@@ -5,7 +5,7 @@ import { Button } from "../atoms/Button";
 import { useState, useEffect } from "react";
 /* \//TODO: make this more comun for the both types of card in the project */
 export function Cards({ character }) {
-  if (character <= 0) return null;
+  if (!character) return null;
 
   const [showModal, setShowModal] = useState(false);
   // Función for open the modal
@@ -16,7 +16,7 @@ export function Cards({ character }) {
 
   return (
     <div className="card">
-      <img src="{character.image}" alt="{character.name}" />
+      <img src={character.image} alt={character.name} />
 
       <Favorite idCharacter={character.id} />
 
@@ -41,7 +41,7 @@ export function Cards({ character }) {
         />
         {showModal && <Modal characters={character} onClose={handleClose} />}
 
-        <LoadMoreBTN characters={3} />
+        {/* <LoadMoreBTN characters={3} /> */}
       </div>
     </div>
   );

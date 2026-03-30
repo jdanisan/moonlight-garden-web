@@ -1,5 +1,5 @@
 export function BaseModal({ title,array, onClose }) {
-  const handleClose = () => setShowModal(false);
+  
   return (
     <div id="modal-char" className="modal">
       <div className="modal-content">
