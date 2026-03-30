@@ -1,25 +1,24 @@
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------------- Colors variables -------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
-:root{
-  --text-color:#1B4B8C;
-  --stars-fil-color:gold;
-  --hoover-color:#1976d2;
-  --filters-color:#0c62b8;
-  --header-gradient: linear-gradient(20deg, #571261, #2B4E86);
+:root {
+  --text-color: #1b4b8c;
+  --stars-fil-color: gold;
+  --hoover-color: #1976d2;
+  --filters-color: #0c62b8;
+  --header-gradient: linear-gradient(20deg, #571261, #2b4e86);
   ---color-back-white: #ffffff;
-  --font-weight:700;
-  --borders-blacks:black;
-  --backgorund-color-cards:#f8f5f5;
+  --font-weight: 700;
+  --borders-blacks: black;
+  --backgorund-color-cards: #f8f5f5;
   --list-element-back: #f0eeee;
   --accent-filters: #00bfff;
 }
 
-
 body {
   margin: 0;
   padding-top: 60px;
-  background-color:var(---color-back-white);
+  background-color: var(---color-back-white);
   font-family: Verdana, sans-serif;
   display: flex;
   flex-direction: column;
@@ -43,12 +42,17 @@ main h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  color:var(--text-color);
+  color: var(--text-color);
   font-weight: var(--font-weight);
 }
 .center-button {
   display: flex;
   justify-content: center;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(---color-back-white);
+  border: none;
+  background-color: var(--text-color);
   align-items: center;
   height: 100%;
   margin-top: 20px;
@@ -117,7 +121,7 @@ footer p {
 /* -----------------------------------Style for Navbar in pages (Home|Location|Characters|Episode)----------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 header {
-  background:var(--header-gradient);
+  background: var(--header-gradient);
   top: 0px;
   position: fixed;
   width: 100%;
@@ -141,7 +145,7 @@ header a {
   flex-shrink: 0;
 }
 header .icon {
-  float: right;  
+  float: right;
   flex-shrink: 0;
   cursor: pointer;
 }
@@ -244,7 +248,7 @@ header .icon {
   background-color: var(--filters-color);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  color:var(---color-back-white);
+  color: var(---color-back-white);
 }
 
 .filter-chat,
@@ -346,12 +350,16 @@ header .icon {
 .card-favorite {
   padding: 8px;
   border-radius: 100%;
-  border-color: rgba(255, 255, 255, 0.5); ;
+  border: none;
+  cursor: pointer;
   background-color: rgba(255, 255, 255, 0.5);
   position: absolute;
   top: 10px;
   right: 10px;
   z-index: 5;
+}
+.card-favorite:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 /* Hacer el header gradient para que vaya de un magenta a un azul
 pasar a los fondos blancos con las tarjetas con gris muy claro
@@ -403,6 +411,17 @@ This make the content be in a block of content */
 
 .card-content button {
   width: 100%;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(---color-back-white);
+  border: none;
+  cursor: pointer;
+  font-weight: var(--font-weight);
+  background-color: var(--text-color);
+}
+
+.card-content button:hover {
+  background-color: var(--hoover-color);
 }
 
 /* On mouse-over, add a deeper shadow  */
@@ -422,7 +441,7 @@ This make the content be in a block of content */
 #container-list {
   width: 100%;
   padding: 20px;
-  background:var(--backgorund-color-cards);
+  background: var(--backgorund-color-cards);
   margin: auto;
   border-radius: 10px;
   display: grid;
@@ -484,14 +503,13 @@ This make the content be in a block of content */
   justify-content: space-between;
 }
 
-
 .season-average {
   margin-left: 10px;
 }
 
 .list-element {
   color: var(--text-color);
-  font-weight:var(--font-weight);
+  font-weight: var(--font-weight);
   background-color: var(--list-element-back);
   padding: 5px 20px;
   border-bottom: 1px solid var(---color-back-white);
@@ -507,7 +525,7 @@ This make the content be in a block of content */
 }
 
 .content-episode {
-  width: 80%;
+  width: fit-content;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -578,11 +596,11 @@ This make the content be in a block of content */
   padding: 0;
   margin: 0;
 }
-.icons-locations{
+.icons-locations {
   width: 30px;
   height: 30px;
 }
-.info-locations{
+.info-locations {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
@@ -612,13 +630,12 @@ This make the content be in a block of content */
   font-size: 1.2rem;
   font-weight: var(--font-weight);
 }
-.label-location{
+.label-location {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
 }
-
 
 .list-element-epi {
   padding: 10px 0;
@@ -645,7 +662,7 @@ This make the content be in a block of content */
   border-radius: 4px;
   display: flex;
   align-items: center;
-  gap:4px;
+  gap: 4px;
   color: var(--borders-blacks);
   cursor: pointer;
   font-weight: var(--font-weight);
@@ -653,7 +670,7 @@ This make the content be in a block of content */
 }
 
 .load-residents:hover {
-  background-color:var(--hoover-color)
+  background-color: var(--hoover-color);
 }
 
 .location-item.active .sub-location-list {
@@ -670,13 +687,11 @@ This make the content be in a block of content */
   }
 
   .stars {
-    display: grid;
-    grid-template-rows: max-content;
+    display: flex;
     gap: 5px;
   }
 
   .content-episode {
-    width: 100%;
     display: grid;
     grid-template-rows: auto auto;
     gap: 5px;
@@ -703,8 +718,7 @@ This make the content be in a block of content */
     display: grid;
   }
   .stars {
-    display: grid;
-    grid-template-rows: max-content;
+    display: flex;
   }
 }
 
