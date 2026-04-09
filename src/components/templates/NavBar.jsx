@@ -1,18 +1,50 @@
-import CharactersPage from "../pages/CharactersPage";
+import { NavLink } from "react-router-dom";
 
 export function NavBar() {
   return (
     <header>
       <div className="nav-links">
-        <a href="index.html">Home</a>
-        <a href="/Ejercicio JS.pdf">Documentation</a>
-        <a href="/statement.md">Statement</a>
-        <a href="/locations.html">Locations</a>
-        {/* //TODO: Investigar como se hacen este tipo de referencias */}
-        <a href="<CharactersPage/>">Characters</a>
-        <a href="/episodes.html">Episodes</a>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Home
+        </NavLink>
+        <a href="/Ejercicio JS.pdf" target="_blank">
+          Documentation
+        </a>
+        <a href="/statement.md" target="_blank">
+          Statement
+        </a>
+
+        <NavLink
+          to="/characters"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Characters
+        </NavLink>
+
+        <NavLink
+          to="/locations"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Locations
+        </NavLink>
+
+        <NavLink
+          to="/episodes"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Episodes
+        </NavLink>
       </div>
-      <img className="icon" id="icon-nav-bar" src="/img/icon-original.ico" />
+
+      <img
+        className="icon"
+        id="icon-nav-bar"
+        src="/img/icon-original.ico"
+        alt="logo"
+      />
     </header>
   );
 }

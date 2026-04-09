@@ -7,7 +7,7 @@
   --hoover-color: #1976d2;
   --filters-color: #0c62b8;
   --header-gradient: linear-gradient(20deg, #571261, #2b4e86);
-  ---color-back-white: #ffffff;
+  --color-back-white: #ffffff;
   --font-weight: 700;
   --borders-blacks: black;
   --backgorund-color-cards: #f8f5f5;
@@ -18,11 +18,12 @@
 body {
   margin: 0;
   padding-top: 60px;
-  background-color: var(---color-back-white);
+  background-color: var(--color-back-white);
   font-family: Verdana, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* vh is "viewport height", ensures the full height */
+  min-width: 100vw;
   color: var(--borders-blacks);
 }
 
@@ -50,7 +51,7 @@ main h1 {
   justify-content: center;
   border-radius: 8px;
   padding: 8px 12px;
-  color: var(---color-back-white);
+  color: var(--color-back-white);
   border: none;
   background-color: var(--text-color);
   align-items: center;
@@ -81,7 +82,7 @@ footer {
   width: 100%;
   margin-top: 20px;
   font-weight: var(--font-weight);
-  color: var(---color-back-white);
+  color: var(--color-back-white);
 }
 footer p {
   width: 100%;
@@ -137,7 +138,7 @@ header {
 header a {
   float: left;
   display: block;
-  color: var(---color-back-white);
+  color: var(--color-back-white);
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
@@ -152,12 +153,12 @@ header .icon {
 
 header a:hover {
   background-color: #e011cf;
-  color: var(---color-back-white);
+  color: var(--color-back-white);
 }
 
 header a.active {
   background-color: aquamarine;
-  color: var(---color-back-white);
+  color: var(--color-back-white);
 }
 
 header .icon {
@@ -221,7 +222,7 @@ header .icon {
   border: none;
   outline: none;
   background-color: #45f72a;
-  color: var(---color-back-white);
+  color: var(--color-back-white);
   cursor: pointer;
   padding: 15px;
   border-radius: 10px;
@@ -248,7 +249,7 @@ header .icon {
   background-color: var(--filters-color);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  color: var(---color-back-white);
+  color: var(--color-back-white);
 }
 
 .filter-chat,
@@ -267,7 +268,7 @@ header .icon {
   border-radius: 6px;
   border: 1px solid var(--backgorund-color-cards);
   background-color: var(--text-color);
-  color: var(---color-back-white);
+  color: var(--color-back-white);
   font-size: 14px;
   outline: none;
   transition: 0.2s all;
@@ -413,7 +414,7 @@ This make the content be in a block of content */
   width: 100%;
   border-radius: 8px;
   padding: 8px 12px;
-  color: var(---color-back-white);
+  color: var(--color-back-white);
   border: none;
   cursor: pointer;
   font-weight: var(--font-weight);
@@ -497,7 +498,7 @@ This make the content be in a block of content */
   font-weight: var(--font-weight);
   padding: 10px;
   color: var(--text-color);
-  border-bottom: 1px solid var(---color-back-white);
+  border-bottom: 1px solid var(--color-back-white);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -512,7 +513,7 @@ This make the content be in a block of content */
   font-weight: var(--font-weight);
   background-color: var(--list-element-back);
   padding: 5px 20px;
-  border-bottom: 1px solid var(---color-back-white);
+  border-bottom: 1px solid var(--color-back-white);
 }
 
 .episodes {
@@ -566,7 +567,7 @@ This make the content be in a block of content */
   cursor: pointer;
   border-radius: 10px;
   background: var(--header-gradient);
-  color: var(---color-back-white);
+  color: var(--color-back-white);
 }
 
 .stars select {
@@ -611,7 +612,7 @@ This make the content be in a block of content */
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.3s ease;
-  background-color: var(---color-back-white);
+  background-color: var(--color-back-white);
 }
 
 .location-header {
@@ -639,7 +640,7 @@ This make the content be in a block of content */
 
 .list-element-epi {
   padding: 10px 0;
-  color: var(---color-back-white);
+  color: var(--color-back-white);
   background-color: var(--list-element-back);
   /* padding: 5px 20px; */
 }
@@ -743,7 +744,7 @@ This make the content be in a block of content */
 }
 
 .modal-content {
-  background: var(---color-back-white);
+  background: var(--color-back-white);
   padding: 20px;
   border-radius: 10px;
   width: 80%;

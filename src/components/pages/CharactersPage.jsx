@@ -1,38 +1,41 @@
 import { useContext, useState } from "react";
-import { NavBar } from "../templates/NavBar";
 import { Filters } from "../organism/Filters";
 import { Cards } from "../molecules/Cards";
 import { GoTopBTN } from "../atoms/GoTopBTN";
-import{CharactersContext} from "../context/CharactersContext"
+import { CharactersContext } from "../context/CharactersContext";
 
 export default function CharactersPage() {
   const {
-    characters,
+    allCharacters,
     speciesOptions,
     statusOptions,
     genderOptions,
-    fetchCharacters,
     loading,
-    nextPage,
+    filters,
+    setFilters,
+    loadMore,
+    nextIndex,
   } = useContext(CharactersContext);
-
-  const [filters, setFilters] = useState({
-    type: "",
-  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFilters((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFilters((prev) => ({ ...prev, [name]: value }));
   };
+
+  const filteredCharacters = allCharacters.filter((char) => {
+    return (
+      (!filters.species || char.species === filters.species) &&
+      (!filters.status || char.status === filters.status) &&
+      (!filters.gender || char.gender === filters.gender)
+    );
+  });
+
+  const visibleCharacters = filteredCharacters.slice(0, nextIndex);
 
   return (
     <>
-      <NavBar />
       <h1>Characters</h1>
+
       <Filters
         type="characters"
         filters={filters}
@@ -45,20 +48,18 @@ export default function CharactersPage() {
       />
 
       <div className="cards">
-        {characters.map((char) => (
+        {visibleCharacters.map((char) => (
           <Cards key={char.id} character={char} />
         ))}
       </div>
 
-      {nextPage && (
-        <button onClick={fetchCharacters} disabled={loading}>
+      {visibleCharacters.length < filteredCharacters.length && (
+        <button onClick={loadMore} disabled={loading}>
           {loading ? "Loading..." : "Load More"}
         </button>
       )}
 
       <GoTopBTN />
-
-      <footer>Footer</footer>
     </>
   );
 }
