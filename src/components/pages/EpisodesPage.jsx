@@ -1,13 +1,12 @@
 import { useContext, useState } from "react";
-import { NavBar } from "../templates/NavBar";
-import { Image } from "../atoms/Image";
-import img from "../../assets/rick-and-morty.jpg";
+import { Cards } from "../molecules/Cards";
+import { CharactersContext } from "../context/CharactersContext";
 
 export default function EpisodesPage() {
+  
   return (
     <>
-      <Image src={img} alt="Rick & Morty" />
-
+      
     </>
   );
 }

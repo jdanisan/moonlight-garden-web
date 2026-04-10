@@ -1,14 +1,14 @@
 export function InputLabel({
-  label,
+   label,
   type = "text",
   name,
   value,
   onChange,
   options = [],
   placeholder,
-  id
+  id,
+  inputClassName,
 }) {
-  // Si no se pasa id, usamos el name como fallback
   const fieldId = id || name;
 
   return (
@@ -32,6 +32,7 @@ export function InputLabel({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          className={inputClassName}
         />
       )}
     </div>

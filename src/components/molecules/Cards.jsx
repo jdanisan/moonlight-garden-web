@@ -8,11 +8,24 @@ export function Cards({ character }) {
   if (!character) return null;
 
   const [showModal, setShowModal] = useState(false);
-  // Función for open the modal
+  // Functionn for open the modal
   const handleClick = () => {
     setShowModal(true);
   };
+
   const handleClose = () => setShowModal(false);
+
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = "hidden"; 
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showModal]);
 
   return (
     <div className="card">
@@ -26,10 +39,12 @@ export function Cards({ character }) {
             <strong>{character.name}</strong>
           </h3>
           <p>
-            <strong>Specie: </strong>{character.species}
+            <strong>Specie: </strong>
+            {character.species}
           </p>
           <p>
-            <strong>Status: </strong>{character.status}
+            <strong>Status: </strong>
+            {character.status}
           </p>
         </div>
 

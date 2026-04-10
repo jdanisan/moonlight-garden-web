@@ -1,13 +1,8 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
 import { AppRouter } from "./components/router/AppRouter";
 import "./index.css";
-import CharactersPage from "./components/pages/CharactersPage";
 import { CharactersProvider } from "./components/context/CharactersContext";
-import { MainLayout } from "./components/templates/MainLayout";
-// import App from './App.jsx'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

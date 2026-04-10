@@ -1,4 +1,3 @@
-// MainLayout.jsx
 import { NavBar } from "./NavBar";
 
 export function MainLayout({ children }) {
@@ -6,7 +5,7 @@ export function MainLayout({ children }) {
     <>
       <NavBar />
       <main>
-        {children}  {/* <- Esto es clave */}
+        {children}  
       </main>
       <footer>That's all, folks</footer>
     </>

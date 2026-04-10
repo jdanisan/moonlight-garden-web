@@ -1,5 +1,8 @@
 import { NavLink } from "react-router-dom";
 
+import { Image } from "../atoms/Image";
+import img from "../../assets/icon-original.ico";
+
 export function NavBar() {
   return (
     <header>
@@ -10,12 +13,6 @@ export function NavBar() {
         >
           Home
         </NavLink>
-        <a href="/Ejercicio JS.pdf" target="_blank">
-          Documentation
-        </a>
-        <a href="/statement.md" target="_blank">
-          Statement
-        </a>
 
         <NavLink
           to="/characters"
@@ -39,12 +36,8 @@ export function NavBar() {
         </NavLink>
       </div>
 
-      <img
-        className="icon"
-        id="icon-nav-bar"
-        src="/img/icon-original.ico"
-        alt="logo"
-      />
+      <Image src={img} alt="icon" className={"icon"} id="icon-nav-bar"/>
+      {/* //TODO:Fix why the logo inst do anything */}
     </header>
   );
 }

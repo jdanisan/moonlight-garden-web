@@ -6,10 +6,6 @@ export function GoTopBTN(){
           alt="Go top"
         />
       </button>
+      //TODO: redo this with the atom button and fix the error
     )
 }
-
-// <Button onClick={() => console.log("CLICK!")}>
-//     <img src="" alt="" />
-//     <span>Lo que sea</span>
-// </Button>

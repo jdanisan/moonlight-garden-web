@@ -11,33 +11,47 @@ export function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={
+        <Route
+          path="/"
+          element={
             <MainLayout>
               <HomePage />
             </MainLayout>
           }
         />
-        <Route path="/characters" element={
-          <MainLayout>
-            <CharactersPage/>
-          </MainLayout>
-          
+        <Route
+          path="/characters"
+          element={
+            <MainLayout>
+              <CharactersPage />
+            </MainLayout>
           }
         />
-        <Route path="/locations" element={
+        <Route
+          path="/locations"
+          element={
             <MainLayout>
               <LocationsPage />
             </MainLayout>
           }
         />
-        <Route path="/episodes" element={
+        <Route
+          path="/episodes"
+          element={
             <MainLayout>
               <EpisodesPage />
             </MainLayout>
           }
         />
 
-        <Route path="*" element={<NotFoundPage />} /> 
+        <Route
+          path="*"
+          element={
+            <MainLayout>
+              <NotFoundPage />
+            </MainLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

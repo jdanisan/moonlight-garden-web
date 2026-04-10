@@ -6,9 +6,11 @@ import img from "../../assets/rick-and-morty.jpg";
 export default function NotFoundPage() {
   return (
     <>
-      <Image src={img} alt="Rick & Morty" />
-
-      <footer>That's all, folks</footer>
+      <h1>404 page not found</h1>
+      <div className="front-seasson">
+        <Image src={img} alt="Rick & Morty" />
+      </div>
+      <h3>Please return home</h3>
     </>
   );
 }
