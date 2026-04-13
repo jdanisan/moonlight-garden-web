@@ -17,7 +17,7 @@ export default function HomePage() {
           Morty, as they navigate domestic life while embarking on chaotic
           adventures across space and other dimensions
         </p>
-        <p>Do you want to Know more?</p>
+        <p>Do you want to know more?</p>
       </div>
     </>
   );

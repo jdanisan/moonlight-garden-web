@@ -27,6 +27,7 @@ body {
   min-height: 100vh; /* vh is "viewport height", ensures the full height */
   min-width: 100vw;
   color: var(--borders-blacks);
+  overflow-x: hidden;
 }
 
 h1,
@@ -230,7 +231,8 @@ header .icon {
 }
 .content {
   width: 70%;
-  height: 300px;
+  height: 210px;
+  /* //Todo: Fix to make this responsive and grant that the footer will be the last element  */
   border: 3px solid var(--filters-color);
   padding: 20px;
   margin: auto;
@@ -241,8 +243,8 @@ header .icon {
   color: var(--filters-color);
 }
 
-#btn-top {
-  display: none;
+.btn-top {
+  display: flex;
   position: fixed;
   bottom: 20px;
   right: 30px;
@@ -256,8 +258,13 @@ header .icon {
   border-radius: 10px;
   font-size: 18px;
 }
+.btn-top img {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
 
-#btn-top:hover {
+.btn-top:hover {
   background-color: #555;
 }
 
@@ -482,7 +489,7 @@ This make the content be in a block of content */
 /* ------------------------------------------------------- Style for episodes list -------------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 
-#container-list {
+.container-list {
   width: 100%;
   padding: 20px;
   background: var(--backgorund-color-cards);
@@ -678,7 +685,12 @@ This make the content be in a block of content */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
+  padding: auto;
+
+  img {
+    width: 16px;
+  }
 }
 
 .list-element-epi {
@@ -707,7 +719,7 @@ This make the content be in a block of content */
   display: flex;
   align-items: center;
   gap: 4px;
-  color: var(--borders-blacks);
+  color: var(--text-color);
   cursor: pointer;
   font-weight: var(--font-weight);
   transition: background-color 0.2s ease;

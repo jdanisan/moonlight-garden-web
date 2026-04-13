@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Filters } from "../organism/Filters";
 import { Cards } from "../molecules/Cards";
 import { GoTopBTN } from "../atoms/GoTopBTN";
-import { CharactersContext } from "../context/CharactersContext";
+import { AppContext } from "../context/AppContext";
 import { Button } from "../atoms/Button";
 
 const initialFilters = {
@@ -14,8 +14,8 @@ const initialFilters = {
 };
 
 export default function CharactersPage() {
-  const {
-    allCharacters,
+  const {    
+    characters,
     speciesOptions,
     statusOptions,
     genderOptions,
@@ -24,14 +24,14 @@ export default function CharactersPage() {
     setFilters,
     loadMore,
     nextIndex,
-  } = useContext(CharactersContext);
+  } = useContext(AppContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
-  const filteredCharacters = allCharacters
+  const filteredCharacters = (characters || [])
     .filter((char) => {
       return (
         (!filters.name ||
@@ -74,8 +74,8 @@ export default function CharactersPage() {
           status: statusOptions,
           gender: genderOptions,
           order: [
-            { label: "Order A-Z", value: "asc" },
-            { label: "Order Z-A", value: "desc" },
+            { label: "Ascendancy", value: "asc" },
+            { label: "Descendant", value: "desc" },
           ],
         }}
       />

@@ -61,8 +61,8 @@ export function Filters({
               onChange={handleChange}
               placeholder="Without order"
               options={[
-                { label: "Order A-Z", value: "asc" },
-                { label: "Order Z-A", value: "desc" },
+                { label: "Ascendancy", value: "asc" },
+                { label: "Descendant", value: "desc" },
               ]}
             />
             <Button

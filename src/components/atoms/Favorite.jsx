@@ -1,24 +1,29 @@
 import favoriteFilled from "/src/assets/favorite_filled.svg";
 import favoriteOutline from "/src/assets/favorite_outline.svg";
 import { Button } from "./Button";
+import { FavoriteIconOutLine } from "./icons/FavoriteIconOutLine";
+import { FavoriteIconFilled } from "./icons/FavoriteIconFilled";
 import { useState, useEffect } from "react";
 
 export function Favorite({ idCharacter }) {
   //Se hace esto porque en localstorge estamos guardando un string y no un array actualmente
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
   // Estado src icono
   // Estado favorite
 
   // Cuando cambie favorite, cambiar estado src icono y cambiar valor en localStorage
   /* useState, definimos una variable que puede cambiar segun el estado y la funcción, 
   const[estadoInicial,funccionCambio]=useState(valorInicial) */
-  /*\//TODO: Comprobar sí cuando este dentro de valores reales sigue pasando que cuando 
+  /*\//TDO: Comprobar sí cuando este dentro de valores reales sigue pasando que cuando 
     guardamos este archivo y el icon esta marcado como favorito, si deseleccionamos y 
     volvemos a seleccionar, no es el valor anterior, es uno nuevo  */
-  const [icon, setIcon] = useState(favoriteOutline);
-  const [isFavorite, setIsFavorite] = useState(undefined);
+  const [isFavorite, setIsFavorite] = useState(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    return favorites.includes(idCharacter);
+  });
 
-  // TODO: Investigar cómo hacer que pasen cosas cuando cambia un valor para que, cuando cambie el estado de favorite, cambie el icono
+  // TDO: Investigar cómo hacer que pasen cosas cuando cambia un valor para que, cuando cambie el estado de favorite, cambie el icono
   // Investigar cómo conseguir que, al montarse el componente, se seteen ciertos valores
 
   /*
@@ -28,33 +33,36 @@ export function Favorite({ idCharacter }) {
   */
 
   /* useEffect (()=>) */
-  
+
   useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     const isStored = favorites.includes(idCharacter);
+
     setIsFavorite(isStored);
-    setIcon(isStored ? favoriteFilled : favoriteOutline);
   }, [idCharacter]);
 
   useEffect(() => {
-    if (isFavorite === undefined) return;
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    let updated;
 
     if (isFavorite) {
-      const updated = [...new Set([...favorites, idCharacter])];
-      localStorage.setItem("favorites", JSON.stringify(updated));
-      setIcon(favoriteFilled);
+      updated = [...new Set([...favorites, idCharacter])];
     } else {
-      const updated = favorites.filter((id) => id !== idCharacter);
-      localStorage.setItem("favorites", JSON.stringify(updated));
-      setIcon(favoriteOutline);
+      updated = favorites.filter((id) => id !== idCharacter);
     }
+
+    localStorage.setItem("favorites", JSON.stringify(updated));
   }, [isFavorite]);
 
   function handleToggle() {
     setIsFavorite((prev) => !prev);
   }
 
+  // Aquí elegimos el icono en base al estado (esto evita errores con React y hooks)
+  const Icon = isFavorite ? FavoriteIconFilled : FavoriteIconOutLine;
+
   return (
-    <Button icon={icon} className="card-favorite" onClick={handleToggle}>     
-    </Button>
+    <Button icon={Icon} className="card-favorite" onClick={handleToggle} />
   );
 }
