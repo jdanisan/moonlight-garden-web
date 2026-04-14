@@ -6,33 +6,35 @@ import { GoTopBTN } from "../atoms/GoTopBTN";
 import { LocationsList } from "../molecules/LocationList";
 
 export default function LocationsPage() {
-  const {
-    locations,
-    loading,
-    filters,
-    setFilters,
-    locationOptions, 
-  } = useContext(AppContext);
+  const { locations, loading, filters, setFilters, locationOptions } =
+    useContext(AppContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
-
+  const handleResetFilters = () => {
+    setFilters({
+      species: "",
+      status: "",
+      gender: "",
+      type: "",
+    });
+  };
   return (
     <>
       <Filters
         filterType="locations"
         filters={filters}
         handleChange={handleChange}
+        resetFilters={handleResetFilters} 
         options={{
-          type: locationOptions?.typeOptions || [],  
+          type: locationOptions || [],
         }}
       />
       {/* //TODO: Add molecule list and render with the locations */}
-      <LocationsList locations={locations}  ></LocationsList>
+      <LocationsList locations={locations}></LocationsList>
       <GoTopBTN />
-
     </>
   );
 }

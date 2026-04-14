@@ -13,12 +13,13 @@ export const ContextProvider = ({ children }) => {
   const [speciesOptions, setSpeciesOptions] = useState([]);
   const [statusOptions, setStatusOptions] = useState([]);
   const [genderOptions, setGenderOptions] = useState([]);
-  const [locationOptions, setLocationTypeOptions] = useState([]);
+  const [locationOptions, setLocationOptions] = useState([]);
 
   const [filters, setFilters] = useState({
     species: "",
     status: "",
     gender: "",
+    type: "",
   });
 
   // ---------------- FETCH ITEMS ----------------
@@ -41,7 +42,6 @@ export const ContextProvider = ({ children }) => {
       if (item === "character") setCharacters(allElements);
       if (item === "location") setLocations(allElements);
       if (item === "episode") setEpisodes(allElements);
-
     } catch (err) {
       console.error(`Error fetching ${item}:`, err);
     } finally {
@@ -87,30 +87,30 @@ export const ContextProvider = ({ children }) => {
           [...speciesSet].map((s) => ({
             value: s,
             label: s.toUpperCase(),
-          }))
+          })),
         );
 
         setStatusOptions(
           [...statusSet].map((s) => ({
             value: s,
             label: s.toUpperCase(),
-          }))
+          })),
         );
 
         setGenderOptions(
           [...genderSet].map((g) => ({
             value: g,
             label: g.toUpperCase(),
-          }))
+          })),
         );
       }
 
       if (item === "location") {
-        setLocationTypeOptions(
-          [...typeSet].map((t) => ({
+        setLocationOptions(
+          [...typeSet].filter(Boolean).map((t) => ({
             value: t,
             label: t.toUpperCase(),
-          }))
+          })),
         );
       }
     } catch (err) {
@@ -127,12 +127,14 @@ export const ContextProvider = ({ children }) => {
     fetchAllFilters("character");
     fetchAllFilters("location");
   }, []);
-
+  const filteredLocations = locations.filter((loc) => {
+    return !filters.type || loc.type === filters.type;
+  });
   return (
     <AppContext.Provider
       value={{
         characters,
-        locations,
+        locations: filteredLocations,
         episodes,
         speciesOptions,
         statusOptions,
