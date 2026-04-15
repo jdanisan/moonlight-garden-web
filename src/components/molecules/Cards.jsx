@@ -2,62 +2,81 @@ import { Favorite } from "../atoms/Favorite";
 import { LoadMoreBTN } from "../atoms/LoadMore";
 import { Modal } from "../organism/Modal";
 import { Button } from "../atoms/Button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AppContext } from "../context/AppContext";
 /* \//TODO: make this more comun for the both types of card in the project */
-export function Cards({ character }) {
+// export function Cards({ character }) {
+//   if (!character) return null;
+//   const { openModal } = useContext(AppContext);
+
+//   return (
+//     <div className="card">
+//       <img src={character.image} alt={character.name} />
+
+//       <Favorite idCharacter={character.id} />
+
+//       <div className="card-content">
+//         <div className="card-title">
+//           <h3>
+//             <strong>{character.name}</strong>
+//           </h3>
+//           <p>
+//             <strong>Specie: </strong>
+//             {character.species}
+//           </p>
+//           <p>
+//             <strong>Status: </strong>
+//             {character.status}
+//           </p>
+//         </div>
+
+//         {/* <!-- MODAL for info of characters --> */}
+//         <Button
+//           label="Load Info"
+//           className="load-info-char"
+//           onClick={() => openModal("character", character)}
+//         />
+//         {/* <LoadMoreBTN characters={3} /> */}
+//       </div>
+//     </div>
+//   );
+// }
+export function Cards({ character, variant = "default" }) {
   if (!character) return null;
-
-  const [showModal, setShowModal] = useState(false);
-  // Functionn for open the modal
-  const handleClick = () => {
-    setShowModal(true);
-  };
-
-  const handleClose = () => setShowModal(false);
-
-  useEffect(() => {
-    if (showModal) {
-      document.body.style.overflow = "hidden"; 
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [showModal]);
+  const { openModal } = useContext(AppContext);
 
   return (
-    <div className="card">
-      <img src={character.image} alt={character.name} />
+    <div className={`card card--${variant}`}>
+      <img
+        src={character.image}
+        alt={character.name}
+        className={`card-image card-image--${variant}`}
+      />
 
-      <Favorite idCharacter={character.id} />
+      <div className={`card-content card-content--${variant}`}>
+        <h3 className={`card-title card-title--${variant}`}>
+          <strong>{character.name}</strong>
+        </h3>
 
-      <div className="card-content">
-        <div className="card-title">
-          <h3>
-            <strong>{character.name}</strong>
-          </h3>
-          <p>
-            <strong>Specie: </strong>
-            {character.species}
-          </p>
-          <p>
-            <strong>Status: </strong>
-            {character.status}
-          </p>
-        </div>
+        <p><strong>Specie:</strong> {character.species}</p>
+        <p><strong>Status:</strong> {character.status}</p>
 
-        {/* <!-- MODAL for info of characters --> */}
-        <Button
-          label={"Load Info"}
-          className="load-info-char"
-          onClick={handleClick}
-        />
-        {showModal && <Modal characters={character} onClose={handleClose} />}
+        {variant === "default" && (
+          <Button
+            label="Load Info"
+            className="load-info-char"
+            onClick={() => openModal("character", character)}
+          />
+        )}
 
-        {/* <LoadMoreBTN characters={3} /> */}
+        {variant ==="modal" && (
+          <>
+            <p><strong>Origin:</strong> {character.origin.name}</p>
+            <p><strong>Actual location:</strong> {character.location.name}</p>
+          </>
+        )}
       </div>
     </div>
   );
 }
+

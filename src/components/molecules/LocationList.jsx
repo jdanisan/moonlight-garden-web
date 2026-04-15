@@ -1,5 +1,6 @@
 import { List } from "./Lists";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AppContext } from "../context/AppContext";
 import { Image } from "../atoms/Image";
 import { Button } from "../atoms/Button";
 import { LocationIcon } from "../atoms/icons/LocationIcon";
@@ -10,13 +11,15 @@ import { Modal } from "../organism/Modal";
 
 export function LocationsList({ locations }) {
   const [showModal, setShowModal] = useState(false);
+  
   // Functionn for open the modal
-  const handleClick = () => {
-    setShowModal(true);
-  };
+  // const handleClick = () => {
+  //   console.log("OPEN");
+  //   setShowModal(true);
+  // };
 
   const handleClose = () => setShowModal(false);
-
+  const { openModal } = useContext(AppContext);
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
@@ -37,19 +40,20 @@ export function LocationsList({ locations }) {
           renderItem={(location) => (
             <div className="location-item">
               <h3>{location.name}</h3>
-              <DimensionIcon/>
+              <DimensionIcon />
               <span>{location.dimension}</span>
-              
-              <LocationIcon/>
+
+              <LocationIcon />
               <span>{location.type}</span>
               <Button
                 icon={PeopleIcon}
-                onClick={handleClick}
+                // onClick={handleClick}
+                onClick={() => openModal("location", location)}
                 label={location.residents.length}
                 className="load-residents"
               />
               {showModal && (
-                <Modal characters={location.residents} onClose={handleClose} />
+                <Modal data={location} onClose={handleClose} type="location" />
               )}
             </div>
           )}

@@ -22,7 +22,113 @@ export const ContextProvider = ({ children }) => {
     type: "",
   });
 
+  // ---------------- MODAL STATE ----------------
+  const fetchCharacter = async (url) => {
+    const res = await fetch(url);
+    return res.json();
+  };
+  const [modalStack, setModalStack] = useState([]);
+  const currentModal = modalStack[modalStack.length - 1];
+  const resolveUrls = async (urls) => {
+    return Promise.all((urls || []).filter(Boolean).map(fetchCharacter));
+  };
+
+  // const [modal, setModal] = useState({
+  //   isOpen: false,
+  //   type: null,
+  //   data: null,
+  // });
+
+  const openModal = async (type, data) => {
+    const tempModal = {
+      type,
+      data: null,
+      loading: true,
+    };
+    setModalStack((prev) => [...prev, tempModal]);
+    let resolvedData = data;
+
+    if (type === "location") {
+      resolvedData = {
+        ...data,
+        residents: await resolveUrls(data.residents),
+      };
+    }
+
+    if (type === "episode") {
+      resolvedData = {
+        ...data,
+        characters: await resolveUrls(data.characters),
+      };
+    }
+
+    setModalStack((prev) =>
+      prev.map((modal, index) =>
+        index === prev.length - 1
+          ? { ...modal, data: resolvedData, loading: false }
+          : modal,
+      ),
+    );
+  };
+
+  const closeModal = () => {
+    setModalStack((prev) => prev.slice(0, -1));
+  };
+  useEffect(() => {
+    const isOpen = modalStack.length > 0;
+
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    document.body.style.position = isOpen ? "fixed" : "";
+    document.body.style.width = isOpen ? "100%" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
+    };
+  }, [modalStack]);
+
+  // const openModal = async (type, data) => {
+  //   let resolvedData = data;
+
+  //   if (type === "location") {
+  //     const residents = await Promise.all(
+  //       (data.residents || []).filter(Boolean).map(fetchCharacter),
+  //     );
+
+  //     resolvedData = {
+  //       ...data,
+  //       residents,
+  //     };
+  //   }
+
+  //   if (type === "episode") {
+  //     const characters = await Promise.all(
+  //       (data.characters || []).filter(Boolean).map(fetchCharacter),
+  //     );
+
+  //     resolvedData = {
+  //       ...data,
+  //       characters,
+  //     };
+  //   }
+
+  //   setModal({
+  //     isOpen: true,
+  //     type,
+  //     data: resolvedData,
+  //   });
+  // };
+  // const closeModal = () => {
+  //   setModal({
+  //     isOpen: false,
+  //     type: null,
+  //     data: null,
+  //   });
+  // };
+
   // ---------------- FETCH ITEMS ----------------
+
   const fetchItems = async (item) => {
     if (!item) return;
 
@@ -145,6 +251,10 @@ export const ContextProvider = ({ children }) => {
         setFilters,
         loadMore: () => setNextIndex((prev) => prev + 50),
         nextIndex,
+        openModal,
+        closeModal,
+        currentModal,
+        // modal,
       }}
     >
       {children}

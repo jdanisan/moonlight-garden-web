@@ -1,5 +1,6 @@
 import { Button } from "../atoms/Button";
 import { PeopleIcon } from "../atoms/icons/PeopleIcon";
+import { StarIcon } from "../atoms/icons/StarIcon";
 export function EpisodesList({ episodes }) {
   return (
     <ul>
@@ -7,7 +8,7 @@ export function EpisodesList({ episodes }) {
         <li key={ep.id}>
           {ep.name}
           <Button
-            icon = {PeopleIcon}
+            icon={PeopleIcon}
             // onClick={handleClick}
             // label={ep.characters.length}
             alt={"icon peeple"}
@@ -16,7 +17,12 @@ export function EpisodesList({ episodes }) {
           />
 
           <div className="stars">
-            {/* <Button label={"Rate"} className={"form-episode"}></Button> */}
+            <Button label={"Rate"} className={"form-episode"}></Button> 
+            <StarIcon width="24" height="24" />
+            <StarIcon width="24" height="24" />
+            <StarIcon width="24" height="24" />
+            <StarIcon width="24" height="24" />
+            <StarIcon width="24" height="24" />
           </div>
         </li>
       ))}

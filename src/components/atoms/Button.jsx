@@ -3,7 +3,7 @@ export function Button({
   icon:Icon,
   onClick,
   className,
-  variant = "primary",
+  variant = "expanded",
 }) {
   // console.log(icon, label)
   return (

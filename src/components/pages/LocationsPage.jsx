@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Filters } from "../organism/Filters";
 import { AppContext } from "../context/AppContext";
-import { List } from "../molecules/Lists";
 import { GoTopBTN } from "../atoms/GoTopBTN";
 import { LocationsList } from "../molecules/LocationList";
 
@@ -32,7 +31,6 @@ export default function LocationsPage() {
           type: locationOptions || [],
         }}
       />
-      {/* //TODO: Add molecule list and render with the locations */}
       <LocationsList locations={locations}></LocationsList>
       <GoTopBTN />
     </>

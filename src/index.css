@@ -326,7 +326,6 @@ header .icon {
   font-size: 14px;
 }
 
-
 @media screen and (max-width: 1600px) and (min-width: 560px) {
   .filter-chat {
     display: flex;
@@ -355,7 +354,7 @@ header .icon {
     align-items: stretch;
     width: 100%;
   }
-  
+
   .form-field {
     display: flex;
     flex-direction: column;
@@ -364,7 +363,7 @@ header .icon {
   }
 
   .form-field input,
-  .form-field select{
+  .form-field select {
     width: 105%;
   }
 
@@ -797,10 +796,35 @@ This make the content be in a block of content */
 .modal img {
   overflow: hidden;
 }
+.modal-title-close {
+  position: sticky;
+  top: 0 !important;
+  z-index: 10;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+
+  background: var(--color-back-white); 
+  border-bottom: 1px solid #eee;
+}
+
+.modal-title-close h2 {
+  margin: 0;
+  justify-content: center !important;
+}
+
+.close {
+  cursor: pointer;
+  font-size: 24px;
+}
 .modal-content {
   background: var(--color-back-white);
-  padding: 20px;
+  padding: 0 0 20px 20px;
   border-radius: 10px;
   width: 80%;
   max-height: 80%;
@@ -811,7 +835,7 @@ This make the content be in a block of content */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* ----------------------------- Specific style in the modal characters info ------------------------------------ ------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
-.card {
+.card, .card--default {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -822,13 +846,13 @@ This make the content be in a block of content */
   transition: all 0.3s ease;
 }
 
-.card.expanded {
+.card--expanded, .card--modal {
   flex-direction: row;
   align-items: flex-start;
   overflow: hidden;
 }
 @media (max-width: 600px) {
-  .card.expanded {
+  .card--expanded, .card--modal  {
     flex-direction: column;
   }
 
@@ -866,7 +890,7 @@ This make the content be in a block of content */
 
 /* ----------------------------- Responsive view: on mobile, it's stacked in a column ----------------------------- */
 @media (max-width: 600px) {
-  .card.expanded {
+  .card--expanded, .card--modal  {
     flex-direction: column;
   }
 
@@ -891,7 +915,7 @@ This make the content be in a block of content */
   gap: 15px;
   margin-top: 20px;
 }
-#modal-characters-epi {
+.modal-characters{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 15px;
@@ -907,11 +931,11 @@ This make the content be in a block of content */
   overflow: hidden;
 }
 
-#modal-characters-epi .card {
+.modal-characters .card {
   text-align: center;
 }
 
-#modal-characters-epi img {
+.modal-characters img {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -932,16 +956,16 @@ This make the content be in a block of content */
 /* ----------------------------------------------Modal popUp for characters info in charcaters--------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 
-#modal-characters {
+.modal-characters {
   display: grid;
   gap: 15px;
   margin-top: 20px;
 }
-#modal-characters img {
+.modal-characters img {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-#modal-characters .info-char {
+.modal-characters .info-char {
   padding: 20px;
 }
