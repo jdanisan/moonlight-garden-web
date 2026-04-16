@@ -40,12 +40,27 @@ export const ContextProvider = ({ children }) => {
   // });
 
   const openModal = async (type, data) => {
+    const scrollY = window.scrollY;
+
     const tempModal = {
       type,
       data: null,
       loading: true,
+      scrollY,
     };
-    setModalStack((prev) => [...prev, tempModal]);
+
+    setModalStack((prev) => {
+      if (prev.length === 0) {
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = "100%";
+        document.body.style.overflow = "hidden";
+        document.documentElement.style.overflow = "hidden";
+      }
+
+      return [...prev, tempModal];
+    });
+
     let resolvedData = data;
 
     if (type === "location") {
@@ -72,15 +87,29 @@ export const ContextProvider = ({ children }) => {
   };
 
   const closeModal = () => {
-    setModalStack((prev) => prev.slice(0, -1));
+    setModalStack((prev) => {
+      if (prev.length === 0) return prev;
+
+      const lastModal = prev[prev.length - 1];
+      const newStack = prev.slice(0, -1);
+
+      if (newStack.length === 0) {
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
+
+        window.scrollTo(0, lastModal.scrollY);
+      } else {
+        const previousModal = newStack[newStack.length - 1];
+        document.body.style.top = `-${previousModal.scrollY}px`;
+      }
+
+      return newStack;
+    });
   };
   useEffect(() => {
-    const isOpen = modalStack.length > 0;
-
-    document.body.style.overflow = isOpen ? "hidden" : "";
-    document.body.style.position = isOpen ? "fixed" : "";
-    document.body.style.width = isOpen ? "100%" : "";
-
     return () => {
       document.body.style.overflow = "";
       document.body.style.position = "";
