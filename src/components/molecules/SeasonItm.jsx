@@ -1,14 +1,43 @@
-import { useState } from "react";
 import { EpisodesList } from "./EpisodeList";
+import { StarIcon } from "../atoms/icons/StarIcon";
+import { getSavedRatings, getSeasonAverage } from "../utils/episodeRating";
+import { useEffect, useState } from "react";
 
-export function SeasonItem({ season ,className=""}) {
+export function SeasonItem({ season, className = "" }) {
   const [open, setOpen] = useState(false);
+  const [ratings, setRatings] = useState(getSavedRatings());
 
+  useEffect(() => {
+    setRatings(getSavedRatings());
+  }, []);
+  const average = getSeasonAverage(season.episodes, ratings);
   return (
-    <div className={className}>
-      <div onClick={() => setOpen(!open)}>{season.name}</div>
+    <ul className="season-lists">
+      <li className="season-item" onClick={() => setOpen(!open)}>
+        <div className="season-header">
+          <h3>{season.name}</h3>
+          <div className="season-average">
+            {[1, 2, 3, 4, 5].map((i) => {
+              const value = average / 2;
 
-      {open && <EpisodesList episodes={season.episodes} />}
-    </div>
+              let fill = 0;
+
+              if (value >= i) fill = 1;
+              else if (value >= i - 0.5) fill = 0.5;
+
+              return <StarIcon key={i} filled={fill} />;
+            })}
+          </div>
+        </div>
+      </li>
+
+      {open && (
+        <EpisodesList
+          episodes={season.episodes}
+          ratings={ratings}
+          setRatings={setRatings}
+        />
+      )}
+    </ul>
   );
 }

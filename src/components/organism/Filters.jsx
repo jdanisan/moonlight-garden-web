@@ -78,18 +78,19 @@ export function Filters({
         {filterType === "locations" && (
           <>
             <InputLabel
-              label="Type "
+              label="Select type: "
               type="select"
               name="type"
+              
               value={filters.type || ""}
               onChange={handleChange}
-              placeholder="Select Type"
+              placeholder="Type of Locations"
               options={options.type || []}
             />
             <Button
               label="Remove Filters"
               id="remove-filters"
-              class="remove-filters"
+              className="remove-filters"
               type="button"
               onClick={resetFilters}
             />

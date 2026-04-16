@@ -14,6 +14,7 @@ export default function EpisodesPage() {
 
   return (
     <>
+    <h1>Seasons & Episodes</h1>
       <div className="container-list">
         <List
           className="seasons-lists"

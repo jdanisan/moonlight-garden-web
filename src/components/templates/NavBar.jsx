@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 
-import { Image } from "../atoms/Image";
-import img from "../../assets/icon-original.ico";
+// import { Image } from "../atoms/Image";
+// import img from "../../assets/icon-original.ico";
+import {toggleNavbar} from "../utils/toggleNavBar"
+import {GlobalIcon} from "../atoms/icons/GlobalIcon"
+import { Button } from "../atoms/Button";
 
 export function NavBar() {
   return (
@@ -36,8 +39,7 @@ export function NavBar() {
         </NavLink>
       </div>
 
-      <Image src={img} alt="icon" className={"icon"} id="icon-nav-bar"/>
-      {/* //TODO:Fix why the logo inst do anything */}
+      <Button icon={GlobalIcon} className={"icon"} onClick={toggleNavbar}/>
     </header>
   );
 }

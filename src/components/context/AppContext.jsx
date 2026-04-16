@@ -88,45 +88,6 @@ export const ContextProvider = ({ children }) => {
     };
   }, [modalStack]);
 
-  // const openModal = async (type, data) => {
-  //   let resolvedData = data;
-
-  //   if (type === "location") {
-  //     const residents = await Promise.all(
-  //       (data.residents || []).filter(Boolean).map(fetchCharacter),
-  //     );
-
-  //     resolvedData = {
-  //       ...data,
-  //       residents,
-  //     };
-  //   }
-
-  //   if (type === "episode") {
-  //     const characters = await Promise.all(
-  //       (data.characters || []).filter(Boolean).map(fetchCharacter),
-  //     );
-
-  //     resolvedData = {
-  //       ...data,
-  //       characters,
-  //     };
-  //   }
-
-  //   setModal({
-  //     isOpen: true,
-  //     type,
-  //     data: resolvedData,
-  //   });
-  // };
-  // const closeModal = () => {
-  //   setModal({
-  //     isOpen: false,
-  //     type: null,
-  //     data: null,
-  //   });
-  // };
-
   // ---------------- FETCH ITEMS ----------------
 
   const fetchItems = async (item) => {

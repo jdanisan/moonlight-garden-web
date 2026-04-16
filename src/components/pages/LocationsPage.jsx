@@ -22,6 +22,7 @@ export default function LocationsPage() {
   };
   return (
     <>
+    <h1>Stunning Locations</h1>
       <Filters
         filterType="locations"
         filters={filters}

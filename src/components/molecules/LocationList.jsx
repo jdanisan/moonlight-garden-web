@@ -11,7 +11,7 @@ import { Modal } from "../organism/Modal";
 
 export function LocationsList({ locations }) {
   const [showModal, setShowModal] = useState(false);
-  
+
   // Functionn for open the modal
   // const handleClick = () => {
   //   console.log("OPEN");
@@ -33,32 +33,44 @@ export function LocationsList({ locations }) {
   }, [showModal]);
   return (
     <div className="container-list">
-      <div className="location-header">
-        <List
-          items={locations}
-          className="location-list"
-          renderItem={(location) => (
-            <div className="location-item">
-              <h3>{location.name}</h3>
-              <DimensionIcon />
-              <span>{location.dimension}</span>
+      <List
+        items={locations}
+        className="location-list"
+        renderItem={(location) => (
+          <div className="location-header">
+            <h3>{location.name}</h3>
+            <div className="info-locations">
+              <div className="label-location">
+                <DimensionIcon />
+                <span>{location.dimension}</span>
+              </div>
 
-              <LocationIcon />
-              <span>{location.type}</span>
-              <Button
-                icon={PeopleIcon}
-                // onClick={handleClick}
-                onClick={() => openModal("location", location)}
-                label={location.residents.length}
-                className="load-residents"
-              />
-              {showModal && (
-                <Modal data={location} onClose={handleClose} type="location" />
-              )}
+              <div className="label-location">
+                <LocationIcon />
+                <span>{location.type}</span>
+              </div>
+
+              <div className="label-location">
+                <Button
+                  icon={PeopleIcon}
+                  // onClick={handleClick}
+                  onClick={() => openModal("location", location)}
+                  label={location.residents.length}
+                  className="load-residents"
+                />
+                {showModal && (
+                  <Modal
+                    data={location}
+                    onClose={handleClose}
+                    type="location"
+                  />
+                )}
+              </div>
             </div>
-          )}
-        />
-      </div>
+          </div>
+        )}
+        classNameLi="location-item"
+      />
     </div>
   );
 }

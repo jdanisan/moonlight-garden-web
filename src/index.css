@@ -25,7 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* vh is "viewport height", ensures the full height */
-  min-width: 100vw;
+  /* min-width: 100vw; */
   color: var(--borders-blacks);
   overflow-x: hidden;
 }
@@ -489,7 +489,7 @@ This make the content be in a block of content */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 
 .container-list {
-  width: 100%;
+  width: 90%;
   padding: 20px;
   background: var(--backgorund-color-cards);
   margin: auto;
@@ -499,14 +499,14 @@ This make the content be in a block of content */
   color: var(--borders-blacks);
 }
 
-#seasons-lists {
+.seasons-lists  {
   list-style: none;
   width: 100%;
   padding: 0;
 }
 
 .episode-list {
-  display: none;
+  /* display: none; */
   list-style: none;
 }
 
@@ -540,6 +540,7 @@ This make the content be in a block of content */
 
 .season-item.active .episode-list {
   display: block;
+  list-style: none;
 }
 
 .season-header {
@@ -555,6 +556,9 @@ This make the content be in a block of content */
 
 .season-average {
   margin-left: 10px;
+}
+.season-lists{
+  list-style: none;
 }
 
 .list-element {
@@ -653,6 +657,7 @@ This make the content be in a block of content */
 .info-locations {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row !important; /*------------------------------------*/
   gap: 16px;
 }
 
@@ -684,12 +689,12 @@ This make the content be in a block of content */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  padding: auto;
+  gap: 8px;
+  /* padding: auto; */
 
-  img {
+  /* img {
     width: 16px;
-  }
+  } */
 }
 
 .list-element-epi {
@@ -736,19 +741,24 @@ This make the content be in a block of content */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 2560px) {
   .episodes {
     flex-direction: row;
+    justify-content: space-between;
   }
 
   .stars {
     display: flex;
+    align-items: center;
     gap: 5px;
   }
 
   .content-episode {
     display: grid;
     grid-template-rows: auto auto;
+    /* width: fit-content;
+    display: flex;
+    flex-direction: column; */
     gap: 5px;
   }
 
@@ -774,6 +784,7 @@ This make the content be in a block of content */
   }
   .stars {
     display: flex;
+    flex-direction: row;
   }
 }
 
@@ -824,7 +835,7 @@ This make the content be in a block of content */
 }
 .modal-content {
   background: var(--color-back-white);
-  padding: 0 0 20px 20px;
+  padding: 0 20px 20px 20px;
   border-radius: 10px;
   width: 80%;
   max-height: 80%;
@@ -915,7 +926,7 @@ This make the content be in a block of content */
   gap: 15px;
   margin-top: 20px;
 }
-.modal-characters{
+.modal-characters, .modal-characters-epi{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 15px;
@@ -934,8 +945,16 @@ This make the content be in a block of content */
 .modal-characters .card {
   text-align: center;
 }
+.modal-characters-epi .card {
+  text-align: center;
+}
 
 .modal-characters img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.modal-characters-epi img {
   width: 100%;
   height: 100%;
   overflow: hidden;
