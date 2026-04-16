@@ -1,5 +1,4 @@
-import favoriteFilled from "/src/assets/favorite_filled.svg";
-import favoriteOutline from "/src/assets/favorite_outline.svg";
+
 import { Button } from "./Button";
 import { FavoriteIconOutLine } from "./icons/FavoriteIconOutLine";
 import { FavoriteIconFilled } from "./icons/FavoriteIconFilled";

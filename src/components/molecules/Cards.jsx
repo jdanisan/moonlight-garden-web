@@ -1,6 +1,4 @@
 import { Favorite } from "../atoms/Favorite";
-import { LoadMoreBTN } from "../atoms/LoadMore";
-import { Modal } from "../organism/Modal";
 import { Button } from "../atoms/Button";
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "../context/AppContext";
@@ -60,6 +58,7 @@ export function Cards({ character, variant = "default" }) {
 
         <p><strong>Specie:</strong> {character.species}</p>
         <p><strong>Status:</strong> {character.status}</p>
+        <Favorite idCharacter={character.id}/>
 
         {variant === "default" && (
           <Button
@@ -67,6 +66,7 @@ export function Cards({ character, variant = "default" }) {
             className="load-info-char"
             onClick={() => openModal("character", character)}
           />
+          
         )}
 
         {variant ==="modal" && (

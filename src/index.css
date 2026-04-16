@@ -467,7 +467,7 @@ This make the content be in a block of content */
   margin: 0;
 }
 
-.card-content button {
+.card-content .load-info-char {
   width: 100%;
   border-radius: 8px;
   padding: 8px 12px;
@@ -478,7 +478,7 @@ This make the content be in a block of content */
   background-color: var(--text-color);
 }
 
-.card-content button:hover {
+.card-content .load-info-char:hover {
   background-color: var(--hoover-color);
 }
 
