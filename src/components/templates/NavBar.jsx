@@ -39,7 +39,7 @@ export function NavBar() {
         </NavLink>
       </div>
 
-      <Button icon={GlobalIcon} className={"icon"} onClick={toggleNavbar}/>
+      <Button icon={GlobalIcon} className={"icon-rick"} onClick={toggleNavbar}/>
     </header>
   );
 }

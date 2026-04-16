@@ -128,6 +128,14 @@ footer p {
   width: 40px;
   border-radius: 20px;
 }
+.icon-rick {
+  background-color: rgba(0, 191, 255, 0.3);
+  border-radius: 50%;
+  padding: 6px;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+}
 
 /* Medium-sized icon on medium-sized screens. */
 @media (max-height: 480px), (max-width: 720px) {
@@ -173,7 +181,7 @@ header a {
   white-space: nowrap; /* evita salto de línea */
   flex-shrink: 0;
 }
-header .icon {
+header .icon-rick {
   float: right;
   flex-shrink: 0;
   cursor: pointer;
@@ -190,7 +198,7 @@ header a.active {
   color: var(--color-back-white);
 }
 
-header .icon {
+header .icon-rick {
   display: none;
 }
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
@@ -201,7 +209,7 @@ header .icon {
   header a:not(:first-child) {
     display: none;
   }
-  header .icon {
+  header .icon-rick {
     display: block;
   }
 }
@@ -211,7 +219,7 @@ header .icon {
   header.responsive {
     display: block;
   }
-  header.responsive .icon {
+  header.responsive .icon-rick {
     position: absolute;
     right: 16px;
     top: 4px;
