@@ -9,8 +9,8 @@ export function MainLayout({ children }) {
   return (
     <>
       <NavBar />
-      <main>{children}</main>
-      <footer>That's all, folks</footer>
+      <main className="text-primary-700 items-center justify-center">{children}</main>
+      <footer className="flex justify-center items-center bg-primary-950 p-1 mt-5 w-full font-bold text-primary-50">That's all, folks</footer>
 
       {/* {modal?.isOpen && (
         <Modal type={modal.type} data={modal.data} onClose={closeModal} />

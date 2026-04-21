@@ -22,12 +22,14 @@ export default function LocationsPage() {
   };
   return (
     <>
-    <h1>Stunning Locations</h1>
+      <h1 className="flex items-center justify-center font-['Segoe_UI','Arial','sans-serif']  font-bold sm:text-4xl text-2xl m-2.5">
+        Stunning Locations
+      </h1>
       <Filters
         filterType="locations"
         filters={filters}
         handleChange={handleChange}
-        resetFilters={handleResetFilters} 
+        resetFilters={handleResetFilters}
         options={{
           type: locationOptions || [],
         }}

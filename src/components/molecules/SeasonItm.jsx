@@ -12,11 +12,11 @@ export function SeasonItem({ season, className = "" }) {
   }, []);
   const average = getSeasonAverage(season.episodes, ratings);
   return (
-    <ul className="season-lists">
-      <li className="season-item" onClick={() => setOpen(!open)}>
-        <div className="season-header">
+    <ul className="w-full p-0 list-none ">
+      <li className="block list-none" onClick={() => setOpen(!open)}>
+        <div className="cursor-pointer font-bold p-2.5 text-blue-700 border-b border-b-white  flex flex-row sm:items-center md:justify-between">
           <h3>{season.name}</h3>
-          <div className="season-average">
+          <div className="flex flex-row ml-2.5">
             {[1, 2, 3, 4, 5].map((i) => {
               const value = average / 2;
 

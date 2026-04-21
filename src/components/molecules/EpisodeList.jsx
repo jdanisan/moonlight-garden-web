@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { PeopleIcon } from "../atoms/icons/PeopleIcon";
 import { StarIcon } from "../atoms/icons/StarIcon";
 import { AppContext } from "../context/AppContext";
+import { formatDate } from "../utils/formatDate";
 
 import {
   getSavedRatings,
@@ -32,34 +33,37 @@ export function EpisodesList({ episodes, ratings, setRatings }) {
 
   return (
     <>
-      <ul className="episode-list">
+      <ul className="block list-none ">
         {episodes.map((ep) => {
           const rating = getEpisodeRating(ratings, ep.id);
 
           return (
-            <li key={ep.id} className="list-element">
-              <div className="episodes">
-                {/* Episode info */}
-                <div className="content-episode">
-                  {ep.name} - {ep.air_date}
+            <li
+              key={ep.id}
+              className="font-bold text-[14px] text-primary-700 bg-primary-100 py-1.5 px-5 border-b border-primary-50 rounded-xl m-1"
+            >
+              <div className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
+                <div className="w-fit flex flex-col sm:flex-row sm:items-center gap-1">
+                  <span className="cursor-pointer font-bold">
+                    {ep.name} - {formatDate(ep.air_date)}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2.5 ">
                   <Button
                     icon={PeopleIcon}
                     onClick={() => openModal("episode", ep)}
                     label={ep.characters.length}
-                    className="load-residents"
+                    variant="residentsRate"
                   />
-                </div>
 
-                {/* Rating section */}
-                <div className="stars">
                   <Button
                     label="Rate"
-                    className="form-episode"
+                    variant="residentsRate"
                     onClick={() => handleOpenRate(ep.id)}
                   />
 
-                  {/* Select only when active */}
-                  {activeRate === ep.id && (
+                  {activeRate === ep.id ? (
                     <select
                       value={rating}
                       onChange={(e) =>
@@ -73,11 +77,8 @@ export function EpisodesList({ episodes, ratings, setRatings }) {
                         </option>
                       ))}
                     </select>
-                  )}
-
-                  {/* Stars only when NOT editing */}
-                  {activeRate !== ep.id && (
-                    <div className="stars-view">
+                  ) : (
+                    <div className="flex flex-row ">
                       {[1, 2, 3, 4, 5].map((i) => (
                         <StarIcon key={i} filled={rating >= i * 2} />
                       ))}

@@ -14,13 +14,19 @@ export default function EpisodesPage() {
 
   return (
     <>
-    <h1>Seasons & Episodes</h1>
-      <div className="container-list">
+    {/* //TODO: split air_date */}
+      <h1 className="flex items-center justify-center font-['Segoe_UI','Arial','sans-serif']  font-bold sm:text-4xl text-2xl m-2.5">
+        Seasons & Episodes
+      </h1>
+      <div className="w-11/12 p-5 bg-white m-auto rounded-xl grid gap-4 text-black">
         <List
-          className="seasons-lists"
+          className="w-full p-0 list-none"
           items={seasons}
           renderItem={(season) => (
-            <SeasonItem season={season} className="list-element" />
+            <SeasonItem
+              season={season}
+              className="font-bold py-1.5 px-5 text-blue-700 bg-gray-400 rounded-md"
+            />
           )}
         />
       </div>

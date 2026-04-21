@@ -6,7 +6,7 @@ import {ContextProvider} from "./components/context/AppContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <StrictMode>
+  <StrictMode >
     <ContextProvider>
       <AppRouter />
     </ContextProvider>

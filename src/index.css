@@ -1,3 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f2f6fd;
+  --color-primary-100: #e5edf9;
+  --color-primary-200: #c4d9f3;
+  --color-primary-300: #90b9e9;
+  --color-primary-400: #5595db;
+  --color-primary-500: #2f77c8;
+  --color-primary-600: #205ca9;
+  --color-primary-700: #1b4a89;
+  --color-primary-800: #1a4072;
+  --color-primary-900: #1b375f;
+  --color-primary-950: #12233f;
+
+  --color-accent-100: #e0f7ff;
+  --color-accent-200: #b3ecff;
+  --color-accent-300: #80e1ff;
+  --color-accent-400: #4dd6ff;
+  --color-accent-500: #00bfff;
+  --color-accent-600: #0099cc;
+  --color-accent-700: #007399;
+
+  --color-link: #c10eb2;
+  --color-link-hover: #e011cf;
+  --color-header: linear-gradient(20deg, #571261, #2b4e86);
+
+  --color-neon-green: #00ff80;
+
+  --color-card: #f8f5f5;
+  --color-list: #f0eeee;
+  --color-border: #000000;
+  --color-warning-500: gold;
+}
+
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------------- Colors variables -------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
@@ -9,6 +44,7 @@
   --header-gradient: linear-gradient(20deg, #571261, #2b4e86);
   --color-back-white: #ffffff;
   --font-weight: 700;
+  --neon-green:#00ff80;
   --borders-blacks: black;
   --backgorund-color-cards: #f8f5f5;
   --list-element-back: #f0eeee;
@@ -16,40 +52,67 @@
   --active-links: #c10eb2;
   --hoover-links: #e011cf;
 }
+@layer base {
+  /* body {
+    margin: 0;
+    padding-top: 60px;
+    background-color: var(--backgorund-color-cards);
+    font-family: Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    color: var(--borders-blacks);
+    overflow-x: hidden;
+  } */ /* vh is "viewport height", ensures the full height */
 
-body {
-  margin: 0;
-  padding-top: 60px;
-  background-color: var(--color-back-white);
-  font-family: Verdana, sans-serif;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* vh is "viewport height", ensures the full height */
-  /* min-width: 100vw; */
-  color: var(--borders-blacks);
-  overflow-x: hidden;
-}
+  /* h1,
+  h2,
+  h4,
+  h5,
+  h6 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: var(--font-weight);
+  } */
 
-h1,
-h2,
-h4,
-h5,
-h6 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Segoe UI", Arial, sans-serif;
-  font-weight: var(--font-weight);
-}
+  /* main h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    font-weight: var(--font-weight);
+  } */
+  .body-no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
 
-main h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-color);
-  font-weight: var(--font-weight);
+  main,
+  #root,
+  .content {
+    flex: 1;
+  }
+
+  /* footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--hoover-color);
+    padding: 3px;
+    width: 100%;
+    margin-top: 20px;
+    font-weight: var(--font-weight);
+    color: var(--color-back-white);
+  }
+  footer p {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  } */
 }
-.center-button {
+/* .center-button {
   display: flex;
   justify-content: center;
   border-radius: 8px;
@@ -65,9 +128,9 @@ main h1 {
   width: 100%;
   display: flex;
   justify-content: center;
-}
+} */
 
-.center-button-load {
+/* .center-button-load {
   display: flex;
   justify-content: center;
   border-radius: 6px;
@@ -84,45 +147,17 @@ main h1 {
   color: var(--color-back-white);
   border: none;
   cursor: pointer;
-}
+} */
 
-.center-button button {
+/* .center-button button {
   width: 40%;
-}
-
-.body-no-scroll {
-  overflow: hidden;
-  height: 100vh;
-}
-
-main,
-#root,
-.content {
-  flex: 1;
-}
-
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--hoover-color);
-  padding: 3px;
-  width: 100%;
-  margin-top: 20px;
-  font-weight: var(--font-weight);
-  color: var(--color-back-white);
-}
-footer p {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
+} */
 
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* -----------------------------------Style for icon in all pages (Home|Location|Characters|Episode)----------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 
-.icon {
+/* .icon {
   content: url(/img/icon-original.ico);
   height: 40px;
   width: 40px;
@@ -135,29 +170,29 @@ footer p {
   margin-right: 10px;
   border: none;
   outline: none;
-}
+} */
 
 /* Medium-sized icon on medium-sized screens. */
-@media (max-height: 480px), (max-width: 720px) {
+/* @media (max-height: 480px), (max-width: 720px) {
   .icon {
     height: 42px;
     width: 42px;
   }
-}
+} */
 
 /* Very small icon on very small screens. */
-@media (max-width: 720px) {
+/* @media (max-width: 720px) {
   @media (max-width: 240px), (max-height: 480px) {
     .icon {
       height: 48px;
       width: 48px;
     }
   }
-}
+} */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* -----------------------------------Style for Navbar in pages (Home|Location|Characters|Episode)----------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
-header {
+/* header {
   background: var(--header-gradient);
   top: 0px;
   position: fixed;
@@ -169,53 +204,53 @@ header {
   align-items: center;
   flex-wrap: wrap;
   padding: 0 16px 0 5px;
-}
+} */
 
-header a {
+/* header a {
   float: left;
   display: block;
   color: var(--color-back-white);
   padding: 14px 16px;
-  text-decoration: none;
   font-size: 17px;
-  white-space: nowrap; /* evita salto de línea */
+  white-space: nowrap;
   flex-shrink: 0;
-}
-header .icon-rick {
+} */
+/*white-space: nowrap;  evita salto de línea */
+/* header .icon-rick {
   float: right;
   flex-shrink: 0;
   cursor: pointer;
-}
+} */
 
-header a:hover {
+/* header a:hover {
   background-color: var(--hoover-links);
   color: var(--color-back-white);
-}
+} */
 
-header a.active {
+/* header a.active {
   background-color: var(--active-links);
-  /* aquamarine; */
+  
   color: var(--color-back-white);
-}
+} */
 
-header .icon-rick {
+/* header .icon-rick {
   display: none;
-}
+} */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* ---------------------------------------------Function for navbar, hide or show links---------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 750px) {
+/* @media screen and (max-width: 750px) {
   header a:not(:first-child) {
     display: none;
   }
   header .icon-rick {
     display: block;
   }
-}
+} */
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 750px) {
+/* @media screen and (max-width: 750px) {
   header.responsive {
     display: block;
   }
@@ -229,18 +264,17 @@ header .icon-rick {
     display: block;
     text-align: left;
   }
-}
+} */
 
-.front-seasson {
+/* .front-seasson {
   display: flex;
   justify-content: center;
   padding: 20px;
   height: 600px;
-}
-.content {
+} */
+/* .content {
   width: 70%;
   height: 210px;
-  /* //Todo: Fix to make this responsive and grant that the footer will be the last element  */
   border: 3px solid var(--filters-color);
   padding: 20px;
   margin: auto;
@@ -249,9 +283,9 @@ header .icon-rick {
   justify-content: center;
   font-weight: var(--font-weight);
   color: var(--filters-color);
-}
+} */
 
-.btn-top {
+/* .btn-top {
   display: flex;
   position: fixed;
   bottom: 20px;
@@ -274,12 +308,12 @@ header .icon-rick {
 
 .btn-top:hover {
   background-color: #555;
-}
+} */
 
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* ---------------------------------------------Style for the menu in all pages(locations/characters)-------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
-.filters-menu {
+/* .filters-menu {
   width: 70%;
   max-width: 1200px;
   margin-inline: auto;
@@ -293,18 +327,18 @@ header .icon-rick {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   color: var(--color-back-white);
-}
+} */
 
-.filter-chat,
+/* .filter-chat,
 .filter-episodes {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.browser-name {
+/* .browser-name {
   flex: 1;
   min-width: 150px;
   padding: 8px 12px;
@@ -320,20 +354,20 @@ header .icon-rick {
 .browser-name:focus {
   border-color: var(--accent-filters);
   box-shadow: 0 0 5px #00bfff;
-}
+} */
 
-.input-group {
+/* .input-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 10px;
   align-items: center;
-}
+} */
 
-.input-group label {
+/* .input-group label {
   cursor: pointer;
   font-size: 14px;
-}
-
+} */
+/* 
 @media screen and (max-width: 1600px) and (min-width: 560px) {
   .filter-chat {
     display: flex;
@@ -341,18 +375,18 @@ header .icon-rick {
     gap: 15px;
     justify-content: center;
   }
-}
+} */
 
 /* Tablets */
-@media screen and (max-width: 900px) {
+/* @media screen and (max-width: 900px) {
   .filters-menu {
     width: 90%;
     grid-template-columns: 1fr;
   }
-}
+} */
 
 /* Mobile phones */
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .filters-menu {
     width: 95%;
   }
@@ -378,21 +412,22 @@ header .icon-rick {
   .input-group {
     grid-template-columns: 1fr;
   }
-}
+} */
 
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* ---------------------------------------------Style for the cards(div-global) and card(content)------------------------------------ */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
-.cards {
+/*  .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   margin-top: 30px;
   gap: 10px;
   padding: 10px 20px;
-  align-items: stretch; /* Force all cards to have the same height */
-}
+  align-items: stretch; 
+  /*   Force all cards to have the same height  
+} */
 
-.card {
+/* .card {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -403,9 +438,9 @@ header .icon-rick {
   transition: 0.3s;
   background: var(--backgorund-color-cards);
   position: relative;
-}
+} */
 
-.card-favorite {
+/* .card-favorite {
   padding: 8px;
   border-radius: 100%;
   border: none;
@@ -415,38 +450,39 @@ header .icon-rick {
   top: 10px;
   right: 10px;
   z-index: 5;
-}
-.card-favorite:hover {
+} */
+/* .card-favorite:hover {
   background-color: rgba(255, 255, 255, 0.8);
-}
+} */
 /* Hacer el header gradient para que vaya de un magenta a un azul
 pasar a los fondos blancos con las tarjetas con gris muy claro
 letras en azul camiseta de rick igual un poco más oscuro
 
 header como template
 Atomo elementos de lista, lista como organismos*/
-.favorite-icon {
+/* .favorite-icon {
   width: 30px;
   height: 30px;
   cursor: pointer;
-}
+} */
 
-.card img {
+/* .card img {
   width: 100%;
   display: block;
   height: auto;
   min-height: fit-content;
   object-fit: cover;
-}
+} */
 
-.card-content {
+/* .card-content {
   width: 90%;
   padding: 15px;
-}
+} */
 
 /* Content in the cards, name, species and status
 This make the content be in a block of content */
-.card-title {
+
+/* .card-title {
   display: flex;
   flex-direction: column;
 }
@@ -455,8 +491,8 @@ This make the content be in a block of content */
 }
 .card-title p {
   margin-top: 0;
-}
-.card-content {
+} */
+/* .card-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -480,23 +516,23 @@ This make the content be in a block of content */
 
 .card-content .load-info-char:hover {
   background-color: var(--hoover-color);
-}
+} */
 
 /* On mouse-over, add a deeper shadow  */
-.card:hover {
+/* .card:hover {
   box-shadow: 3px 3px 10px var(--hoover-color);
-}
+} */
 
 /* Add some padding inside the card container */
-.container {
+/* .container {
   padding: 2px 16px;
-}
+} */
 
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* ------------------------------------------------------- Style for episodes list -------------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 
-.container-list {
+/* .container-list {
   width: 90%;
   padding: 20px;
   background: var(--backgorund-color-cards);
@@ -505,20 +541,19 @@ This make the content be in a block of content */
   display: grid;
   gap: 15px;
   color: var(--borders-blacks);
-}
+} */
 
-.seasons-lists  {
+/* .seasons-lists {
   list-style: none;
   width: 100%;
   padding: 0;
-}
+} */
 
-.episode-list {
-  /* display: none; */
+/* .episode-list {
   list-style: none;
-}
+} */
 
-.rate-stars {
+/* .rate-stars {
   width: 20%;
   right: 0;
 }
@@ -533,10 +568,10 @@ This make the content be in a block of content */
 
 .star::before {
   content: "★";
-}
+} */
 
 /* capa dorada */
-.star::after {
+/* .star::after {
   content: "★";
   position: absolute;
   left: 0;
@@ -546,12 +581,12 @@ This make the content be in a block of content */
   color: var(--stars-fil-color);
 }
 
-.season-item.active .episode-list {
+.season-item.active {
   display: block;
   list-style: none;
-}
+} */
 
-.season-header {
+/* .season-header {
   cursor: pointer;
   font-weight: var(--font-weight);
   padding: 10px;
@@ -560,16 +595,16 @@ This make the content be in a block of content */
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+} */
 
-.season-average {
+/* .season-average {
   margin-left: 10px;
-}
-.season-lists{
+} */
+/* .season-lists {
   list-style: none;
-}
+} */
 
-.list-element {
+/* .list-element {
   color: var(--text-color);
   font-weight: var(--font-weight);
   background-color: var(--list-element-back);
@@ -582,19 +617,18 @@ This make the content be in a block of content */
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* padding: 5px; */
   gap: 10px;
-}
+} */
 
-.content-episode {
+/* .content-episode {
   width: fit-content;
   display: flex;
   align-items: center;
   cursor: pointer;
   font-weight: var(--font-weight);
-}
+} */
 
-.stars {
+/* .stars {
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -606,16 +640,14 @@ This make the content be in a block of content */
 .content-stars {
   display: flex;
   flex-direction: row;
-  /* flex-wrap: wrap; */
   justify-content: center;
   align-items: center;
   gap: 5px;
   border-radius: 8px;
-}
+} */
 
-.stars i {
+/* .stars i {
   color: var(--accent-filters);
-  /* //TODO:Añadir contorno */
   margin-right: 2px;
 }
 
@@ -644,40 +676,40 @@ This make the content be in a block of content */
 
 .stars i.active {
   color: var(--stars-fil-color);
-}
+} */
 
-#container-list {
+/* #container-list {
   max-width: 800px;
   margin: 20px auto;
   font-family: "Arial", sans-serif;
   color: var(--list-element-back);
-}
+} */
 
-.location-list {
+/* .location-list {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-.icons-locations {
+} */
+/* .icons-locations {
   width: 30px;
   height: 30px;
-}
-.info-locations {
+} */
+/* .info-locations {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row !important; /*------------------------------------*/
+  flex-direction: row !important; 
   gap: 16px;
-}
+} */
 
-.location-item {
+/* .location-item {
   margin-bottom: 10px;
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.3s ease;
   background-color: var(--color-back-white);
-}
+} */
 
-.location-header {
+/* .location-header {
   padding: 10px;
   background-color: var(--list-element-back);
   color: var(--text-color);
@@ -686,30 +718,25 @@ This make the content be in a block of content */
   align-items: center;
   justify-content: space-between;
   margin: 0;
-}
+} */
 
-.location-header h3 {
+/* .location-header h3 {
   margin: 0;
   font-size: 1.2rem;
   font-weight: var(--font-weight);
-}
-.label-location {
+} */
+/* .label-location {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  /* padding: auto; */
-
-  /* img {
-    width: 16px;
-  } */
-}
-
+  
+} */
+/* 
 .list-element-epi {
   padding: 10px 0;
   color: var(--color-back-white);
   background-color: var(--list-element-back);
-  /* padding: 5px 20px; */
 }
 
 .list-element-epi p {
@@ -722,9 +749,9 @@ This make the content be in a block of content */
 }
 .content-location-header {
   width: 75%;
-}
+} */
 
-.load-residents {
+/* .load-residents {
   padding: 5px 10px;
   border: none;
   border-radius: 4px;
@@ -735,21 +762,21 @@ This make the content be in a block of content */
   cursor: pointer;
   font-weight: var(--font-weight);
   transition: background-color 0.2s ease;
-}
+} */
 
-.load-residents:hover {
+/* .load-residents:hover {
   background-color: var(--hoover-color);
-}
-
+} */
+/* 
 .location-item.active .sub-location-list {
   max-height: 500px;
 }
 
 .location-item:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+} */
 
-@media (max-width: 2560px) {
+/* @media (max-width: 2560px) {
   .episodes {
     flex-direction: row;
     justify-content: space-between;
@@ -764,17 +791,15 @@ This make the content be in a block of content */
   .content-episode {
     display: grid;
     grid-template-rows: auto auto;
-    /* width: fit-content;
-    display: flex;
-    flex-direction: column; */
     gap: 5px;
   }
 
   .rate-episodes {
     width: 100%;
   }
-}
-@media (max-width: 320px) {
+} */
+/* //TODO aplicar sobre las estrellas y las seasons */
+/* @media (max-width: 320px) {
   .season-header {
     width: 100%;
     display: grid;
@@ -794,12 +819,13 @@ This make the content be in a block of content */
     display: flex;
     flex-direction: row;
   }
-}
+} */
 
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* ------------------------------------------------Modal popUp for residents in locations-------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
-.modal {
+
+/* .modal {
   display: flex;
   position: fixed;
   top: 0;
@@ -810,38 +836,37 @@ This make the content be in a block of content */
   justify-content: center;
   align-items: center;
   z-index: 999;
-}
+} */
 
-.modal img {
+/* .modal img {
   overflow: hidden;
-}
-.modal-title-close {
+} */
+
+/* .modal-title-close {
   position: sticky;
   top: 0 !important;
   z-index: 10;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 100%;
   padding: 16px;
   box-sizing: border-box;
-
-  background: var(--color-back-white); 
+  background: var(--color-back-white);
   border-bottom: 1px solid #eee;
-}
+} */
 
-.modal-title-close h2 {
+/* .modal-title-close h2 {
   margin: 0;
   justify-content: center !important;
-}
+} */
 
-.close {
+/* .close {
   cursor: pointer;
   font-size: 24px;
-}
-.modal-content {
+} */
+
+/* .modal-content {
   background: var(--color-back-white);
   padding: 0 20px 20px 20px;
   border-radius: 10px;
@@ -849,12 +874,13 @@ This make the content be in a block of content */
   max-height: 80%;
   overflow-y: auto;
   position: relative;
-}
+} */
 
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* ----------------------------- Specific style in the modal characters info ------------------------------------ ------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
-.card, .card--default {
+/* .card,
+.card--default {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -863,15 +889,17 @@ This make the content be in a block of content */
   font-weight: var(--font-weight);
   border-radius: 10px;
   transition: all 0.3s ease;
-}
+} */
 
-.card--expanded, .card--modal {
+/* .card--expanded,
+.card--modal {
   flex-direction: row;
   align-items: flex-start;
   overflow: hidden;
-}
-@media (max-width: 600px) {
-  .card--expanded, .card--modal  {
+} */
+/* @media (max-width: 600px) {
+  .card--expanded,
+  .card--modal {
     flex-direction: column;
   }
 
@@ -905,11 +933,12 @@ This make the content be in a block of content */
   margin: 0;
   font-size: 0.95rem;
   color: var(--text-color);
-}
+} */
 
 /* ----------------------------- Responsive view: on mobile, it's stacked in a column ----------------------------- */
-@media (max-width: 600px) {
-  .card--expanded, .card--modal  {
+/* @media (max-width: 600px) {
+  .card--expanded,
+  .card--modal {
     flex-direction: column;
   }
 
@@ -934,7 +963,8 @@ This make the content be in a block of content */
   gap: 15px;
   margin-top: 20px;
 }
-.modal-characters, .modal-characters-epi{
+
+.modal-characters-epi {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 15px;
@@ -948,21 +978,21 @@ This make the content be in a block of content */
   width: 100%;
   height: 100%;
   overflow: hidden;
-}
+} */
 
-.modal-characters .card {
+/* .modal-characters .card {
   text-align: center;
-}
-.modal-characters-epi .card {
+} */
+/* .modal-characters-epi .card {
   text-align: center;
-}
-
+} */
+/* 
 .modal-characters img {
   width: 100%;
   height: 100%;
   overflow: hidden;
-}
-.modal-characters-epi img {
+} */
+/* .modal-characters-epi img {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -977,13 +1007,13 @@ This make the content be in a block of content */
 .season-episode-name h3 {
   margin: 0;
   line-height: 1.2;
-}
+} */
 
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* ----------------------------------------------Modal popUp for characters info in charcaters--------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 
-.modal-characters {
+/* .modal-characters {
   display: grid;
   gap: 15px;
   margin-top: 20px;
@@ -992,7 +1022,7 @@ This make the content be in a block of content */
   width: 100%;
   height: 100%;
   overflow: hidden;
-}
-.modal-characters .info-char {
+} */
+/* .modal-characters .info-char {
   padding: 20px;
-}
+} */

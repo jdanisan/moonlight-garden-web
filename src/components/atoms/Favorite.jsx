@@ -1,4 +1,3 @@
-
 import { Button } from "./Button";
 import { FavoriteIconOutLine } from "./icons/FavoriteIconOutLine";
 import { FavoriteIconFilled } from "./icons/FavoriteIconFilled";
@@ -62,6 +61,11 @@ export function Favorite({ idCharacter }) {
   const Icon = isFavorite ? FavoriteIconFilled : FavoriteIconOutLine;
 
   return (
-    <Button icon={Icon} className="card-favorite" onClick={handleToggle} />
+    <Button
+      icon={Icon}
+      className="absolute top-2.5 right-2.5 z-10 rounded-full bg-gray-200/50 hover:bg-gray-500/50 "
+      variant="neonBtn"
+      onClick={handleToggle}
+    />
   );
 }

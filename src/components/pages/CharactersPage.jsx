@@ -14,7 +14,7 @@ const initialFilters = {
 };
 
 export default function CharactersPage() {
-  const {    
+  const {
     characters,
     speciesOptions,
     statusOptions,
@@ -62,7 +62,9 @@ export default function CharactersPage() {
 
   return (
     <>
-      <h1>Characters</h1>
+      <h1 className="flex items-center justify-center font-['Segoe_UI','Arial','sans-serif']  font-bold sm:text-4xl text-2xl m-2.5">
+        Characters
+      </h1>
 
       <Filters
         filterType="characters"
@@ -80,16 +82,22 @@ export default function CharactersPage() {
         }}
       />
 
-      <div className="cards">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] mt-8 gap-2.5 py-2.5 px-5 items-stretch">
         {visibleCharacters.map((char) => (
           <Cards key={char.id} character={char} />
         ))}
       </div>
 
       {visibleCharacters.length < filteredCharacters.length && (
-        <div className="center-load-div">
-          <div className="center-button-load">
+        <div className="w-full flex justify-center ">
+          <div className=" flex w-4/5 justify-center items-center flex-row">
+            {/* w-4/5 */}
+            {/* //TODO */}
             <Button
+              className={
+                "flex justify-center "
+              }
+              variant="loadMore"
               onClick={loadMore}
               disabled={loading}
               label={loading ? "Loading..." : "Load More"}

@@ -1,5 +1,6 @@
 import { InputLabel } from "../molecules/InputLabel";
 import { Button } from "../atoms/Button";
+import { Input } from "../atoms/Input";
 
 export function Filters({
   filters = {},
@@ -9,18 +10,18 @@ export function Filters({
   resetFilters,
 }) {
   return (
-    <section className="filters-menu">
-      <form className="filter-chat">
+    <section className="w-3/4 max-w-7xl mx-auto p-6 flex flex-wrap gap-5 justify-center items-center bg-primary-500 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.4)] text-border mb-1.5">
+      <form className="flex flex-wrap gap-4 justify-center items-center">
         {filterType === "characters" && (
           <>
-            <InputLabel
-              label="Input a Name: "
-              type="text"
+            <Input
+              label="Input a name:"
+              id="name"
               name="name"
-              inputClassName="browser-name"
+              type="text"
+              className="flex-1 min-w-30 py-2 px-3 rounded-md bg-card text-primary-50 text-sm outline-none transition-all duration-200 ease-in-out focus:border-primary-400 focus:shadow-primary-300"
               value={filters.name || ""}
               onChange={handleChange}
-              placeholder=""
             />
 
             <InputLabel
@@ -69,6 +70,7 @@ export function Filters({
               label="Remove Filters"
               id="remove-filters"
               class="remove-filters"
+              variant="removeFilters"
               type="button"
               onClick={resetFilters}
             />
@@ -81,7 +83,6 @@ export function Filters({
               label="Select type: "
               type="select"
               name="type"
-              
               value={filters.type || ""}
               onChange={handleChange}
               placeholder="Type of Locations"
@@ -90,7 +91,7 @@ export function Filters({
             <Button
               label="Remove Filters"
               id="remove-filters"
-              className="remove-filters"
+              variant="removeFilters"
               type="button"
               onClick={resetFilters}
             />

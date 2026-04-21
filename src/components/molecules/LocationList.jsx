@@ -12,12 +12,6 @@ import { Modal } from "../organism/Modal";
 export function LocationsList({ locations }) {
   const [showModal, setShowModal] = useState(false);
 
-  // Functionn for open the modal
-  // const handleClick = () => {
-  //   console.log("OPEN");
-  //   setShowModal(true);
-  // };
-
   const handleClose = () => setShowModal(false);
   const { openModal } = useContext(AppContext);
   useEffect(() => {
@@ -32,31 +26,30 @@ export function LocationsList({ locations }) {
     };
   }, [showModal]);
   return (
-    <div className="container-list">
+    <div className="w-11/12 p-5 bg-white m-auto rounded-lg grid gap-4  ">
       <List
         items={locations}
-        className="location-list"
+        className="list-none p-0 m-0"
         renderItem={(location) => (
-          <div className="location-header">
-            <h3>{location.name}</h3>
-            <div className="info-locations">
-              <div className="label-location">
+          <div className="p-2.5 bg-gray-100 text-primary-600 font-bold flex  flex-wrap sm:flex-row items-center justify-between m-0 ">
+            <h3 className="m-0 font-bold text-xl sm:text-[14px] mb-1.5">{location.name}</h3>
+            <div className="flex clex-col flex-wrap sm:flex-row  gap-4">
+              <div className="flex justify-center items-center gap-2">
                 <DimensionIcon />
                 <span>{location.dimension}</span>
               </div>
 
-              <div className="label-location">
+              <div className="flex justify-center items-center gap-2">
                 <LocationIcon />
                 <span>{location.type}</span>
               </div>
 
-              <div className="label-location">
+              <div className="flex justify-center items-center gap-2">
                 <Button
                   icon={PeopleIcon}
-                  // onClick={handleClick}
                   onClick={() => openModal("location", location)}
                   label={location.residents.length}
-                  className="load-residents"
+                  variant="residentsRate"
                 />
                 {showModal && (
                   <Modal
@@ -69,7 +62,7 @@ export function LocationsList({ locations }) {
             </div>
           </div>
         )}
-        classNameLi="location-item"
+        classNameLi="mb-2.5 rounded-lg overflow-hidden bg-white transition-all duration-300 ease-in-out"
       />
     </div>
   );

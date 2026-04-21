@@ -39,6 +39,9 @@ export const ContextProvider = ({ children }) => {
   //   data: null,
   // });
 
+  const allButtons = document.documentElement.querySelectorAll("Button");
+  const allLinks= document.documentElement.querySelectorAll("a");
+
   const openModal = async (type, data) => {
     const scrollY = window.scrollY;
 
@@ -56,6 +59,9 @@ export const ContextProvider = ({ children }) => {
         document.body.style.width = "100%";
         document.body.style.overflow = "hidden";
         document.documentElement.style.overflow = "hidden";
+        allButtons.forEach((btn) => (btn.disabled = true));
+        //TODO: Mirar con Fran porque solo se ejecuta una vez
+        allLinks.forEach((a) => (a.style.pointerEvents = "none"));
       }
 
       return [...prev, tempModal];
@@ -114,6 +120,8 @@ export const ContextProvider = ({ children }) => {
       document.body.style.overflow = "";
       document.body.style.position = "";
       document.body.style.width = "";
+      allButtons.forEach((btn) => (btn.disabled = false));
+      allLinks.forEach((a) => (a.style.pointerEvents = "auto"));
     };
   }, [modalStack]);
 
