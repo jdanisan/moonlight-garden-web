@@ -29,7 +29,7 @@ export function GoTopBTN() {
     <Button
       icon={UpIcon}
       onClick={handleClick}
-      className="flex fixed bottom-5 right-8 z-50 rounded-xl bg-neon-green hover:bg-gray-500"
+      className="flex fixed bottom-5 right-8 z-50 rounded-xl bg-link-hover hover:bg-gray-500"
       variant="neonBtn"
       aria-label="Go to top"
     />

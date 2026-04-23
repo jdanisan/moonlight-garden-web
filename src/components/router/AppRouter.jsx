@@ -2,10 +2,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { MainLayout } from "../templates/MainLayout";
 import HomePage from "../pages/HomePage";
-import CharactersPage from "../pages/CharactersPage";
-import LocationsPage from "../pages/LocationsPage";
-import EpisodesPage from "../pages/EpisodesPage";
+import SearchPage from "../pages/SearchPage";
+import CalendarPage from "../pages/CalendarPage";
+import StatisticsPage from "../pages/StatisticsPage";
+import DocumentationPage from "../pages/DocumentationPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import ForumPage from "../pages/ForumPage";
 
 export function AppRouter() {
   return (
@@ -20,26 +22,42 @@ export function AppRouter() {
           }
         />
         <Route
-          path="/characters"
+          path="/documentation"
           element={
             <MainLayout>
-              <CharactersPage />
+              <DocumentationPage />
             </MainLayout>
           }
         />
         <Route
-          path="/locations"
+          path="/search"
           element={
             <MainLayout>
-              <LocationsPage />
+              <SearchPage />
             </MainLayout>
           }
         />
         <Route
-          path="/episodes"
+          path="/calendar"
           element={
             <MainLayout>
-              <EpisodesPage />
+              <CalendarPage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/Statistics"
+          element={
+            <MainLayout>
+              <StatisticsPage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/Forum"
+          element={
+            <MainLayout>
+              <ForumPage />
             </MainLayout>
           }
         />

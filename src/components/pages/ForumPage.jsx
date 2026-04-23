@@ -5,7 +5,7 @@ import { SeasonItem } from "../molecules/SeasonItm";
 import { groupEpisodesBySeason } from "../utils/groupEpisodesBySeasons";
 import { GoTopBTN } from "../atoms/GoTopBTN";
 
-export default function EpisodesPage() {
+export default function ForumPage() {
   const { episodes, loading } = useContext(AppContext);
 
   if (loading) return <p>Loading...</p>;
@@ -14,12 +14,11 @@ export default function EpisodesPage() {
 
   return (
     <>
-    {/* //TODO: split air_date */}
       <h1 className="flex items-center justify-center font-['Segoe_UI','Arial','sans-serif']  font-bold sm:text-4xl text-2xl m-2.5">
-        Seasons & Episodes
+        Forum
       </h1>
       <div className="w-11/12 p-5 bg-white m-auto rounded-xl grid gap-4 text-black">
-        <List
+        {/* <List
           className="w-full p-0 list-none"
           items={seasons}
           renderItem={(season) => (
@@ -28,7 +27,7 @@ export default function EpisodesPage() {
               className="font-bold py-1.5 px-5 text-blue-700 bg-gray-400 rounded-md"
             />
           )}
-        />
+        /> */}
       </div>
 
       <GoTopBTN />

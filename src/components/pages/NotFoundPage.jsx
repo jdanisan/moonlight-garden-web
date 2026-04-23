@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { NavBar } from "../templates/NavBar";
 import { Image } from "../atoms/Image";
-import img from "../../assets/rick-and-morty.jpg";
+import img from "../../assets/iconTFG.ico";
 
 export default function NotFoundPage() {
   return (
@@ -10,7 +10,7 @@ export default function NotFoundPage() {
         404 page not found
       </h1>
       <div className="flex justify-center p-5 h-full">
-        <Image src={img} alt="Rick & Morty" />
+        <Image src={img} alt="MoonLightGardenLogo" />
       </div>
       <h3>Please return home</h3>
     </>

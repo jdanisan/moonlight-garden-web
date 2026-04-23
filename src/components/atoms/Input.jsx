@@ -1,4 +1,4 @@
-export function Input({ label, id,name, type = "text",value,onChange={onChange} }) {
+export function Input({ label, id,name, type = "text",value,onChange={onChange}, list }) {
   return (
     <div className="relative flex-1 items-center min-w-44  py-2 px-3 text-sm">
       <input
@@ -7,6 +7,7 @@ export function Input({ label, id,name, type = "text",value,onChange={onChange} 
         type={type}
         value={value}
         onChange={onChange}
+        list={list}
         placeholder=" "
         className="peer w-full border border-gray-300 rounded-md px-3 pt-5 pb-2
                    focus:outline-none"

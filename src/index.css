@@ -1,36 +1,84 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #f2f6fd;
-  --color-primary-100: #e5edf9;
-  --color-primary-200: #c4d9f3;
-  --color-primary-300: #90b9e9;
-  --color-primary-400: #5595db;
-  --color-primary-500: #2f77c8;
-  --color-primary-600: #205ca9;
-  --color-primary-700: #1b4a89;
-  --color-primary-800: #1a4072;
-  --color-primary-900: #1b375f;
-  --color-primary-950: #12233f;
+  /* =========
+     MODO CLARO
+     ========= */
+  --color-primary-50: #faf3dd;
+  --color-primary-100: #f0eee0;
+  --color-primary-200: #e4e9d6;
+  --color-primary-300: #c8d5b9;
+  --color-primary-400: #a8cbb0;
+  --color-primary-500: #8fc0a9;
+  --color-primary-600: #68b0ab;
+  --color-primary-700: #4a7c59;
+  --color-primary-800: #3e4a36;
+  --color-primary-900: #2f5a4d;
+  --color-primary-950: #1f2f25;
 
-  --color-accent-100: #e0f7ff;
-  --color-accent-200: #b3ecff;
-  --color-accent-300: #80e1ff;
-  --color-accent-400: #4dd6ff;
-  --color-accent-500: #00bfff;
-  --color-accent-600: #0099cc;
-  --color-accent-700: #007399;
+  /* ACCENT (derivado del teal) */
+  --color-accent-100: #eefaf8;
+  --color-accent-200: #d0f0ea;
+  --color-accent-300: #a6e3da;
+  --color-accent-400: #68b0ab;
+  --color-accent-500: #4a7c59;
+  --color-accent-600: #3e4a36;
+  --color-accent-700: #2f5a4d;
 
-  --color-link: #c10eb2;
-  --color-link-hover: #e011cf;
-  --color-header: linear-gradient(20deg, #571261, #2b4e86);
+  /* LINKS */
+  --color-link: #4a7c59;
+  --color-link-hover: #68b0ab;
 
-  --color-neon-green: #00ff80;
+  /* HEADER */
+  --color-header: linear-gradient(20deg, #8fc0a9, #4a7c59);
 
-  --color-card: #f8f5f5;
-  --color-list: #f0eeee;
-  --color-border: #000000;
-  --color-warning-500: gold;
+  /* UI */
+  --color-card: #faf3dd;
+  --color-list: #f0eee0;
+  --color-border: #c8d5b9;
+
+  --color-warning-500: #d4a017;
+}
+
+
+/* =========
+   MODO OSCURO (usa SOLO tu paleta oscura)
+   ========= */
+.dark {
+  --color-primary-50: #2a261f;
+  --color-primary-100: #292723;
+  --color-primary-200: #3e4a36;
+  --color-primary-300: #2f5a4d;
+  --color-primary-400: #1f4a48;
+  --color-primary-500: #0f2e1f;
+  --color-primary-600: #0c2419;
+  --color-primary-700: #091c14;
+  --color-primary-800: #06150f;
+  --color-primary-900: #040f0a;
+  --color-primary-950: #020805;
+
+  /* ACCENT oscuro (manteniendo coherencia con tus tonos) */
+  --color-accent-100: #3e4a36;
+  --color-accent-200: #2f5a4d;
+  --color-accent-300: #1f4a48;
+  --color-accent-400: #68b0ab;
+  --color-accent-500: #8fc0a9;
+  --color-accent-600: #c8d5b9;
+  --color-accent-700: #faf3dd;
+
+  /* LINKS */
+  --color-link: #8fc0a9;
+  --color-link-hover: #c8d5b9;
+
+  /* HEADER */
+  --color-header: linear-gradient(20deg, #0f2e1f, #2f5a4d);
+
+  /* UI */
+  --color-card: #292723;
+  --color-list: #2a261f;
+  --color-border: #3e4a36;
+
+  --color-warning-500: #d4a017;
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------------- */

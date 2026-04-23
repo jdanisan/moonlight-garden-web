@@ -1,102 +1,138 @@
-import { InputLabel } from "../molecules/InputLabel";
 import { Button } from "../atoms/Button";
 import { Input } from "../atoms/Input";
+import { InputLabel } from "../molecules/InputLabel";
 
 export function Filters({
   filters = {},
   handleChange,
   options = {},
-  filterType = "characters",
+  filterType = "recommendations",
   resetFilters,
 }) {
+  // //TODO:Function onChange for make variant in the filters
+
   return (
-    <section className="w-3/4 max-w-7xl mx-auto p-6 flex flex-wrap gap-5 justify-center items-center bg-primary-500 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.4)] text-border mb-1.5">
-      <form className="flex flex-wrap gap-4 justify-center items-center">
-        {filterType === "characters" && (
+    <section className="w-3/4 max-w-5xl mx-auto p-6 mb-2.5 flex flex-wrap gap-6 justify-center items-center bg-primary-500 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.4)] text-accent-600">
+      <form className="flex flex-wrap gap-6 justify-center items-center">
+        {/* =========================
+            RECOMMENDATIONS
+        ========================== */}
+        {filterType === "recommendations" && (
           <>
-            <Input
-              label="Input a name:"
-              id="name"
-              name="name"
-              type="text"
-              className="flex-1 min-w-30 py-2 px-3 rounded-md bg-card text-primary-50 text-sm outline-none transition-all duration-200 ease-in-out focus:border-primary-400 focus:shadow-primary-300"
-              value={filters.name || ""}
-              onChange={handleChange}
-            />
+            {/* RANGE: atención */}
+            <div className="flex flex-col items-center gap-2">
+              <label htmlFor="atentionLvl" className="text-sm font-bold">
+                Nivel de atención: {filters.atentionLvl ?? 5}
+              </label>
 
-            <InputLabel
-              label="Species "
-              type="select"
-              name="species"
-              value={filters.species || ""}
-              onChange={handleChange}
-              placeholder="Select Species"
-              options={options.species || []}
-            />
+              <input
+                type="range"
+                id="atentionLvl"
+                name="atentionLvl"
+                min="0"
+                max="10"
+                step="1"
+                value={filters.atentionLvl ?? 5}
+                onChange={handleChange}
+                className="w-40 accent-primary-700"
+              />
+            </div>
 
+            {/* MAX DURATION */}
             <InputLabel
-              label="Status "
+              label="Espera máxima"
               type="select"
-              name="status"
-              value={filters.status || ""}
+              name="maxDuration"
+              value={filters.maxDuration || "index"}
               onChange={handleChange}
-              placeholder="Select Status"
-              options={options.status || []}
-            />
-
-            <InputLabel
-              label="Gender "
-              type="select"
-              name="gender"
-              value={filters.gender || ""}
-              onChange={handleChange}
-              placeholder="Select Gender"
-              options={options.gender || []}
-            />
-
-            <InputLabel
-              label="Order "
-              type="select"
-              name="order"
-              value={filters.order || ""}
-              onChange={handleChange}
-              placeholder="Without order"
+              placeholder="Selecciona nº semanas"
               options={[
-                { label: "Ascendancy", value: "asc" },
-                { label: "Descendant", value: "desc" },
+                { label: "1 semana", value: "1" },
+                { label: "2 semanas", value: "2" },
+                { label: "3 semanas", value: "3" },
+                { label: "4 semanas", value: "4" },
+                { label: "5 semanas", value: "5" },
+                { label: "6 semanas", value: "6" },
               ]}
             />
-            <Button
-              label="Remove Filters"
-              id="remove-filters"
-              class="remove-filters"
-              variant="removeFilters"
-              type="button"
-              onClick={resetFilters}
+
+            {/* TYPE PRODUCT */}
+            <InputLabel
+              label="Tipo de producto"
+              type="select"
+              name="typeProduct"
+              value={filters.typeProduct || "index"}
+              onChange={handleChange}
+              placeholder="Selecciona un tipo"
+              options={options.typeProduct || []}
             />
           </>
         )}
 
-        {filterType === "locations" && (
+        {/* =========================
+            STATISTICS
+        ========================== */}
+        {filterType === "statistics" && (
           <>
             <InputLabel
-              label="Select type: "
+              label="Periodo"
               type="select"
-              name="type"
-              value={filters.type || ""}
+              name="period"
+              value={filters.period || "week"}
               onChange={handleChange}
-              placeholder="Type of Locations"
-              options={options.type || []}
+              placeholder="Selecciona periodo"
+              options={[
+                { label: "Semana", value: "week" },
+                { label: "Mes", value: "month" },
+                { label: "Año", value: "year" },
+              ]}
             />
-            <Button
-              label="Remove Filters"
-              id="remove-filters"
-              variant="removeFilters"
-              type="button"
-              onClick={resetFilters}
+
+            <InputLabel
+              label="Agrupar por"
+              type="select"
+              name="groupBy"
+              value={filters.groupBy || "day"}
+              onChange={handleChange}
+              placeholder="Agrupación"
+              options={[
+                { label: "Día", value: "day" },
+                { label: "Semana", value: "week" },
+                { label: "Mes", value: "month" },
+              ]}
             />
           </>
         )}
+
+        {filterType === "denegateLocation" && (
+          <>
+            <Input
+              label="Ciudad"
+              id="city"
+              name="city"
+              value={filters.city || ""}
+              onChange={handleChange}
+              list="cities"
+            />
+
+            <datalist id="cities">
+              <option value="Madrid" />
+              <option value="Barcelona" />
+              <option value="Valencia" />
+              <option value="Sevilla" />
+            </datalist>
+          </>
+        )}
+
+        {/* =========================
+            RESET (común)
+        ========================== */}
+        <Button
+          label="Reset filters"
+          type="button"
+          variant="removeFilters"
+          onClick={resetFilters}
+        />
       </form>
     </section>
   );

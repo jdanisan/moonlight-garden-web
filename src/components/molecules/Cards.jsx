@@ -1,61 +1,64 @@
 import { Favorite } from "../atoms/Favorite";
 import { Button } from "../atoms/Button";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
 const VARIANTS = {
-  default: "flex-col items-center",
-  horizontal: "flex-row items-start",
+  default: "",
+  horizontal: "flex-row",
   modal: "flex-col md:flex-row",
 };
-export function Cards({ character, variant = "default" }) {
-  if (!character) return null;
+export function Cards({ product, variant = "default" }) {
+  if (!product) return null;
+
   const { openModal } = useContext(AppContext);
 
   return (
-    <div
-      className={`${VARIANTS[variant]} flex rounded-2xl font-bold p-0  text-primary-500 overflow-hidden shadow-[0_4px_8px_rgba(0,0,0,0.2)] transition bg-card relative hover:shadow-[3px_3px_10px_rgba(59,130,246,0.8)] card--${variant}`}
-    >
+    <div className="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col relative">
+      
+      {/* Imagen */}
       <img
-        src={character.image}
-        alt={character.name}
-        className={`w-full block h-auto min-h-fit object-cover card-image--${variant}`}
+        src={product.food_image_url}
+        alt={product.food_name}
+        className="h-44 w-full object-cover"
       />
 
-      <div
-        className={`flex flex-col justify-between h-full w-11/12 p-4 text-primary-700 card-content--${variant}`}
-      >
-        <h3 className={`flex flex-col bottom-0 card-title--${variant}`}>
-          <strong>{character.name}</strong>
+      {/* Contenido */}
+      <div className="p-4 flex flex-col gap-2 flex-1">
+        
+        <h3 className="font-semibold text-center text-gray-800">
+          {product.food_name}
         </h3>
 
-        <p className={`m-0`}>
-          <strong>Specie:</strong> {character.species}
-        </p>
-        <p className={`m-0`}>
-          <strong>Status:</strong> {character.status}
-        </p>
-        <Favorite idCharacter={character.id} />
-
-        {variant === "default" && (
-          <Button
-            label="Load Info"
-            variant="loadMore"
-            onClick={() => openModal("character", character)}
-          />
+        {product.category && (
+          <p className="text-sm text-gray-500 text-center">
+            {product.category}
+          </p>
         )}
 
-        {variant === "modal" && (
-          <>
-            <p>
-              <strong>Origin:</strong> {character.origin.name}
-            </p>
-            <p>
-              <strong>Actual location:</strong> {character.location.name}
-            </p>
-          </>
+        {product.price && (
+          <p className="text-sm font-medium text-center text-green-800">
+            {product.price}€
+          </p>
         )}
+
+        {/* Botón alineado abajo */}
+        <div className="mt-auto">
+          <button
+            onClick={() => openModal("product", product)}
+            className="w-full bg-green-900 text-white py-2 rounded-full text-sm hover:bg-green-800 transition"
+          >
+            Ver producto →
+          </button>
+        </div>
+
       </div>
+
+      {/* Favorito */}
+      <div className="absolute top-3 right-3">
+        <Favorite idProduct={product.id} />
+      </div>
+
     </div>
   );
 }
