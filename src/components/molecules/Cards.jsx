@@ -15,7 +15,7 @@ export function Cards({ product, variant = "default" }) {
 
   return (
     <div className="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col relative">
-      
+
       {/* Imagen */}
       <img
         src={product.food_image_url}
@@ -25,7 +25,7 @@ export function Cards({ product, variant = "default" }) {
 
       {/* Contenido */}
       <div className="p-4 flex flex-col gap-2 flex-1">
-        
+
         <h3 className="font-semibold text-center text-gray-800">
           {product.food_name}
         </h3>
@@ -41,17 +41,22 @@ export function Cards({ product, variant = "default" }) {
             {product.price}€
           </p>
         )}
+        {variant === "default" && (
+          <>
+            {/* Botón alineado abajo */}
+            <div className="mt-auto">
+              <Button variant="loadMore" label={"Ver producto →"} fullWidth onClick={() => openModal("product", product)} />
+            </div>
+          </>
+        )}
+        {variant === "modal" && (
+          <div className="mt-4">
+            <p className="text-xl text-gray-700 mb-4">
+              {product.food_description || "No hay descripción disponible para este producto."}
+            </p>
 
-        {/* Botón alineado abajo */}
-        <div className="mt-auto">
-          <button
-            onClick={() => openModal("product", product)}
-            className="w-full bg-green-900 text-white py-2 rounded-full text-sm hover:bg-green-800 transition"
-          >
-            Ver producto →
-          </button>
-        </div>
-
+          </div>
+        )}
       </div>
 
       {/* Favorito */}

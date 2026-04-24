@@ -2,18 +2,16 @@ import { useContext, useState } from "react";
 import { NavBar } from "../templates/NavBar";
 import { ProductsList } from "../organism/ProductList";
 import { Filters } from "../organism/Filters";
-import Slider from "../atoms/Slider";
 import { GoTopBTN } from "../atoms/GoTopBTN";
 import "../../index.css";
+import VerdantSlider from "../atoms/VerdantSlider";
 
 export default function HomePage() {
   return (
     <>
       <div className="flex items-center justify-center pt-20">
-        {/* //TODO:Inspect how to make justify correctly */}
-        <div className="w-2/3 max-w-lg aspect-video bg-black flex">
-          <Slider />
-        </div>
+        
+        <VerdantSlider />
       </div>
 
       <div id="productosDestacados"className="p-5">
