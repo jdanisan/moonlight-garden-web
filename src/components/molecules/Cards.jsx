@@ -36,16 +36,24 @@ export function Cards({ product, variant = "default", season }) {
             ${active ? "bg-green-600 text-white" : "bg-gray-400 text-white"}
           `}
           >
-            {active ? "PLANT NOW" : "WAIT"}
+            {active ? "TEMPORADA" : "FUERA"}
           </span>
         </div>
 
         <div className="p-3">
           <p className="font-semibold text-gray-800">{product.food_name}</p>
 
-          <p className="text-xs text-gray-500">
+          {/* <p className="text-xs text-gray-500">
             {product.food_description || product.category}
-          </p>
+          </p> */}
+          <div className="mt-auto">
+            <Button
+              label="Ver producto →"
+              variant="loadMore"
+              fullWidth
+              onClick={() => openModal("product", product)}
+            />
+          </div>
         </div>
       </div>
     );
@@ -94,11 +102,10 @@ export function Cards({ product, variant = "default", season }) {
         )}
         {variant === "modal" && (
           <p
-            className={`text-sm font-medium text-center ${
-              isInSeason(product, season) ? "text-green-700" : "text-red-600"
-            }`}
+            className={`text-sm font-medium text-center ${isInSeason(product, season) ? "text-green-700" : "text-red-600"
+              }`}
           >
-            {isInSeason(product, season) ? "En temporada" : "No es temporada"}
+            {isInSeason(product, season) ? "TEMPORADA" : "No es temporada"}
           </p>
         )}
       </div>

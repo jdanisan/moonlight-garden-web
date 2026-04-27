@@ -39,7 +39,7 @@ export function Filters({
   };
 
   return (
-    <section className="w-3/4 max-w-5xl mx-auto p-6 mb-2.5 flex flex-wrap gap-6 justify-center items-center bg-primary-500 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.4)] text-accent-600">
+    <section className="w-full max-w-5xl mx-auto p-6 mb-2.5 flex flex-wrap gap-6 justify-center items-center bg-primary-500 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.4)] text-accent-600 md:w-3/4">
       <form className="flex flex-wrap gap-6 justify-center items-center">
         {/* =========================
             RECOMMENDATIONS

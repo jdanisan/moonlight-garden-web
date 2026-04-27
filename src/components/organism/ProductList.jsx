@@ -20,6 +20,7 @@ const season = getSeason(new Date().getMonth());
 
 export function ProductList({ filters = null }) {
   const [products, setProducts] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(8);
 
   useEffect(() => {
     const productsRef = ref(db, "/food");
@@ -91,6 +92,7 @@ export function ProductList({ filters = null }) {
   const outSeasonProducts = filteredProducts.filter(
     (p) => !p.food_season?.includes(season)
   );
+  
 
   return (
     <section className="bg-[#f6f1e7] py-8">
@@ -98,7 +100,7 @@ export function ProductList({ filters = null }) {
         <div>
           <h3 className="font-semibold mb-4">En temporada</h3>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {inSeasonProducts.map((product) => (
               <Cards
                 key={product.id}
@@ -115,7 +117,7 @@ export function ProductList({ filters = null }) {
             Fuera de temporada
           </h3>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {outSeasonProducts.map((product) => (
               <Cards
                 key={product.id}
