@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { toggleNavbar } from "../utils/toggleNavBar";
-import { GlobalIcon } from "../atoms/icons/GlobalIcon";
 import { Button } from "../atoms/Button";
+import { MoonlightIcon } from "../atoms/icons/MoonlightIcon";
 
 const directions = [
   { href: "/", label: "Home" },
@@ -18,12 +18,11 @@ export function NavBar() {
 
   return (
     <header className="fixed top-0 w-full z-50 bg-[#f6f1e7] shadow-sm">
-      
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-
         {/* LOGO */}
-        <div className="text-green-900 font-bold text-xl">
-          MoonLight Garden
+        <div className="text-green-900 font-bold text-xl ">
+          {/* //TODO:Que el logo se coulte cuando se vista móvil */}
+          <MoonlightIcon className="text-primary-900 md:hidden" />
         </div>
 
         {/* NAV DESKTOP */}
@@ -49,12 +48,11 @@ export function NavBar() {
         {/* ICON / BUTTON */}
         <div className="flex items-center gap-3">
           <Button
-            icon={GlobalIcon}
+            icon={MoonlightIcon}
             variant="ghost"
-            onClick={() => setOpen(prev => !prev)}
+            onClick={() => setOpen((prev) => !prev)}
           />
         </div>
-
       </div>
 
       {/* MOBILE MENU */}
@@ -78,7 +76,6 @@ export function NavBar() {
           ))}
         </div>
       )}
-
     </header>
   );
 }
