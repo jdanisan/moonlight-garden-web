@@ -44,7 +44,7 @@ export default function CalendarPage() {
 
       <CalendarView onMoonPhaseChange={handleMoonClick} />
 
-      <ProductList filters={enhancedFilters} />
+      <ProductList filters={enhancedFilters} variant="garden" />
 
       <GoTopBTN />
     </>

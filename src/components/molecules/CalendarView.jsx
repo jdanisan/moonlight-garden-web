@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Input } from "../atoms/Input";
-import { Filters } from "../organism/Filters";
-import { Button } from "../atoms/Button";
 import { getMoonPhase } from "../utils/getMoonPhase";
 
 const phaseIcon = {
@@ -134,14 +132,16 @@ export default function CalendarView() {
   const dayEvents = events.filter((e) => e.date === selectedDate);
 
   return (
-    <div className="min-h-screen flex justify-center px-6">
-      <div className="w-full max-w-6xl flex gap-6 py-6">
+    <div className="min-h-screen bg-[#f5f1e8] px-4">
+      <div className="w-full max-w-6xl mx-auto py-6 flex flex-col gap-6 lg:flex-row">
         {/* calendario */}
-        <div className="flex-1">
-          <h2 className="text-2xl font-semibold mb-4">Calendario lunar</h2>
+        <div className="flex-1 ">
+          <h2 className="text-xl lg:text-2xl font-semibold mb-4">
+            Calendario lunar
+          </h2>
 
           {/* input ciudad */}
-          <div className="mb-5">
+          <div className="mb-5  flex flex-col lg:flex-row gap-3">
             <Input
               label="Ciudad"
               id="city"
@@ -163,7 +163,7 @@ export default function CalendarView() {
 
             <button
               onClick={() => manualCity && fetchWeather(manualCity)}
-              className="mt-3 px-4 py-2 rounded-md border border-green-700 text-green-900 hover:bg-green-50 transition"
+              className=" px-4 py-2 rounded-md border border-green-700 text-green-900 hover:bg-green-50 transition"
             >
               Usar ubicación
             </button>
@@ -185,7 +185,7 @@ export default function CalendarView() {
               ←
             </button>
 
-            <h3 className="font-semibold">
+            <h3 className="font-semibold capitalize">
               {new Date(currentYear, currentMonth).toLocaleString("es-ES", {
                 month: "long",
                 year: "numeric",
@@ -207,6 +207,13 @@ export default function CalendarView() {
             </button>
           </div>
 
+          {/* DÍAS SEMANA */}
+          <div className="grid grid-cols-7 text-center text-xs text-gray-500 mb-2">
+            {["X", "J", "V", "S", "D", "L", "M"].map((d) => (
+              <div key={d}>{d}</div>
+            ))}
+          </div>
+
           {/* calendario */}
           <div className="grid grid-cols-7 gap-2.5">
             {days.map((date) => {
@@ -221,10 +228,10 @@ export default function CalendarView() {
                   `}
                 >
                   <div>{date.split("-")[2]}</div>
-                  <div>{phaseIcon[data?.phase]}</div>
+                  <div className="text-xs opacity-70">{phaseIcon[data?.phase]}</div>
 
                   <div
-                    className="h-1 mt-2 rounded"
+                    className="h-1 w-full mt-1 rounded"
                     style={{
                       background: getRecommendation(data).color,
                     }}
@@ -236,8 +243,8 @@ export default function CalendarView() {
         </div>
 
         {/* sidebar */}
-        <div className="w-80 shrink-0">
-          <div className="sticky top-6 bg-white/80 border border-gray-100 rounded-xl p-5 shadow-sm">
+        <div className="w-full lg:w-80 lg:shrink-0">
+          <div className="bg-linear-to-br from-[#68b0ab] to-[#4a7c59] rounded-3xl p-8 text-white relative overflow-hidden shadow-lg">
             <h3 className="text-lg font-semibold mb-3">{selectedDate}</h3>
 
             <p className="mb-1">🌙 Fase Lunar: {selectedData.phase}</p>
