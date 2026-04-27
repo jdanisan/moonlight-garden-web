@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { useAuth } from "../hook/useAuth";
 
 export const AppContext = createContext();
 
@@ -32,6 +33,16 @@ export const ContextProvider = ({ children }) => {
   //   gender: "",
   //   type: "",
   // });
+
+  const { isLogged } = useAuth();
+
+  const requireAuth = (callback) => {
+    if (isLogged) {
+      callback();
+    } else {
+      openModal("login");
+    }
+  };
 
   // ---------------- MODAL STATE ----------------
   const fetchCharacter = async (url) => {
@@ -114,7 +125,7 @@ export const ContextProvider = ({ children }) => {
   }, [modalStack]);
 
   // ---------------- EFFECT ----------------
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
   // const filteredLocations = locations.filter((loc) => {
   //   return !filters.type || loc.type === filters.type;
   // });
@@ -137,6 +148,7 @@ export const ContextProvider = ({ children }) => {
         openModal,
         closeModal,
         currentModal,
+        requireAuth
         // modal,
       }}
     >

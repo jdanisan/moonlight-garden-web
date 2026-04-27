@@ -1,8 +1,19 @@
+import { Button } from "../atoms/Button";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import { useAuth } from "../hook/useAuth";
+
 export function ProductModal({ product, onClose }) {
   if (!product) return null;
   //TODO: Upgrade the BBDD with new files with the new fields (season, category, moon phase, description).
+  
   const format = (str) =>
     str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
+  const { openModal, requireAuth } = useContext(AppContext);
+  const { isLogged } = useAuth();
+
+
 
   return (
     <div className="bg-[#E9E3CE] rounded-3xl shadow-2xl overflow-hidden max-w-4xl flex">
@@ -62,9 +73,16 @@ export function ProductModal({ product, onClose }) {
           </p>
         </div>
 
-        <button className="mt-auto bg-green-700 text-white rounded-xl py-3 font-semibold hover:bg-green-800 transition">
-          Vamos a sembrarlo
-        </button>
+        <Button
+          label="Vamos a sembrarlo"
+          variant="loadMore"
+          className="mt-auto bg-green-700 text-white rounded-xl py-3 font-semibold hover:bg-green-800 transition"
+          onClick={() => {
+            requireAuth(() => {
+              openModal("product", product);
+            });
+          }}
+        />
       </div>
     </div>
   );
