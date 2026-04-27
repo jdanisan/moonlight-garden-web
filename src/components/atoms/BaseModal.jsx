@@ -1,4 +1,4 @@
-export function BaseModal({ children, onClose }) {
+export function BaseModal({ variant, children, onClose }) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#2f3d2f]/40 backdrop-blur-md"

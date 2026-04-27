@@ -2,6 +2,7 @@ import { Favorite } from "../atoms/Favorite";
 import { Button } from "../atoms/Button";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { useAuth } from "../hook/useAuth";
 
 const VARIANTS = {
   default: "",
@@ -111,9 +112,9 @@ export function Cards({ product, variant = "default", season }) {
       </div>
 
       {/* Favorito */}
-      <div className="absolute top-3 right-3">
+      {/* <div className="absolute top-3 right-3">
         <Favorite idProduct={product.id} />
-      </div>
+      </div> */}
     </div>
   );
 }

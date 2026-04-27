@@ -38,7 +38,7 @@ export default function HomePage() {
       {/* ===================== */}
       <div id="productosDestacados" className="p-5">
         <h2 className="text-2xl font-bold text-green-900 mb-6">
-          Featured Products
+          Productos Destacados
         </h2>
 
         <ProductList />
@@ -49,7 +49,7 @@ export default function HomePage() {
       {/* ===================== */}
       <div id="productosRecomendados" className="p-5">
         <h2 className="text-2xl font-bold text-green-900 mb-6">
-          Recommendations
+          Recomendaciones
         </h2>
 
         <Filters
