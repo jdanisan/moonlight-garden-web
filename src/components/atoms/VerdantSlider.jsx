@@ -60,7 +60,7 @@ const VerdantSlider = () => {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % slides.length);
-        }, 5000);
+        }, 7000);
 
         return () => clearInterval(timer);
     }, [slides.length]);
@@ -69,7 +69,7 @@ const VerdantSlider = () => {
         <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl bg-[#faf3dd] shadow-xl group">
             {/* Slides Container */}
             <div
-                className="flex transition-transform duration-700 ease-out h-[500px]"
+                className="flex transition-transform duration-700 ease-out h-125"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
                 {slides.map((slide) => (
@@ -80,7 +80,7 @@ const VerdantSlider = () => {
                             className="w-full h-full object-cover brightness-90 transition-transform duration-1000 group-hover:scale-105"
                         />
                         {/* Overlay Content */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/60 to-transparent flex flex-col justify-end p-12 text-white">
+                        <div className="absolute inset-0 bg-linear-to-t from-emerald-900/60 to-transparent flex flex-col justify-end p-12 text-white">
                             <span className="bg-emerald-100/20 backdrop-blur-md text-white text-xs font-bold tracking-widest px-3 py-1 rounded-full w-fit mb-4">
                                 {slide.tag}
                             </span>

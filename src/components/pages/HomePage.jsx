@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ProductList } from "../organism/ProductList";
 import { Filters } from "../organism/Filters";
 import VerdantSlider from "../atoms/VerdantSlider";
+import {GoTopBTN} from "../atoms/GoTopBTN";
 
 export default function HomePage() {
   const [filters, setFilters] = useState({
@@ -62,6 +63,7 @@ export default function HomePage() {
 
         <ProductList filters={filters} />
       </div>
+      <GoTopBTN/>
     </>
   );
 }

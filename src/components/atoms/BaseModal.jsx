@@ -13,3 +13,4 @@ export function BaseModal({ variant, children, onClose }) {
     </div>
   );
 }
+
