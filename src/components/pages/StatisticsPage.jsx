@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { List } from "../molecules/Lists";
-import { SeasonItem } from "../molecules/SeasonItm";
-import { groupEpisodesBySeason } from "../utils/groupEpisodesBySeasons";
 import { GoTopBTN } from "../atoms/GoTopBTN";
 
 export default function StatisticsPage() {

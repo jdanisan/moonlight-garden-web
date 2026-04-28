@@ -3,7 +3,7 @@ import { Button } from "../atoms/Button";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { useAuth } from "../hook/useAuth";
-
+//TODO: Fix bug with authentication in "Vamos a sembrarlo"
 const VARIANTS = {
   default: "",
   horizontal: "flex-row",
@@ -44,9 +44,6 @@ export function Cards({ product, variant = "default", season }) {
         <div className="p-3">
           <p className="font-semibold text-gray-800">{product.food_name}</p>
 
-          {/* <p className="text-xs text-gray-500">
-            {product.food_description || product.category}
-          </p> */}
           <div className="mt-auto">
             <Button
               label="Ver producto →"

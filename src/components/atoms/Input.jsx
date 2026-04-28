@@ -1,4 +1,12 @@
-export function Input({ label, id,name, type = "text",value,onChange={onChange}, list }) {
+export function Input({
+  label,
+  id,
+  name,
+  type = "text",
+  value,
+  onChange,
+  list,
+}) {
   return (
     <div className="relative flex-1 items-center min-w-44  py-2 px-3 text-sm">
       <input

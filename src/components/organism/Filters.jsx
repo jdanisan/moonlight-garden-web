@@ -3,6 +3,17 @@ import { Input } from "../atoms/Input";
 import { InputLabel } from "../molecules/InputLabel";
 import DualRangeSlider from "./DualRangeSlider";
 import { useState } from "react";
+import {
+  Search,
+  Bell,
+  User,
+  BookOpen,
+  Clock,
+  ChevronRight,
+  Mail,
+  Globe,
+  Share2,
+} from "lucide-react";
 
 export function Filters({
   filters = {},
@@ -10,8 +21,19 @@ export function Filters({
   options = {},
   filterType = "recommendations",
   resetFilters,
-  setFilters, 
+  setFilters,
+  selectedCategory,
+  setSelectedCategory,
 }) {
+  //Categorias en documentation
+  const categories = [
+    "Propagación",
+    "Plagas y Enfermedades",
+    "Ciencia del suelo",
+    "Riego",
+    "Luz",
+  ];
+
   // Opciones de duración (semanas)
   const durationOptions = [
     { label: "1 semana", value: "1" },
@@ -79,9 +101,17 @@ export function Filters({
                 { label: "Fruta", value: "fruta" },
               ]}
             />
+            {/* =========================
+                        RESET
+            ========================== */}
+            <Button
+              label="Reset filters"
+              type="button"
+              variant="removeFilters"
+              onClick={resetFilters}
+            />
           </>
         )}
-
         {/* =========================
             STATISTICS
         ========================== */}
@@ -114,9 +144,17 @@ export function Filters({
                 { label: "Mes", value: "month" },
               ]}
             />
+            {/* =========================
+                        RESET
+            ========================== */}
+            <Button
+              label="Reset filters"
+              type="button"
+              variant="removeFilters"
+              onClick={resetFilters}
+            />
           </>
         )}
-
         {/* =========================
             DENEGATE LOCATION
         ========================== */}
@@ -141,14 +179,38 @@ export function Filters({
         )}
 
         {/* =========================
-            RESET
+           Categories
         ========================== */}
-        <Button
-          label="Reset filters"
-          type="button"
-          variant="removeFilters"
-          onClick={resetFilters}
-        />
+        {filterType === "categoriesBlog" && (
+          <div className="flex w-full flex-wrap gap-3 sm:justify-between border-b border-[#c8d5b9] pb-4">
+            <nav className="flex flex-col lg:flex-row w-full gap-3 md:gap-5 text-sm font-bold text-[#4a7c59]/60">
+              {/* TODOS */}
+              <button
+                type="button"
+                onClick={() => setSelectedCategory("Todos")}
+                className={`whitespace-nowrap transition-colors hover:text-[#4a7c59] ${
+                  selectedCategory === "Todos" ? "text-[#4a7c59]" : ""
+                }`}
+              >
+                Todos los artículos
+              </button>
+
+              {/* CATEGORÍAS */}
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`whitespace-nowrap transition-colors hover:text-[#4a7c59] ${
+                    selectedCategory === cat ? "text-[#4a7c59]" : ""
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </nav>
+          </div>
+        )}
       </form>
     </section>
   );
