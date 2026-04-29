@@ -1,0 +1,26 @@
+1. Apples Fuji — Manzanas Fuji
+2. Apples Gala — Manzanas Gala
+3. Apples Golden — Manzanas Golden
+4. Apples Granny — Manzanas Granny Smith
+5. Apples Red — Manzanas rojas
+6. Avocados — Aguacates
+7. Bread Wheat — Trigo panificable
+8. Carrots — Zanahorias
+9. Clementines — Clementinas
+10. Courgettes — Calabacines
+11. Cucumbers — Pepinos
+12. Durum Wheat — Trigo duro
+13. Feed Barley — Cebada forrajera
+14. Feed Maize — Maíz forrajero
+15. Feed Wheat — Trigo forrajero
+16. Garlic — Ajo
+17. Leeks — Puerros
+18. Lemons — Limones
+19. Mandarins — Mandarinas
+20. Mushrooms — Champiñones
+21. Oranges — Naranjas
+22. Pears — Peras
+23. Strawberries — Fresas
+24. Tomatoes - Cherry/Special — Tomates cherry/especiales
+25. Tomatoes Round — Tomates redondos
+26. Tomatoes Trusses — Tomates en racimo
