@@ -6,13 +6,13 @@ import { useAuth } from "../hook/useAuth";
 export function ProductModal({ product, onClose }) {
   if (!product) return null;
   //TODO: Upgrade the BBDD with new files with the new fields (season, category, moon phase, description).
-  
+
   const format = (str) =>
     str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 
-  const { openModal, requireAuth } = useContext(AppContext);
+  const { openModal, requireAuth, onAddToPlanning } = useContext(AppContext);
   const { isLogged } = useAuth();
-
+  
 
 
   return (
@@ -79,7 +79,7 @@ export function ProductModal({ product, onClose }) {
           className="mt-auto bg-green-700 text-white rounded-xl py-3 font-semibold hover:bg-green-800 transition"
           onClick={() => {
             requireAuth(() => {
-              openModal("product", product);
+              onAddToPlanning(product.id); 
             });
           }}
         />

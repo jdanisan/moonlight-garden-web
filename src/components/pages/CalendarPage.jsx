@@ -11,8 +11,11 @@ const getSeason = (month) => {
   return "invierno";
 };
 
+
+
 export default function CalendarPage() {
   const { filters, setFilters } = useContext(AppContext);
+  const { plannedPlants } = useContext(AppContext);
 
   const [selectedMoonPhase, setSelectedMoonPhase] = useState(null);
 

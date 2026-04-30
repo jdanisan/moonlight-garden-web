@@ -26,7 +26,7 @@ export function Footer() {
         {/* Contacto */}
         <div className="text-sm text-primary-300">
           <p className="font-semibold">Contacto</p>
-          <p className="mt-2">info@moonlightgarden.com</p>
+          <p className="mt-2">moonlight.garden0000@gmail.com</p>
           <p>+34 600 000 000</p>
         </div>
 

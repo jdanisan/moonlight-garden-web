@@ -1,9 +1,16 @@
 import { BaseModal } from "../atoms/BaseModal";
 import { ProductModal } from "../molecules/ProductModal";
-import {ArticleModal} from "./ArticleModal";
+import { ArticleModal } from "./ArticleModal";
+import { UserAuthModal } from "./UserAuthModal";
+import { useState } from "react";
 
 export function Modal({ type, data, onClose }) {
-  if (!type || !data) return null;
+  if (!type) return null;
+
+  const needsData = ["product", "article"];
+  const [variant, setVariant] = useState("form-user");
+
+  if (needsData.includes(type) && !data) return null;
 
   return (
     <BaseModal onClose={onClose}>
@@ -11,7 +18,15 @@ export function Modal({ type, data, onClose }) {
         <ProductModal product={data} onClose={onClose} />
       )}
       {(type === "form-user" || type === "new-user") && (
-        <UserAuthModal variant={type} onClose={onClose} />
+        <UserAuthModal
+          variant={variant}
+          onClose={() => setOpen(false)}
+          onSwitch={() =>
+            setVariant((prev) =>
+              prev === "new-user" ? "form-user" : "new-user"
+            )
+          }
+        />
       )}
       {type === "article" && (
         <ArticleModal article={data} onClose={onClose} />

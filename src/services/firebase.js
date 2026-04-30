@@ -17,16 +17,12 @@ const firebaseConfig = {
   measurementId: "G-V0VTHK1YJ6",
 };
 
-// 🚀 Init Firebase App
 const app = initializeApp(firebaseConfig);
 
-// 🔐 Auth (usuarios + roles)
 export const auth = getAuth(app);
 
-// 🗄️ Realtime Database (foro, listas, tareas, chat)
 export const db = getDatabase(app);
 
-// ⚙️ Cloud Functions (emails, automatizaciones, recordatorios)
 export const functions = getFunctions(app);
 
 export default app;
