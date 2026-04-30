@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { href, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { toggleNavbar } from "../utils/toggleNavBar";
 import { Button } from "../atoms/Button";
@@ -11,6 +11,7 @@ const directions = [
   { href: "/statistics", label: "Statistics" },
   { href: "/calendar", label: "Calendar" },
   { href: "/forum", label: "Forum" },
+  { href: "/user", label: "User" },
 ];
 
 export function NavBar() {

@@ -22,25 +22,22 @@ export const ContextProvider = ({ children }) => {
   const [nextIndex, setNextIndex] = useState(50);
   const [loading, setLoading] = useState(false);
 
-  // const [speciesOptions, setSpeciesOptions] = useState([]);
-  // const [statusOptions, setStatusOptions] = useState([]);
-  // const [genderOptions, setGenderOptions] = useState([]);
-  // const [locationOptions, setLocationOptions] = useState([]);
+  const [plannedPlants, setPlannedPlants] = useState([]);
 
-  // const [filters, setFilters] = useState({
-  //   species: "",
-  //   status: "",
-  //   gender: "",
-  //   type: "",
-  // });
+  const onAddToPlanning = (plantId) => {
+    setPlannedPlants((prev) => {
+      if (prev.includes(plantId)) return prev;
+      return [...prev, plantId];
+    });
+  };
 
   const { isLogged } = useAuth();
-
+  //TODO: View why is openModal calling normal modal instead of authModal
   const requireAuth = (callback) => {
     if (isLogged) {
       callback();
     } else {
-      openModal("login");
+      openModal("new-user");
     }
   };
 
@@ -89,6 +86,7 @@ export const ContextProvider = ({ children }) => {
           : modal,
       ),
     );
+
   };
 
   const closeModal = () => {
@@ -133,23 +131,15 @@ export const ContextProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        // characters,
-        // locations: filteredLocations,
-        // episodes,
-        // speciesOptions,
-        // statusOptions,
-        // genderOptions,
-        // locationOptions,
         loading,
-        // filters,
-        // setFilters,
         loadMore: () => setNextIndex((prev) => prev + 50),
         nextIndex,
         openModal,
         closeModal,
         currentModal,
-        requireAuth
-        // modal,
+        requireAuth,
+        plannedPlants,
+        onAddToPlanning,
       }}
     >
       {children}

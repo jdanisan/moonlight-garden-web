@@ -4,8 +4,8 @@ import React, { useState, useRef, useEffect } from "react";
 const DualRangeSlider = ({
   min = 1,
   max = 10,
-  initialMin = 3,
-  initialMax = 7,
+  initialMin = 1,
+  initialMax = 10,
   onChange,
 }) => {
   const [minVal, setMinVal] = useState(initialMin);

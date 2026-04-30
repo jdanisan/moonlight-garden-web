@@ -8,6 +8,7 @@ import StatisticsPage from "../pages/StatisticsPage";
 import DocumentationPage from "../pages/DocumentationPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import ForumPage from "../pages/ForumPage";
+import UserPage from "../pages/UserPage";
 
 export function AppRouter() {
   return (
@@ -58,6 +59,14 @@ export function AppRouter() {
           element={
             <MainLayout>
               <ForumPage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/user"
+          element={
+            <MainLayout>
+              <UserPage />
             </MainLayout>
           }
         />
