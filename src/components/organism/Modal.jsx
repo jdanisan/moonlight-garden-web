@@ -20,7 +20,7 @@ export function Modal({ type, data, onClose }) {
       {(type === "form-user" || type === "new-user") && (
         <UserAuthModal
           variant={variant}
-          onClose={() => setOpen(false)}
+          onClose={onClose}
           onSwitch={() =>
             setVariant((prev) =>
               prev === "new-user" ? "form-user" : "new-user"
