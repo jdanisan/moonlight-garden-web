@@ -5,22 +5,22 @@ import { useAuth } from "../hook/useAuth";
 import { Modal } from "../organism/Modal";
 
 const phaseIcon = {
-  "New Moon": "🌑",
-  "Waxing Crescent": "🌒",
-  "First Quarter": "🌓",
-  "Waxing Gibbous": "🌔",
-  "Full Moon": "🌕",
-  "Waning Gibbous": "🌖",
-  "Last Quarter": "🌗",
-  "Waning Crescent": "🌘",
+  "Luna Nueva": "🌑",
+  "Luna Creciente": "🌒",
+  "Cuarto Creciente": "🌓",
+  "Luna Gibosa Creciente": "🌔",
+  "Luna Llena": "🌕",
+  "Luna Gibosa Menguante": "🌖",
+  "Cuarto Menguante": "🌗",
+  "Luna Menguante": "🌘",
 };
 
 const getRecommendation = ({ phase, rainProbability } = {}) => {
   if (!phase) return { message: "Cargando datos...", color: "#eee" };
   if (rainProbability > 70) return { message: "Alta probabilidad de lluvia, evita riego", color: "#87CEFA" };
   if (rainProbability > 50) return { message: "Probabilidad de lluvia, evita riego", color: "#87CEFF" };
-  if (phase === "New Moon") return { message: "Buen momento para raíces", color: "#4CAF50" };
-  if (phase === "Waxing Crescent") return { message: "Ideal para hojas y hierbas", color: "#8BC34A" };
+  if (phase === "Luna Nueva") return { message: "Buen momento para raíces", color: "#4CAF50" };
+  if (phase === "Luna Creciente") return { message: "Ideal para hojas y hierbas", color: "#8BC34A" };
   return { message: "Actividad ligera recomendada", color: "#ccc" };
 };
 
@@ -65,7 +65,7 @@ export default function CalendarView() {
     setEvents([...events, newEvent]);
     setNewEventTitle("");
 
-    // 🔥 Definimos variables correctamente
+    //Definimos variables correctamente
     const email = user.email;
     const subject = `🌱 Tarea: ${newEvent.title}`;
     const message = `Recordatorio para el ${selectedDate}: ${newEvent.title}`;
