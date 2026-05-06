@@ -22,7 +22,6 @@ export function LoadMoreBTN({ products }) {
           <Button label={'Load More'} onClick={handleClick}></Button>
         </div>
       ) : (
-        // <!-- MODAL for info of products -->
         
         <Button label={'Load Info'} className="load-info-char" onClick={handleClick}>
           {showModal && <Modal products={products} onClose={handleClose}/>}

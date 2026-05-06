@@ -188,9 +188,8 @@ export function Filters({
               <button
                 type="button"
                 onClick={() => setSelectedCategory("Todos")}
-                className={`whitespace-nowrap transition-colors hover:text-[#4a7c59] ${
-                  selectedCategory === "Todos" ? "text-[#4a7c59]" : ""
-                }`}
+                className={`whitespace-nowrap transition-colors hover:text-[#4a7c59] ${selectedCategory === "Todos" ? "text-[#4a7c59]" : ""
+                  }`}
               >
                 Todos los artículos
               </button>
@@ -201,14 +200,55 @@ export function Filters({
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`whitespace-nowrap transition-colors hover:text-[#4a7c59] ${
-                    selectedCategory === cat ? "text-[#4a7c59]" : ""
-                  }`}
+                  className={`whitespace-nowrap transition-colors hover:text-[#4a7c59] ${selectedCategory === cat ? "text-[#4a7c59]" : ""
+                    }`}
                 >
                   {cat}
                 </button>
               ))}
             </nav>
+          </div>
+        )}
+        {/* =========================
+           Search Categories
+        ========================== */}
+        {filterType === "categoriesSearch" && (
+          <div className="flex flex-col gap-3">
+            <span className="text-white/80 text-sm font-medium ml-1">
+              Tipo de producto
+            </span>
+
+            <div className="flex flex-wrap gap-2">
+              {[
+                { label: "Todo", value: "" },
+                { label: "Hortaliza", value: "hortaliza" },
+                { label: "Fruta", value: "fruta" },
+              ].map((option) => {
+                const isActive = filters.typeProduct === option.value;
+
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => {
+                      // Simulamos el evento de onChange para no romper tu lógica actual
+                      handleChange({
+                        target: { name: "typeProduct", value: option.value }
+                      });
+                    }}
+                    className={`
+              px-5 py-1.5 rounded-full text-sm font-medium transition-all duration-200
+              ${isActive
+                        ? "bg-white text-[#4a7c59] shadow-md"
+                        : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm border border-white/10"
+                      }
+            `}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         )}
       </form>

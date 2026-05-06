@@ -1,3 +1,12 @@
+Si el usuario no ve los 78 productos al mismo tiempo, no los renderices todos de golpe.
+
+LimitToFirst(20): Puedes pedir solo los primeros 20 y cargar más al hacer scroll.
+
+Virtualización: Si decides bajarlos todos, usa una librería como react-window. Esto hace que React solo renderice los productos que están visibles en pantalla, haciendo que el scroll sea extremadamente fluido.
+
+
+
+
 Vale, aquí tienes una forma bastante sólida de rearmarlo sin complicarte demasiado y con margen para crecer luego.
 
 ## 1. Primero: aclarar la idea base
