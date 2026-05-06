@@ -32,7 +32,6 @@ export const ContextProvider = ({ children }) => {
   };
 
   const { isLogged } = useAuth();
-  //TODO: View why is openModal calling normal modal instead of authModal
   const requireAuth = (callback) => {
     if (isLogged) {
       callback();
@@ -70,7 +69,6 @@ export const ContextProvider = ({ children }) => {
         document.body.style.overflow = "hidden";
         document.documentElement.style.overflow = "hidden";
         allButtons.forEach((btn) => (btn.disabled = true));
-        //TODO: Mirar con Fran porque solo se ejecuta una vez
         allLinks.forEach((a) => (a.style.pointerEvents = "none"));
       }
 
@@ -121,12 +119,6 @@ export const ContextProvider = ({ children }) => {
       allLinks.forEach((a) => (a.style.pointerEvents = "auto"));
     };
   }, [modalStack]);
-
-  // ---------------- EFFECT ----------------
-  useEffect(() => { }, []);
-  // const filteredLocations = locations.filter((loc) => {
-  //   return !filters.type || loc.type === filters.type;
-  // });
 
   return (
     <AppContext.Provider

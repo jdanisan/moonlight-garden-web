@@ -1,5 +1,4 @@
 const VARIANTS = {
-  // //TODO: Repare this with the actual info
   loadMore: "w-full rounded-full py-2 px-3  text-card cursor-pointer font-semibold bg-primary-700 hover:bg-green-800 hover:shadow-md",
   ghost: "block md:hidden absolute right-4 top-3 shrink-0 cursor-pointer",
   close: " absolute font-[24px] top-6 right-6 w-12 h-12 bg-black/20 hover:bg-black/40 backdrop-blur-md text-white rounded-full transition-all",

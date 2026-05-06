@@ -4,8 +4,8 @@ import { ref, get } from "firebase/database";
 import { auth, db } from "../../services/firebase";
 
 export function useAuth() {
-  const [user, setUser] = useState(null);        // Firebase user
-  const [userData, setUserData] = useState(null); // datos extra (role, name)
+  const [user, setUser] = useState(null);       
+  const [userData, setUserData] = useState(null); 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,14 +22,12 @@ export function useAuth() {
       setUser(firebaseUser);
 
       try {
-        //  traemos datos del usuario en Realtime Database
         const userRef = ref(db, `users/${firebaseUser.uid}`);
         const snapshot = await get(userRef);
 
         if (snapshot.exists()) {
           setUserData(snapshot.val());
         } else {
-          // si no existe aún en DB, creamos fallback básico
           setUserData({
             email: firebaseUser.email,
             role: "user",
@@ -47,11 +45,9 @@ export function useAuth() {
   }, []);
 
   return {
-    user,              // auth user (uid, email, etc.)
-    userData,          // role, name, etc.
+    user,            
+    userData,          
     loading,
-
-    // helpers útiles
     isLogged: !!user,
     isAdmin: userData?.role === "admin",
   };

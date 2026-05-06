@@ -139,11 +139,14 @@ export default function AgriDashboard() {
                             className="p-2 rounded-xl border-none shadow-sm text-sm bg-white max-w-[200px]"
                         >
                             <option value="">Todas las variedades</option>
+                            {console.log("Lista completa de variedades:", varieties)}
                             {varieties.map((v) => (
+                                
                                 <option key={v} value={v}>
                                     {t(v)} {/* <--- Aquí aplicamos la traducción */}
                                 </option>
-                            ))}
+                            ))};
+                        
                         </select>
                     </div>
                 </div>

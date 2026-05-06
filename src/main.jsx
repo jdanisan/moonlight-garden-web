@@ -11,11 +11,5 @@ root.render(
       <AppRouter />
     </ContextProvider>
   </StrictMode>
-  //TODO: Make a context to englobe all the pages and get all the info{charcaters, locations}
-  // When we have to call the residents we can browse by id from characters
-  // <ContextProvider>
-  //   <SearchPage/>
-  // </ContextProvider>
-  
-  //   {/* //TODO: Function to call the API and get the Information */}
+
 );
