@@ -9,7 +9,6 @@ const parseMaxWeeks = (value) => {
   return Number(value);
 };
 
-// Función para obtener la estación actual del sistema (como backup)
 const getSystemSeason = () => {
   const month = new Date().getMonth();
   if ([2, 3, 4].includes(month)) return "primavera";
@@ -22,7 +21,6 @@ export function ProductList({ filters = null }) {
   const [products, setProducts] = useState([]);
   const [visibleCount, setVisibleCount] = useState(12);
 
-  // La estación viene del filtro (calendario) o se calcula la actual por defecto
   const currentSeason = useMemo(() => {
     return filters?.season || getSystemSeason();
   }, [filters?.season]);
@@ -46,7 +44,6 @@ export function ProductList({ filters = null }) {
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
-      // Si no hay filtros, mostrar todo
       if (!filters) return true;
 
       const attentionMin = filters?.atentionLvl?.min ?? 0;
@@ -78,7 +75,6 @@ export function ProductList({ filters = null }) {
     });
   }, [products, filters]);
 
-  // Separación por temporada basada en la estación seleccionada en el calendario
   const inSeasonProducts = filteredProducts.filter((p) =>
     p.food_season?.includes(currentSeason)
   );
@@ -109,7 +105,7 @@ export function ProductList({ filters = null }) {
                   key={product.id} 
                   product={product} 
                   season={currentSeason} 
-                  variant="garden" // Aquí podrías usar "lunar" si creas la variante
+                  variant="garden" 
                 />
               ))}
             </div>
