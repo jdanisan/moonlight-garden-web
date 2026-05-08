@@ -1,36 +1,28 @@
-import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
+import React from "react";
+import ReminderItem from "../molecules/ReminderItem";
 
-export default function ReminderItem({ reminder }) {
-  const { onRemoveFromPlanning, requireAuth } = useContext(AppContext);
-
-  const handleRemove = () => {
-    requireAuth(() => {
-      onRemoveFromPlanning(reminder.id);
-    });
-  };
+const ReminderList = ({ reminders, plannedIds }) => {
+  if (plannedIds.length === 0) {
+    return (
+      <div className="bg-white/50 p-6 rounded-xl text-center">
+        <p className="text-xs text-gray-400">Sin plantas no hay tareas.</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="bg-white rounded-xl p-4 shadow flex items-start justify-between gap-3">
-      {/* INFO */}
-      <div className="flex flex-col">
-        <h3 className="font-semibold text-green-800">
-          {reminder.task}
-        </h3>
-
-        <p className="text-xs text-gray-500">
-          {reminder.time}
-        </p>
-      </div>
-
-      {/* ACTIONS */}
-      <button
-        onClick={handleRemove}
-        className="text-sm text-red-500 hover:text-red-700 transition"
-        title="Eliminar recordatorio"
-      >
-        ✕
-      </button>
+    <div className="space-y-3">
+      {reminders.length > 0 ? (
+        reminders.map((r, index) => (
+          <ReminderItem key={index} reminder={r} />
+        ))
+      ) : (
+        <div className="p-4 bg-green-100 rounded-lg">
+          <p className="text-xs text-green-800">Todo está al día por ahora.</p>
+        </div>
+      )}
     </div>
   );
-}
+};
+
+export default ReminderList;

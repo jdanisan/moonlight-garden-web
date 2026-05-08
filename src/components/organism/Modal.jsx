@@ -2,13 +2,18 @@ import { BaseModal } from "../atoms/BaseModal";
 import { ProductModal } from "../molecules/ProductModal";
 import { ArticleModal } from "./ArticleModal";
 import { UserAuthModal } from "./UserAuthModal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function Modal({ type, data, onClose }) {
   if (!type) return null;
 
   const needsData = ["product", "article"];
-  const [variant, setVariant] = useState("form-user");
+
+  const [variant, setVariant] = useState(type);
+
+  useEffect(() => {
+    setVariant(type);
+  }, [type]);
 
   if (needsData.includes(type) && !data) return null;
 
@@ -17,6 +22,7 @@ export function Modal({ type, data, onClose }) {
       {type === "product" && (
         <ProductModal product={data} onClose={onClose} />
       )}
+
       {(type === "form-user" || type === "new-user") && (
         <UserAuthModal
           variant={variant}
@@ -28,6 +34,7 @@ export function Modal({ type, data, onClose }) {
           }
         />
       )}
+
       {type === "article" && (
         <ArticleModal article={data} onClose={onClose} />
       )}
