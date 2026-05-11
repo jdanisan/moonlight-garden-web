@@ -1,6 +1,9 @@
+import React from "react";
 import { useSessionTimer } from "../hook/useSessionTimer";
 
 export const SessionManager = ({ children }) => {
-  useSessionTimer(10); // 10 minutos de inactividad
-  return children;
+  // Activamos el Timer (ejemplo: 5 minutos)
+  useSessionTimer(5); 
+
+  return <>{children}</>;
 };

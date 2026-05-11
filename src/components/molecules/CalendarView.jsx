@@ -3,6 +3,9 @@ import { Input } from "../atoms/Input";
 import { getMoonPhase } from "../utils/getMoonPhase";
 import { useAuth } from "../hook/useAuth";
 import { Modal } from "../organism/Modal";
+// Firebase imports
+import { db } from "../../services/firebase"; 
+import { ref, update, onValue } from "firebase/database";
 
 const phaseIcon = {
   "Luna Nueva": "🌑",
@@ -32,7 +35,7 @@ export default function CalendarView() {
   const now = new Date();
   const [selectedDate, setSelectedDate] = useState(null);
   const [monthData, setMonthData] = useState({});
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState([]); // Cargados de Firebase
   const [manualCity, setManualCity] = useState(""); 
   const [currentMonth, setCurrentMonth] = useState(now.getMonth());
   const [currentYear, setCurrentYear] = useState(now.getFullYear());
@@ -47,43 +50,44 @@ export default function CalendarView() {
     return `${currentYear}-${month}-${day}`;
   });
 
-  // --- NAVEGACIÓN DE MESES ---
+  // --- PERSISTENCIA: CARGAR DE FIREBASE ---
+  useEffect(() => {
+    if (!user?.uid) return;
+    const userRemindersRef = ref(db, `users/${user.uid}/remmindersItem`);
+    const unsubscribe = onValue(userRemindersRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const loadedEvents = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+        setEvents(loadedEvents);
+      } else { setEvents([]); }
+    });
+    return () => unsubscribe();
+  }, [user]);
+
+  // --- NAVEGACIÓN ---
   const handlePrevMonth = () => {
-    if (currentMonth === 0) {
-      setCurrentMonth(11);
-      setCurrentYear(currentYear - 1);
-    } else {
-      setCurrentMonth(currentMonth - 1);
-    }
+    if (currentMonth === 0) { setCurrentMonth(11); setCurrentYear(currentYear - 1); } 
+    else { setCurrentMonth(currentMonth - 1); }
   };
 
   const handleNextMonth = () => {
-    if (currentMonth === 11) {
-      setCurrentMonth(0);
-      setCurrentYear(currentYear + 1);
-    } else {
-      setCurrentMonth(currentMonth + 1);
-    }
+    if (currentMonth === 11) { setCurrentMonth(0); setCurrentYear(currentYear + 1); } 
+    else { setCurrentMonth(currentMonth + 1); }
   };
 
-  const monthNames = [
-    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-  ];
+  const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
+  // --- LLAMADA API ORIGINAL ---
   const fetchWeather = async (city) => {
     const targetCity = city.trim() || "Madrid";
     try {
       const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${targetCity}`);
       const geoData = await geoRes.json();
       const place = geoData.results?.[0];
-      
       if (!place) return;
 
       const { latitude, longitude } = place;
-      const res = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=precipitation_probability_max&timezone=auto&forecast_days=16`
-      );
+      const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=precipitation_probability_max&timezone=auto&forecast_days=16`);
       const data = await res.json();
 
       const formatted = {};
@@ -97,33 +101,26 @@ export default function CalendarView() {
 
       setMonthData(formatted);
       if (!selectedDate) setSelectedDate(days[0]);
-    } catch (err) {
-      console.error("Error cargando clima:", err);
-    }
+    } catch (err) { console.error("Error cargando clima:", err); }
   };
 
-  useEffect(() => {
-    fetchWeather(manualCity);
-  }, [currentMonth, currentYear]); // Solo reacciona al tiempo cuando cambia el mes/año
+  useEffect(() => { fetchWeather(manualCity); }, [currentMonth, currentYear]);
 
+  // --- GUARDADO EN FIREBASE ---
   const handleAddEvent = async () => {
-    if (!user?.email) { setShowAuthModal(true); return; }
+    if (!user) { setShowAuthModal(true); return; }
     if (!newEventTitle.trim() || !selectedDate) return;
 
-    const newEvent = { id: Date.now(), date: selectedDate, title: newEventTitle };
-    setEvents([...events, newEvent]);
-    setNewEventTitle("");
-
     try {
-      await fetch("/api/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: user.email,
-          subject: `🌱 Tarea: ${newEvent.title}`,
-          message: `Recordatorio para el ${selectedDate}: ${newEvent.title}`,
-        }),
-      });
+      const eventId = Date.now();
+      const updates = {};
+      updates[`users/${user.uid}/remmindersItem/${eventId}`] = {
+        date: selectedDate,
+        title: newEventTitle,
+        createdAt: eventId
+      };
+      await update(ref(db), updates);
+      setNewEventTitle("");
     } catch (err) { console.error(err); }
   };
 
@@ -137,10 +134,8 @@ export default function CalendarView() {
 
       <div className="w-full max-w-6xl mx-auto py-6 flex flex-col gap-6 lg:flex-row">
         
-        {/* CALENDARIO */}
+        {/* CALENDARIO (ESTILO ORIGINAL) */}
         <div className="flex-1 bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-          
-          {/* CABECERA CON NAVEGACIÓN */}
           <div className="flex justify-between items-center mb-6">
             <div>
               <h2 className="text-2xl font-bold text-gray-800">{monthNames[currentMonth]}</h2>
@@ -152,7 +147,6 @@ export default function CalendarView() {
             </div>
           </div>
 
-          {/* INPUT DE CIUDAD Y BOTÓN BUSCAR */}
           <div className="mb-8 flex gap-3 items-end">
             <div className="flex-1">
               <Input
@@ -175,7 +169,6 @@ export default function CalendarView() {
             </button>
           </div>
 
-          {/* GRID DEL CALENDARIO */}
           <div className="grid grid-cols-7 mb-4 border-b border-gray-100 pb-2">
             {["L", "M", "X", "J", "V", "S", "D"].map((d) => (
               <div key={d} className="text-center text-xs font-bold text-gray-400 tracking-widest">{d}</div>
@@ -187,6 +180,7 @@ export default function CalendarView() {
             {days.map((date) => {
               const data = monthData[date];
               const isSelected = date === selectedDate;
+              const hasEvents = events.some(e => e.date === date);
               return (
                 <div
                   key={date}
@@ -197,13 +191,17 @@ export default function CalendarView() {
                 >
                   <div className={`text-xs font-bold ${isSelected ? "text-green-700" : "text-gray-400"}`}>{date.split("-")[2]}</div>
                   <div className="text-xl my-1">{phaseIcon[data?.phase] || "·"}</div>
-                  <div className="h-1 w-6 rounded-full" style={{ background: getRecommendation(data).color }} />
+                  <div className="flex gap-1">
+                    <div className="h-1 w-4 rounded-full" style={{ background: getRecommendation(data).color }} />
+                    {hasEvents && <div className="h-1 w-1 bg-green-600 rounded-full" />}
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
 
+        {/* PANEL LATERAL (ESTILO ORIGINAL RESTAURADO) */}
         <div className="w-full lg:w-80 flex flex-col gap-4">
           <div className="bg-gradient-to-br from-[#68b0ab] to-[#4a7c59] rounded-3xl p-6 text-white shadow-lg">
             <h3 className="text-lg font-bold mb-4">
@@ -218,14 +216,23 @@ export default function CalendarView() {
               </div>
             </div>
 
+            {/* Listado de tareas del día */}
+            <div className="mb-4 space-y-2 max-h-40 overflow-y-auto">
+              {dayEvents.map(event => (
+                <div key={event.id} className="bg-white/20 p-2 rounded-lg text-xs border border-white/10">
+                  {event.title}
+                </div>
+              ))}
+            </div>
+
             <input
               type="text"
               placeholder="Nueva tarea..."
-              className="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-2 text-sm mb-2 outline-none"
+              className="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-2 text-sm mb-2 outline-none placeholder:text-white/50"
               value={newEventTitle}
               onChange={(e) => setNewEventTitle(e.target.value)}
             />
-            <button onClick={handleAddEvent} className="w-full rounded-xl bg-green-900 py-3 text-sm font-bold">
+            <button onClick={handleAddEvent} className="w-full rounded-xl bg-green-900 py-3 text-sm font-bold shadow-md hover:bg-green-950 transition-all">
               + Recordatorio
             </button>
           </div>

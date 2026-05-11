@@ -3,7 +3,7 @@ import ReminderItem from "../molecules/ReminderItem";
 
 const RemindersPanel = ({ reminders = [] }) => {
   return (
-    <section className="col-span-4 space-y-4">
+    <div className="space-y-4">
       <h3 className="font-bold text-green-900 mb-2 uppercase tracking-widest text-xs">
         Próximas Tareas
       </h3>
@@ -15,13 +15,13 @@ const RemindersPanel = ({ reminders = [] }) => {
           </p>
         </div>
       ) : (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 transition-all duration-300 ease-in-out">
           {reminders.map((r) => (
             <ReminderItem key={r.id} reminder={r} />
           ))}
         </div>
       )}
-    </section>
+    </div>
   );
 };
 
