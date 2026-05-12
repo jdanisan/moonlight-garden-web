@@ -8,6 +8,7 @@ import {
     ResponsiveContainer,
     CartesianGrid,
     Cell,
+    ReferenceLine,
 } from "recharts";
 
 export default function AgriDashboard() {
@@ -20,7 +21,7 @@ export default function AgriDashboard() {
         variety: "",
     });
 
-    // Colores del diseño de la imagen
+    // Colores del diseño 
     const colors = {
         bgMain: "#e8f5e9", // Fondo verde muy claro
         cardBg: "#fdf8e1", // Crema de las tarjetas
@@ -44,7 +45,6 @@ export default function AgriDashboard() {
                 return res.json();
             })
             .then((json) => {
-                // VALIDACIÓN CRÍTICA: Solo mapear si json es un array
                 if (Array.isArray(json)) {
                     const cleanData = json.map((item) => ({
                         ...item,
@@ -53,7 +53,7 @@ export default function AgriDashboard() {
                     setData(cleanData);
                 } else {
                     console.error("La API no devolvió un array:", json);
-                    setData([]); // Resetear a array vacío para evitar errores de .map
+                    setData([]);
                 }
             })
             .catch(err => {
@@ -73,11 +73,9 @@ export default function AgriDashboard() {
     const stages = [...new Set(data.map((d) => d.productStage))];
 
     const TRANSLATIONS = {
-        // Etapas
         "Ex-packaging station price": "Precio salida empaquetado",
         "Farmgate price": "Precio en origen (Granja)",
         "Wholesale price": "Precio mayorista",
-        // Variedades (Ejemplos basados en tu JSON)
         "Apples - All types and varieties": "Manzanas - Todas",
         "Apples - Fuji": "Manzanas Fuji",
         "Apples - Golden Delicious": "Manzanas Golden",
@@ -85,7 +83,6 @@ export default function AgriDashboard() {
         "Apples - Red Delicious": "Manzanas Rojas"
     };
 
-    // Función auxiliar para traducir
     const t = (text) => TRANSLATIONS[text] || text;
 
     return (
@@ -124,7 +121,7 @@ export default function AgriDashboard() {
                             <option value="">Todas las etapas</option>
                             {stages.map((s) => (
                                 <option key={s} value={s}>
-                                    {t(s)} {/* <--- Aquí aplicamos la traducción */}
+                                    {t(s)}
                                 </option>
                             ))}
                         </select>
@@ -139,20 +136,19 @@ export default function AgriDashboard() {
                             className="p-2 rounded-xl border-none shadow-sm text-sm bg-white max-w-[200px]"
                         >
                             <option value="">Todas las variedades</option>
-                            {console.log("Lista completa de variedades:", varieties)}
+                            {/* {console.log("Lista completa de variedades:", varieties)} */}
                             {varieties.map((v) => (
-                                
+
                                 <option key={v} value={v}>
-                                    {t(v)} {/* <--- Aquí aplicamos la traducción */}
+                                    {t(v)}
                                 </option>
                             ))};
-                        
+
                         </select>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
 
-                    {/* GRÁFICA (Toma 3 columnas) */}
                     <div className="md:col-span-3 rounded-[2rem] p-8 shadow-sm relative" style={{ backgroundColor: colors.cardBg }}>
                         <div className="flex justify-between items-center mb-8">
                             <h2 className="text-2xl font-bold opacity-80 text-[#3a6351]">Evolución Precios (€)</h2>
@@ -165,30 +161,44 @@ export default function AgriDashboard() {
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart
                                     data={chartData}
-                                    /* Aumentamos bottom para que no se corte la fecha al rotar */
+
                                     margin={{ top: 0, right: 0, left: -20, bottom: 25 }}
                                 >
                                     <XAxis
-                                        dataKey="fullDate" // <--- Cambiado de "name" a "fullDate"
+                                        dataKey="fullDate"
                                         axisLine={false}
                                         tickLine={false}
                                         tick={{
-                                            fontSize: 9, // Un punto menos para ayudar al espacio
+                                            fontSize: 9,
                                             fontWeight: "bold",
                                             fill: "#a5a5a5"
                                         }}
                                         dy={10}
-                                    /* Opcional: Si tienes muchos datos, rota las fechas para que no choquen */
-                                    /* angle={-45} textAnchor="end" */
                                     />
+                                    <YAxis
+        axisLine={false}
+        tickLine={false}
+        tick={{
+            fontSize: 10,
+            fontWeight: "bold",
+            fill: "#a5a5a5"
+        }}
+        tickFormatter={(value) => `${value}€`}
+    />
                                     <Tooltip
                                         cursor={{ fill: "transparent" }}
-                                        labelStyle={{ color: colors.forestGreen, fontWeight: 'bold' }} // Estilo para la fecha en el tooltip
+                                        labelStyle={{ color: colors.forestGreen, fontWeight: 'bold' }}
                                         contentStyle={{
                                             borderRadius: "15px",
                                             border: "none",
                                             boxShadow: "0 10px 15px -3px rgba(0,0,0,0.05)"
                                         }}
+                                    />
+                                    <ReferenceLine
+                                        y={avg}
+                                        stroke={colors.forestGreen}
+                                        strokeWidth={2}
+                                        strokeDasharray="3 5"
                                     />
                                     <Bar dataKey="price" radius={[10, 10, 10, 10]} barSize={45}>
                                         {chartData.map((entry, index) => (
@@ -197,6 +207,7 @@ export default function AgriDashboard() {
                                                 fill={index === chartData.length - 1 ? colors.sageGreen : colors.softSage}
                                             />
                                         ))}
+
                                     </Bar>
                                 </BarChart>
                             </ResponsiveContainer>
@@ -223,7 +234,6 @@ export default function AgriDashboard() {
 
                         <div className="mt-8">
                             <div className="w-full bg-white/20 h-1.5 rounded-full mb-3">
-                                {/* Si no hay datos, la barra se queda en 0% */}
                                 <div
                                     className="bg-white h-full rounded-full transition-all duration-500"
                                     style={{ width: filtered.length > 0 ? '65%' : '0%' }}

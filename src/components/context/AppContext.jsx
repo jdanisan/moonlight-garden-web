@@ -41,8 +41,8 @@ export const ContextProvider = ({ children }) => {
     if (!user?.uid) return;
 
     // Calculamos el nuevo array
-    const updatedPlants = plannedPlants.includes(plantId) 
-      ? plannedPlants 
+    const updatedPlants = plannedPlants.includes(plantId)
+      ? plannedPlants
       : [...plannedPlants, plantId];
 
     // Escribimos en Firebase (el useEffect de arriba actualizará el estado local)
@@ -51,18 +51,27 @@ export const ContextProvider = ({ children }) => {
       .catch(() => toast.error("Error al guardar"));
   }, [user?.uid, plannedPlants]);
 
+  // --- ACCIÓN: ELIMINAR PLANTA ---
+  const onRemoveFromPlanning = useCallback((plantId) => {
+    if (!user?.uid) return;
+    const updatedPlants = plannedPlants.filter(id => id !== plantId);
+    set(ref(db, `users/${user.uid}/plannedPlants`), updatedPlants)
+      .then(() => toast.success("Planta eliminada de tu huerto"))
+      .catch(() => toast.error("Error al eliminar"));
+  }, [user?.uid, plannedPlants]);
+
   // --- ACCIÓN: AÑADIR RECORDATORIO ---
   const addReminder = useCallback((reminder) => {
     if (!user?.uid) return;
 
     const updatedReminders = [...reminders, reminder];
-    
+
     set(ref(db, `users/${user.uid}/reminders`), updatedReminders)
       .then(() => toast.success("Recordatorio creado"))
       .catch(() => toast.error("Error al guardar recordatorio"));
   }, [user?.uid, reminders]);
 
-  // --- LÓGICA DE MODALES Y AUTH (Tu código original corregido) ---
+  // --- LÓGICA DE MODALES Y AUTH ---
   const openModal = (type, data) => {
     const scrollY = window.scrollY;
     setModalStack(prev => [...prev, { type, data, scrollY }]);
@@ -99,6 +108,7 @@ export const ContextProvider = ({ children }) => {
       plannedPlants,
       reminders,
       onAddToPlanning,
+      onRemoveFromPlanning,
       addReminder,
       openModal,
       closeModal,

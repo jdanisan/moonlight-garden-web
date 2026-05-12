@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth"; // Añadido signOut
 import { ref, get } from "firebase/database";
 import { auth, db } from "../../services/firebase";
 
@@ -7,6 +7,14 @@ export function useAuth() {
   const [user, setUser] = useState(null);       
   const [userData, setUserData] = useState(null); 
   const [loading, setLoading] = useState(true);
+
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -48,6 +56,7 @@ export function useAuth() {
     user,            
     userData,          
     loading,
+    logout, 
     isLogged: !!user,
     isAdmin: userData?.role === "admin",
   };

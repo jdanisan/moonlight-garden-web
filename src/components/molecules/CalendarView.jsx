@@ -3,6 +3,8 @@ import { Input } from "../atoms/Input";
 import { getMoonPhase } from "../utils/getMoonPhase";
 import { useAuth } from "../hook/useAuth";
 import { Modal } from "../organism/Modal";
+import { db } from "../../services/firebase";
+import { ref, update, onValue } from "firebase/database";
 
 const phaseIcon = {
   "Luna Nueva": "🌑",
@@ -33,7 +35,7 @@ export default function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [monthData, setMonthData] = useState({});
   const [events, setEvents] = useState([]);
-  const [manualCity, setManualCity] = useState(""); 
+  const [manualCity, setManualCity] = useState("");
   const [currentMonth, setCurrentMonth] = useState(now.getMonth());
   const [currentYear, setCurrentYear] = useState(now.getFullYear());
 
@@ -46,6 +48,20 @@ export default function CalendarView() {
     const month = String(currentMonth + 1).padStart(2, "0");
     return `${currentYear}-${month}-${day}`;
   });
+
+  // --- PERSISTENCIA: CARGAR DE FIREBASE ---
+  useEffect(() => {
+    if (!user?.uid) return;
+    const userRemindersRef = ref(db, `users/${user.uid}/remmindersItem`);
+    const unsubscribe = onValue(userRemindersRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const loadedEvents = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+        setEvents(loadedEvents);
+      } else { setEvents([]); }
+    });
+    return () => unsubscribe();
+  }, [user]);
 
   // --- NAVEGACIÓN DE MESES ---
   const handlePrevMonth = () => {
@@ -77,7 +93,7 @@ export default function CalendarView() {
       const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${targetCity}`);
       const geoData = await geoRes.json();
       const place = geoData.results?.[0];
-      
+
       if (!place) return;
 
       const { latitude, longitude } = place;
@@ -115,15 +131,15 @@ export default function CalendarView() {
     setNewEventTitle("");
 
     try {
-      await fetch("/api/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: user.email,
-          subject: `🌱 Tarea: ${newEvent.title}`,
-          message: `Recordatorio para el ${selectedDate}: ${newEvent.title}`,
-        }),
-      });
+      const eventId = Date.now();
+      const updates = {};
+      updates[`users/${user.uid}/remmindersItem/${eventId}`] = {
+        date: selectedDate,
+        title: newEventTitle,
+        createdAt: eventId
+      };
+      await update(ref(db), updates);
+      setNewEventTitle("");
     } catch (err) { console.error(err); }
   };
 
@@ -136,10 +152,10 @@ export default function CalendarView() {
       {showAuthModal && <Modal type="form-user" onClose={() => setShowAuthModal(false)} />}
 
       <div className="w-full max-w-6xl mx-auto py-6 flex flex-col gap-6 lg:flex-row">
-        
+
         {/* CALENDARIO */}
         <div className="flex-1 bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-          
+
           {/* CABECERA CON NAVEGACIÓN */}
           <div className="flex justify-between items-center mb-6">
             <div>
@@ -167,7 +183,7 @@ export default function CalendarView() {
                 <option value="Madrid" /><option value="Barcelona" /><option value="Valencia" />
               </datalist>
             </div>
-            <button 
+            <button
               onClick={() => fetchWeather(manualCity)}
               className="px-6 py-2.5 bg-green-700 text-white rounded-xl font-bold text-sm hover:bg-green-800 transition"
             >
@@ -187,6 +203,7 @@ export default function CalendarView() {
             {days.map((date) => {
               const data = monthData[date];
               const isSelected = date === selectedDate;
+              const hasEvents = events.some(e => e.date === date);
               return (
                 <div
                   key={date}
@@ -197,19 +214,22 @@ export default function CalendarView() {
                 >
                   <div className={`text-xs font-bold ${isSelected ? "text-green-700" : "text-gray-400"}`}>{date.split("-")[2]}</div>
                   <div className="text-xl my-1">{phaseIcon[data?.phase] || "·"}</div>
-                  <div className="h-1 w-6 rounded-full" style={{ background: getRecommendation(data).color }} />
+                  <div className="flex gap-1">
+                    <div className="h-1 w-6 rounded-full" style={{ background: getRecommendation(data).color }} />
+                    {hasEvents && <div className="h-1 w-1 bg-green-600 rounded-full " />}
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
-
+        {/* PANEL LATERAL */}
         <div className="w-full lg:w-80 flex flex-col gap-4">
           <div className="bg-gradient-to-br from-[#68b0ab] to-[#4a7c59] rounded-3xl p-6 text-white shadow-lg">
             <h3 className="text-lg font-bold mb-4">
               {selectedDate ? new Date(selectedDate).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }) : "Hoy"}
             </h3>
-            
+
             <div className="bg-white/10 rounded-2xl p-4 mb-6 text-sm space-y-2">
               <p>🌙 {selectedData.phase || "Fase desconocida"}</p>
               <p>🌧️ Lluvia: {selectedData.rainProbability ?? "--"}%</p>
@@ -218,14 +238,23 @@ export default function CalendarView() {
               </div>
             </div>
 
+            {/* Listado de tareas del día */}
+            <div className="mb-4 space-y-2 max-h-40 overflow-y-auto">
+              {dayEvents.map(event => (
+                <div key={event.id} className="bg-white/20 p-2 rounded-lg text-xs border border-white/10">
+                  {event.title}
+                </div>
+              ))}
+            </div>
+
             <input
               type="text"
               placeholder="Nueva tarea..."
-              className="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-2 text-sm mb-2 outline-none"
+              className="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-2 text-sm mb-2 outline-none placeholder:text-white/50"
               value={newEventTitle}
               onChange={(e) => setNewEventTitle(e.target.value)}
             />
-            <button onClick={handleAddEvent} className="w-full rounded-xl bg-green-900 py-3 text-sm font-bold">
+            <button onClick={handleAddEvent} className="w-full rounded-xl bg-green-900 py-3 text-sm font-bold shadow-md hover:bg-green-950 transition-all">
               + Recordatorio
             </button>
           </div>
