@@ -34,8 +34,8 @@ export default function CalendarView() {
   const now = new Date();
   const [selectedDate, setSelectedDate] = useState(null);
   const [monthData, setMonthData] = useState({});
-  const [events, setEvents] = useState([]);
-  const [manualCity, setManualCity] = useState("");
+  const [events, setEvents] = useState([]); // Cargados de Firebase
+  const [manualCity, setManualCity] = useState(""); 
   const [currentMonth, setCurrentMonth] = useState(now.getMonth());
   const [currentYear, setCurrentYear] = useState(now.getFullYear());
 
@@ -63,30 +63,20 @@ export default function CalendarView() {
     return () => unsubscribe();
   }, [user]);
 
-  // --- NAVEGACIÓN DE MESES ---
+  // --- NAVEGACIÓN ---
   const handlePrevMonth = () => {
-    if (currentMonth === 0) {
-      setCurrentMonth(11);
-      setCurrentYear(currentYear - 1);
-    } else {
-      setCurrentMonth(currentMonth - 1);
-    }
+    if (currentMonth === 0) { setCurrentMonth(11); setCurrentYear(currentYear - 1); } 
+    else { setCurrentMonth(currentMonth - 1); }
   };
 
   const handleNextMonth = () => {
-    if (currentMonth === 11) {
-      setCurrentMonth(0);
-      setCurrentYear(currentYear + 1);
-    } else {
-      setCurrentMonth(currentMonth + 1);
-    }
+    if (currentMonth === 11) { setCurrentMonth(0); setCurrentYear(currentYear + 1); } 
+    else { setCurrentMonth(currentMonth + 1); }
   };
 
-  const monthNames = [
-    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-  ];
+  const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
+  // --- LLAMADA API ORIGINAL ---
   const fetchWeather = async (city) => {
     const targetCity = city.trim() || "Madrid";
     try {
@@ -97,9 +87,7 @@ export default function CalendarView() {
       if (!place) return;
 
       const { latitude, longitude } = place;
-      const res = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=precipitation_probability_max&timezone=auto&forecast_days=16`
-      );
+      const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=precipitation_probability_max&timezone=auto&forecast_days=16`);
       const data = await res.json();
 
       const formatted = {};
@@ -113,22 +101,15 @@ export default function CalendarView() {
 
       setMonthData(formatted);
       if (!selectedDate) setSelectedDate(days[0]);
-    } catch (err) {
-      console.error("Error cargando clima:", err);
-    }
+    } catch (err) { console.error("Error cargando clima:", err); }
   };
 
-  useEffect(() => {
-    fetchWeather(manualCity);
-  }, [currentMonth, currentYear]); // Solo reacciona al tiempo cuando cambia el mes/año
+  useEffect(() => { fetchWeather(manualCity); }, [currentMonth, currentYear]);
 
+  // --- GUARDADO EN FIREBASE ---
   const handleAddEvent = async () => {
-    if (!user?.email) { setShowAuthModal(true); return; }
+    if (!user) { setShowAuthModal(true); return; }
     if (!newEventTitle.trim() || !selectedDate) return;
-
-    const newEvent = { id: Date.now(), date: selectedDate, title: newEventTitle };
-    setEvents([...events, newEvent]);
-    setNewEventTitle("");
 
     try {
       const eventId = Date.now();
@@ -168,7 +149,6 @@ export default function CalendarView() {
             </div>
           </div>
 
-          {/* INPUT DE CIUDAD Y BOTÓN BUSCAR */}
           <div className="mb-8 flex gap-3 items-end">
             <div className="flex-1">
               <Input
@@ -191,7 +171,6 @@ export default function CalendarView() {
             </button>
           </div>
 
-          {/* GRID DEL CALENDARIO */}
           <div className="grid grid-cols-7 mb-4 border-b border-gray-100 pb-2">
             {["L", "M", "X", "J", "V", "S", "D"].map((d) => (
               <div key={d} className="text-center text-xs font-bold text-gray-400 tracking-widest">{d}</div>
@@ -215,8 +194,8 @@ export default function CalendarView() {
                   <div className={`text-xs font-bold ${isSelected ? "text-green-700" : "text-gray-400"}`}>{date.split("-")[2]}</div>
                   <div className="text-xl my-1">{phaseIcon[data?.phase] || "·"}</div>
                   <div className="flex gap-1">
-                    <div className="h-1 w-6 rounded-full" style={{ background: getRecommendation(data).color }} />
-                    {hasEvents && <div className="h-1 w-1 bg-green-600 rounded-full " />}
+                    <div className="h-1 w-4 rounded-full" style={{ background: getRecommendation(data).color }} />
+                    {hasEvents && <div className="h-1 w-1 bg-green-600 rounded-full" />}
                   </div>
                 </div>
               );

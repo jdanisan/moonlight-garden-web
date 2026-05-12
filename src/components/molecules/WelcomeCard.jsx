@@ -9,27 +9,28 @@ import toast from "react-hot-toast";
 const WelcomeCard = () => {
   const { user, isLogged } = useAuth();
   const { requireAuth } = useContext(AppContext);
-  const [isSending, setIsSending] = useState(false); 
+  const [isSending, setIsSending] = useState(false); // Estado para el botón
 
   const name = isLogged ? user.email.split('@')[0] : "visitante";
 
   const handleResetPassword = async () => {
     if (!isLogged || !user?.email) return;
     
-    setIsSending(true); 
+    setIsSending(true); // Bloqueamos el botón para evitar clics dobles
     try {
       await sendPasswordResetEmail(auth, user.email);
       toast.success("Te hemos enviado un email para cambiar tu contraseña");
     } catch (err) {
       toast.error("Error al intentar resetear la contraseña");
     } finally {
-      setIsSending(false); 
+      setIsSending(false); // Liberamos el botón
     }
   };
 
   return (
     <div className="bg-green-700 text-white p-8 rounded-2xl mb-6 shadow-lg relative overflow-hidden">
       
+      {/* OPCIÓN DE RESETEAR CONTRASEÑA (Texto en lugar de icono) */}
       {isLogged && (
         <button
           onClick={handleResetPassword}
