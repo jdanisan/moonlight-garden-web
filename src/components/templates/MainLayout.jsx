@@ -3,6 +3,7 @@ import { AppContext } from "../context/AppContext";
 import { useContext } from "react";
 import { Footer } from "../organism/Footer";
 import { Modal } from "../organism/Modal";
+import { Toaster } from "react-hot-toast";
 
 export function MainLayout({ children }) {
   const { currentModal, closeModal } = useContext(AppContext);
@@ -21,8 +22,9 @@ export function MainLayout({ children }) {
           type={currentModal.type}
           data={currentModal.data}
           onClose={closeModal}
-        />
+        />        
       )}
+       <Toaster position="bottom-right" />
     </>
   );
 }

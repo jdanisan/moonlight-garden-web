@@ -28,17 +28,13 @@ export default function HeroSearch({
         <section className="relative w-full lg:w-[85%]  mt-10 mx-auto bg-linear-to-br from-[#5f8d77] to-[#4a7c59] shadow-[0_20px_50px_rgba(0,0,0,0.15)] py-20 px-6 rounded-4xl flex flex-col items-center justify-center text-center transition-all duration-500 ease-in-out">
 
             <div className="w-full max-w-4xl flex flex-col items-center gap-8">
-                {/* 1. TITULO CON ICONO */}
                 <div className="flex items-center gap-3 mb-8">
                     <Leaf className="text-white/40 w-8 h-8 rotate-12" />
                     <h1 className="text-white text-4xl md:text-5xl font-extrabold tracking-tight">
                         {title}
                     </h1>
                 </div>
-
-                {/* 2. BARRA DE BÚSQUEDA (Usando tu lógica de localSearch + Iconos) */}
                 <div className="relative w-full max-w-2xl mb-4 group">
-                    {/* Icono de búsqueda */}
                     <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none z-10">
                         <Search
                             className={clsx(
@@ -53,11 +49,9 @@ export default function HeroSearch({
                         id="floating_search"
                         value={localSearch}
                         onChange={(e) => setLocalSearch(e.target.value)}
-                        placeholder=" " // Importante: dejar un espacio para que el peer-placeholder-shown funcione
+                        placeholder=" "
                         className="peer w-full pt-8 pb-3 pl-14 pr-14 rounded-2xl bg-white/95 backdrop-blur-sm text-gray-800 text-lg shadow-2xl border-none focus:ring-4 focus:ring-white/20 transition-all outline-none"
                     />
-
-                    {/* Floating Label */}
                     <label
                         htmlFor="floating_search"
                         className={clsx(
@@ -70,9 +64,6 @@ export default function HeroSearch({
                     </label>
                 </div>
 
-             
-
-                {/* 4. CATEGORIES SEARCH (Integrando tu componente de filtros) */}
                 {filterType === "categoriesSearch" && (
                     <div className="flex flex-col items-center gap-4 animate-in fade-in duration-700">
                         <span className="text-white/80 text-sm font-semibold tracking-wide uppercase">
@@ -92,7 +83,6 @@ export default function HeroSearch({
                                         key={option.value}
                                         type="button"
                                         onClick={() => {
-                                            // Usamos tu función handleChange original
                                             handleChange({
                                                 target: { name: "typeProduct", value: option.value }
                                             });
@@ -111,8 +101,6 @@ export default function HeroSearch({
                         </div>
                     </div>
                 )}
-
-                {/* 5. FEEDBACK DE RESULTADOS */}
                 {localSearch && (
                     <p className="mt-6 text-white/90 text-sm font-medium bg-[#3a5a40]/30 px-4 py-1 rounded-full border border-white/10 animate-pulse">
                         Mostrando {totalResults} resultados para "{localSearch}"
