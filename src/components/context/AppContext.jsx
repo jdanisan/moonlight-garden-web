@@ -42,10 +42,9 @@ export const ContextProvider = ({ children }) => {
 
     // Calculamos el nuevo array
     const updatedPlants = plannedPlants.includes(plantId)
-      ? plannedPlants
-    const updatedPlants = plannedPlants.includes(plantId) 
-      ? plannedPlants 
-      : [...plannedPlants, plantId];
+      ? plannedPlants : [...plannedPlants, plantId];
+
+    // Escribimos en Firebase (el useEffect de arriba actualizará el estado local)
     set(ref(db, `users/${user.uid}/plannedPlants`), updatedPlants)
       .then(() => toast.success("Planta añadida a tu huerto"))
       .catch(() => toast.error("Error al guardar"));
