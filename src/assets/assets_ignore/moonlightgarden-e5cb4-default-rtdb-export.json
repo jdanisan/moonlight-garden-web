@@ -1,0 +1,1115 @@
+{
+  "articles": [
+    {
+      "author": {
+        "name": "Laura Montes",
+        "specialty": "Botánica urbana y propagación de plantas de interior"
+      },
+      "category": "Propagación",
+      "content": "La propagación por esquejes es una de las técnicas más accesibles y efectivas para multiplicar plantas en casa sin necesidad de semillas. Consiste en cortar una parte sana de la planta madre —generalmente un tallo con nudos— y estimular su desarrollo hasta que genere raíces propias. Este método permite obtener clones exactos de la planta original, manteniendo sus mismas características.  Para comenzar, es importante elegir una planta saludable, libre de plagas o signos de estrés. El corte debe hacerse con una herramienta limpia y afilada, preferiblemente justo debajo de un nudo. Una vez obtenido el esqueje, se pueden seguir dos caminos: colocarlo en agua para favorecer el desarrollo inicial de raíces o plantarlo directamente en sustrato húmedo.  Durante el proceso, la humedad y la luz indirecta son fundamentales. Un exceso de sol puede deshidratar el esqueje antes de que enraíce, mientras que la falta de humedad ralentiza su desarrollo. Con paciencia, en unas semanas comenzarán a aparecer raíces funcionales que permitirán el trasplante.",
+      "date": "10 de enero de 2025",
+      "excerpt": "Aprende a multiplicar tus plantas favoritas mediante esquejes, una técnica sencilla y efectiva para reproducir especies sanas en casa.",
+      "id": 1,
+      "image": "https://images.unsplash.com/photo-1592150621744-aca64f48394a?auto=format&fit=crop&q=80&w=800",
+      "key_takeaways": [
+        "Los esquejes permiten clonar plantas con sus mismas características.",
+        "Se deben cortar tallos sanos justo debajo de un nudo con herramienta limpia.",
+        "Se pueden enraizar en agua o en sustrato húmedo.",
+        "La humedad y luz indirecta son clave para el éxito."
+      ],
+      "readTime": "6 min read",
+      "title": "Cómo propagar plantas por esquejes"
+    },
+    {
+      "author": {
+        "name": "Diego Salvatierra",
+        "specialty": "Horticultura doméstica y técnicas de enraizamiento"
+      },
+      "category": "Propagación",
+      "content": "A la hora de propagar plantas, uno de los debates más comunes es si es mejor hacerlo en agua o directamente en tierra. Ambos métodos funcionan, pero cada uno tiene ventajas y desventajas dependiendo de la especie y del nivel de experiencia.  La propagación en agua permite observar el desarrollo de las raíces en tiempo real, lo que resulta ideal para principiantes. Además, facilita detectar problemas como pudrición o falta de crecimiento. Sin embargo, las raíces formadas en agua suelen ser más frágiles y necesitan una adaptación posterior al sustrato.  Por otro lado, la propagación en tierra ofrece un entorno más natural desde el inicio. Las raíces se desarrollan directamente en el medio definitivo, lo que reduce el estrés del trasplante. No obstante, al no ver el proceso interno, es más difícil saber si el esqueje está progresando correctamente.  En general, plantas tropicales suelen adaptarse bien a ambos métodos, mientras que especies más delicadas pueden beneficiarse de un inicio en agua.",
+      "date": "15 de febrero de 2025",
+      "excerpt": "Descubre las diferencias entre propagar plantas en agua o en sustrato, y cuál método es más adecuado según la especie.",
+      "id": 2,
+      "image": "https://origingames.net/wp-content/uploads/monstera_siltepecana_propagation_b0aa.webp",
+      "key_takeaways": [
+        "La propagación en agua permite ver el crecimiento de raíces en tiempo real, ideal para principiantes.",
+        "Las raíces formadas en agua suelen ser más frágiles y requieren adaptación al sustrato.",
+        "La propagación en tierra ofrece un desarrollo más natural y reduce el estrés del trasplante.",
+        "La elección del método depende de la especie de planta y la experiencia del cultivador."
+      ],
+      "readTime": "5 min read",
+      "title": "Propagación en agua vs tierra"
+    },
+    {
+      "author": {
+        "name": "Marina Roldán",
+        "specialty": "Fitopatología y control de plagas en plantas ornamentales"
+      },
+      "category": "Plagas y Enfermedades",
+      "content": "Las plantas de interior pueden verse afectadas por diversas plagas que, si no se detectan a tiempo, pueden comprometer seriamente su salud. Entre las más comunes se encuentran los pulgones, la cochinilla, la araña roja y los trips.  El primer paso para una buena detección es la observación constante. Hojas amarillentas, manchas, deformaciones o una textura pegajosa pueden ser señales de alerta. También es importante revisar el envés de las hojas, ya que muchas plagas se esconden allí.  Cada plaga presenta patrones distintos: los pulgones suelen agruparse en brotes tiernos, la cochinilla aparece como pequeños bultos blancos o marrones, y la araña roja deja finas telarañas casi imperceptibles.  Detectarlas temprano permite actuar antes de que la planta sufra daños irreversibles. Por ello, la inspección regular es una de las mejores herramientas de prevención.",
+      "date": "2 de marzo de 2025",
+      "excerpt": "Conoce las plagas más frecuentes en plantas de interior y cómo detectarlas a tiempo antes de que causen daños graves.",
+      "id": 3,
+      "image": "https://cdn0.ecologiaverde.com/es/posts/2/1/3/enfermedades_de_las_plantas_mas_comunes_2312_2_600.jpg",
+      "key_takeaways": [
+        "Las plagas más comunes en plantas de interior son pulgones, cochinilla, araña roja y trips.",
+        "La observación constante es clave para detectar infestaciones a tiempo.",
+        "Síntomas como manchas, hojas amarillas o telarañas pueden indicar la presencia de plagas.",
+        "Revisar el envés de las hojas es fundamental para una detección temprana."
+      ],
+      "readTime": "7 min read",
+      "title": "Identificación de plagas comunes"
+    },
+    {
+      "author": {
+        "name": "Javier Lomas",
+        "specialty": "Agricultura ecológica y tratamientos naturales para plantas"
+      },
+      "category": "Plagas y Enfermedades",
+      "content": "Combatir plagas no siempre requiere productos químicos agresivos. De hecho, existen múltiples alternativas naturales que pueden ser igual de efectivas si se aplican correctamente.  Uno de los remedios más comunes es el jabón potásico, que actúa debilitando la estructura de insectos como pulgones o cochinillas. También el aceite de neem es ampliamente utilizado por su capacidad de interferir en el ciclo de vida de muchas plagas.  Otra opción es el uso de infusiones de ajo o cebolla, que funcionan como repelentes naturales. Estas soluciones no solo ayudan a eliminar insectos, sino que también reducen la probabilidad de reinfestación.  El éxito de estos métodos depende de la constancia. No suelen ser soluciones instantáneas, sino tratamientos progresivos que requieren varias aplicaciones.  ",
+      "date": "18 de marzo de 2025",
+      "excerpt": "Explora soluciones ecológicas para eliminar insectos dañinos sin recurrir a productos químicos agresivos.",
+      "id": 4,
+      "image": "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&q=80&w=800",
+      "key_takeaways": [
+        "El jabón potásico y el aceite de neem son tratamientos naturales muy efectivos contra plagas.",
+        "Infusiones de ajo o cebolla actúan como repelentes naturales.",
+        "Estos métodos requieren varias aplicaciones y no son soluciones inmediatas.",
+        "La constancia es clave para eliminar plagas y prevenir reinfestaciones."
+      ],
+      "readTime": "6 min read",
+      "title": "Remedios naturales contra plagas"
+    },
+    {
+      "author": {
+        "name": "Sofía Carrillo",
+        "specialty": "Ciencia del suelo y nutrición vegetal"
+      },
+      "category": "Ciencia del suelo",
+      "content": "El pH del suelo es uno de los factores más determinantes en la salud de las plantas, ya que influye directamente en la disponibilidad de nutrientes. Un suelo demasiado ácido o demasiado alcalino puede impedir que la planta absorba correctamente elementos esenciales como el hierro, el calcio o el magnesio.  La mayoría de las plantas crecen mejor en un rango ligeramente ácido a neutro, aunque esto puede variar según la especie. Medir el pH es relativamente sencillo con kits específicos o medidores digitales.  Una vez conocido el valor, es posible ajustarlo. Para reducir la acidez se puede añadir cal agrícola, mientras que para aumentarla se pueden usar materiales como turba o azufre.  Entender este equilibrio permite optimizar el crecimiento, evitar deficiencias y mejorar la salud general del sustrato a largo plazo.",
+      "date": "25 de marzo de 2025",
+      "excerpt": "El pH del suelo influye directamente en la absorción de nutrientes. Aprende a medirlo y ajustarlo correctamente.",
+      "id": 5,
+      "image": "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=800",
+      "key_takeaways": [
+        "El pH del suelo influye directamente en la disponibilidad de nutrientes para las plantas.",
+        "La mayoría de plantas crecen mejor en un pH ligeramente ácido a neutro.",
+        "El pH se puede medir fácilmente con kits o medidores digitales.",
+        "Ajustar el pH mejora la absorción de nutrientes y la salud del sustrato."
+      ],
+      "readTime": "8 min read",
+      "title": "La importancia del pH del suelo"
+    },
+    {
+      "author": {
+        "name": "Andrés Valverde",
+        "specialty": "Cultivo en maceta y formulación de sustratos"
+      },
+      "category": "Ciencia del suelo",
+      "content": "El sustrato es el medio en el que las plantas desarrollan sus raíces, por lo que su elección es clave para su crecimiento. No todos los sustratos cumplen la misma función: algunos retienen más agua, otros favorecen la aireación y algunos aportan nutrientes adicionales.  Entre los más comunes se encuentran la fibra de coco, la perlita, la turba y la vermiculita. La fibra de coco, por ejemplo, es ideal para retener humedad sin compactarse demasiado, mientras que la perlita mejora el drenaje y evita el encharcamiento.  Cada planta tiene necesidades específicas. Las suculentas prefieren sustratos muy drenantes, mientras que las plantas tropicales requieren mezclas más húmedas y ricas en materia orgánica.  Elegir correctamente el sustrato puede marcar la diferencia entre una planta saludable y una que lucha por sobrevivir.",
+      "date": "5 de abril de 2025",
+      "excerpt": "Descubre los diferentes tipos de sustratos y cómo elegir el más adecuado para cada tipo de planta.",
+      "id": 6,
+      "image": "https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&q=80&w=800",
+      "key_takeaways": [
+        "El sustrato influye en la retención de agua, aireación y nutrición de la planta.",
+        "La fibra de coco retiene humedad y la perlita mejora el drenaje.",
+        "Cada planta requiere un tipo de sustrato diferente según sus necesidades.",
+        "Elegir el sustrato adecuado es clave para un crecimiento saludable."
+      ],
+      "readTime": "7 min read",
+      "title": "Tipos de sustratos y sus usos"
+    },
+    {
+      "author": {
+        "name": "Elena Pardo",
+        "specialty": "Fisiología vegetal y manejo del riego"
+      },
+      "category": "Riego",
+      "content": "El riego es una de las prácticas más importantes en el cuidado de plantas, pero también una de las más mal ejecutadas. Uno de los errores más frecuentes es el exceso de agua, que puede provocar pudrición de raíces.  Otro problema habitual es regar sin comprobar la humedad del sustrato. Muchas plantas prefieren que la tierra se seque parcialmente entre riegos, y no hacerlo puede generar estrés radicular.  También es común regar siempre en horarios inadecuados, como en las horas de mayor sol, lo que aumenta la evaporación y reduce la eficacia del riego.  Aprender a observar la planta es clave: hojas caídas, color apagado o sustrato constantemente húmedo son señales de alerta.",
+      "date": "12 de abril de 2025",
+      "excerpt": "Evita los fallos más frecuentes al regar y mejora la salud de tus plantas con técnicas adecuadas.",
+      "id": 7,
+      "image": "https://tse2.mm.bing.net/th/id/OIP.i7LEDT2-Bo_AgKxwa-zUagHaJQ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "key_takeaways": [
+        "El exceso de riego puede provocar pudrición de raíces.",
+        "No comprobar la humedad del sustrato es uno de los errores más frecuentes.",
+        "Regar en horas de mucho sol reduce la eficacia del agua.",
+        "Señales como hojas caídas o tierra constantemente húmeda indican problemas de riego."
+      ],
+      "readTime": "5 min read",
+      "title": "Errores comunes al regar plantas"
+    },
+    {
+      "author": {
+        "name": "Carlos Méndez",
+        "specialty": "Ecología de plantas de interior y adaptación climática"
+      },
+      "category": "Riego",
+      "content": "No existe una frecuencia universal de riego, ya que depende de factores como el tipo de planta, la estación del año y las condiciones ambientales. En verano, por ejemplo, las plantas suelen requerir más agua debido a la evaporación, mientras que en invierno el consumo disminuye.  La mejor forma de saber cuándo regar es observar el sustrato y la planta. Introducir un dedo en la tierra o usar un medidor de humedad puede ayudar a evitar errores.  Algunas plantas tropicales prefieren humedad constante, mientras que otras, como las suculentas, necesitan periodos de sequía entre riegos.",
+      "date": "20 de abril de 2025",
+      "excerpt": "Aprende a determinar la frecuencia de riego ideal según el tipo de planta, clima y estación del año.",
+      "id": 8,
+      "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&q=80&w=800",
+      "key_takeaways": [
+        "No existe una frecuencia fija de riego; depende de la planta, clima y estación.",
+        "En verano las plantas suelen necesitar más agua que en invierno.",
+        "La humedad del sustrato es el mejor indicador para saber cuándo regar.",
+        "Cada especie tiene necesidades de riego distintas según su tipo."
+      ],
+      "readTime": "4 min read",
+      "title": "¿Con qué frecuencia debo regar?"
+    },
+    {
+      "author": {
+        "name": "Nuria Escobar",
+        "specialty": "Fotobiología vegetal y diseño de interiores verdes"
+      },
+      "category": "Luz",
+      "content": "La luz es fundamental para la fotosíntesis, pero no todas las plantas necesitan la misma intensidad. La luz directa proviene del sol sin filtros y es ideal para especies resistentes, mientras que la luz indirecta es más suave y adecuada para la mayoría de plantas de interior.  La sombra, por su parte, no significa ausencia total de luz, sino iluminación muy tenue. Algunas plantas tropicales se adaptan perfectamente a estas condiciones.  Colocar correctamente cada planta según su necesidad de luz es esencial para evitar quemaduras, crecimiento débil o pérdida de color.",
+      "date": "28 de abril de 2025",
+      "excerpt": "Comprende las diferencias entre luz directa, indirecta y sombra, y cómo afectan al crecimiento de tus plantas.",
+      "id": 9,
+      "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&q=80&w=800",
+      "key_takeaways": [
+        "La luz directa es intensa y adecuada para plantas resistentes.",
+        "La luz indirecta es la más común y segura para la mayoría de plantas de interior.",
+        "La sombra implica baja intensidad de luz, no ausencia total.",
+        "Ubicar correctamente la planta según su necesidad de luz evita daños y crecimiento débil."
+      ],
+      "readTime": "6 min read",
+      "title": "Tipos de luz para plantas de interior"
+    },
+    {
+      "author": {
+        "name": "Miguel Álvarez",
+        "specialty": "Tecnología de cultivo indoor y sistemas de iluminación LED"
+      },
+      "category": "Luz",
+      "content": "Cuando la luz natural no es suficiente, la iluminación artificial puede ser una excelente alternativa para mantener las plantas saludables. Las lámparas de cultivo están diseñadas para imitar el espectro solar y favorecer la fotosíntesis.  Es importante colocarlas a una distancia adecuada para evitar exceso de calor o falta de intensidad. También se debe respetar un ciclo de luz similar al natural, generalmente entre 10 y 16 horas dependiendo de la especie.  Este tipo de iluminación es especialmente útil en invierno o en espacios con poca entrada de luz natural.",
+      "date": "5 de mayo de 2025",
+      "excerpt": "Descubre cómo complementar la luz natural con iluminación artificial para mantener tus plantas saludables todo el año.",
+      "id": 10,
+      "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=800",
+      "key_takeaways": [
+        "Las lámparas de cultivo imitan el espectro solar para ayudar a la fotosíntesis.",
+        "Es importante colocarlas a una distancia adecuada para evitar exceso o falta de luz.",
+        "Se recomienda un ciclo de luz de entre 10 y 16 horas según la especie.",
+        "La luz artificial es útil cuando la luz natural es insuficiente."
+      ],
+      "readTime": "7 min read",
+      "title": "Cómo usar luz artificial correctamente"
+    }
+  ],
+  "food": {
+    "food1": {
+      "food_atention": 3,
+      "food_description": "Es recomendable plantar acelga entre Luna Creciente y Luna Llena, preferiblemente en los primeros días de Luna Llena si buscas crecimiento vigoroso de hojas. La acelga es rica en vitaminas, fácil de cultivar, resistente al frío y muy productiva durante largos periodos.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/acelga.png",
+      "food_maturation": [
+        6,
+        8
+      ],
+      "food_moonPhase": [
+        "Luna Creciente ",
+        "Luna Llena"
+      ],
+      "food_name": "Acelga",
+      "food_season": [
+        "primavera",
+        "otoño"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food2": {
+      "food_atention": 5,
+      "food_description": "Se recomienda plantar calabacín durante la Luna Creciente para potenciar su gran desarrollo foliar y producción de frutos. Es bajo en calorías, rico en fibra y vitamina C.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/calabacin.png",
+      "food_maturation": [
+        6,
+        8
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Calabacin",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food3": {
+      "food_atention": 5,
+      "food_description": "La plantación ideal es durante el Cuarto Menguante, favoreciendo el crecimiento de raíces y bulbos. Es un potente antioxidante natural y antiinflamatorio con beneficios para el sistema inmunológico.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/cebolla.png",
+      "food_maturation": [
+        12,
+        20
+      ],
+      "food_moonPhase": [
+        "Cuarto Menguante"
+      ],
+      "food_name": "Cebolla",
+      "food_season": [
+        "invierno",
+        "primavera"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food4": {
+      "food_atention": 6,
+      "food_description": "Fase ideal la Luna Creciente, la cual favorece el desarrollo de las frutas. Es rica en vitamina C y ayuda a reforzar el sistema inmunológico.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/clementina.png",
+      "food_maturation": [
+        156,
+        260
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Clementina",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
+    "food5": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar judía verde en Luna Creciente, favoreciendo el crecimiento aéreo de la planta y la formación de vainas. Es baja en calorías y rica en fibra.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/judia_verde.png",
+      "food_maturation": [
+        8,
+        10
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Judia Verde",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food6": {
+      "food_atention": 6,
+      "food_description": "Es recomendable plantar limón en Luna Creciente para estimular la floración y el cuajado de frutos. El limón es antioxidante, fuente de vitamina C y muy versátil.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/limon.png",
+      "food_maturation": [
+        156,
+        260
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Limon",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
+    "food7": {
+      "food_atention": 6,
+      "food_description": "Es recomendable plantar manzana golden en Luna Creciente para potenciar el desarrollo inicial del árbol y sus ramas. Es dulce, de textura firme y se conserva muy bien.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/manzana_golden.png",
+      "food_maturation": [
+        156,
+        312
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Manzana golden",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Fruta"
+    },
+    "food8": {
+      "food_atention": 6,
+      "food_description": "Es recomendable plantar naranja navel durante la Luna Creciente, favoreciendo la formación de fruto y vigor general. Es muy jugosa y rica en vitamina C.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/naranja_navel.png",
+      "food_maturation": [
+        156,
+        260
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Naranja navel",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
+    "food9": {
+      "food_atention": 6,
+      "food_description": "Es recomendable plantar patata en Luna Menguante para estimular el crecimiento subterráneo de los tubérculos. La patata es energética y muy productiva en suelos sueltos.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/patata.jpg",
+      "food_maturation": [
+        10,
+        14
+      ],
+      "food_moonPhase": [
+        "Luna Menguante"
+      ],
+      "food_name": "Patata",
+      "food_season": [
+        "invierno",
+        "primavera"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food10": {
+      "food_atention": 6,
+      "food_description": "Es recomendable plantar pera agua en Luna Creciente, enfocando el vigor en el desarrollo vegetativo inicial. La pera agua es jugosa, dulce, ligera, excelente para consumo fresco y con buena adaptación al clima mediterráneo.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/pera_agua.png",
+      "food_maturation": [
+        156,
+        260
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Pera agua",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Fruta"
+    },
+    "food11": {
+      "food_atention": 7,
+      "food_description": "Es recomendable plantar pimiento verde entre Luna Creciente y Luna Llena para favorecer el cuajado y desarrollo de los frutos. El pimiento verde es rico en antioxidantes, bajo en calorías, y muy versátil para cocinar.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/pimiento_verde.png",
+      "food_maturation": [
+        10,
+        14
+      ],
+      "food_moonPhase": [
+        "Luna Creciente ",
+        "Luna Llena"
+      ],
+      "food_name": "Pimiento verde",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food12": {
+      "food_atention": 7,
+      "food_description": "Es recomendable plantar plátano en Luna Creciente, idealmente al inicio de esta fase, para favorecer el desarrollo del tallo y hojas. El plátano es energético, rico en potasio, fácil de digerir y altamente productivo en climas cálidos.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/platano2.png",
+      "food_maturation": [
+        40,
+        60
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Platano",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
+    "food13": {
+      "food_atention": 8,
+      "food_description": "Es recomendable plantar tomate en Luna Creciente, especialmente cerca de Luna Llena para estimular el crecimiento de las partes aéreas. El tomate es antioxidante, muy consumido, ideal en múltiples recetas y con buen rendimiento si se riega bien.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/tomate.png",
+      "food_maturation": [
+        10,
+        14
+      ],
+      "food_moonPhase": [
+        "Luna Creciente ",
+        "Luna Llena"
+      ],
+      "food_name": "Tomate",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
+    "food14": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar zanahoria en Luna Menguante, ya que favorece el crecimiento de raíces y mejora su sabor. La zanahoria es rica en betacarotenos, fácil de conservar, resistente al frío y muy nutritiva.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/zanahoria.png",
+      "food_maturation": [
+        8,
+        10
+      ],
+      "food_moonPhase": [
+        "Luna Menguante"
+      ],
+      "food_name": "Zanahoria",
+      "food_season": [
+        "primavera",
+        "otoño"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food15": {
+      "food_atention": 3,
+      "food_description": "Es recomendable plantar lechuga romana en la transición hacia Luna Creciente para fomentar un crecimiento uniforme de hojas sin que se espigue prematuramente. Es crujiente, rica en agua e ideal para ensaladas.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/lechuga_romana.png",
+      "food_maturation": [
+        5,
+        7
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Lechuga romana",
+      "food_season": [
+        "primavera",
+        "otoño"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food16": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar la variedad Fuji en Luna Creciente, favoreciendo la concentración de azúcares y su característica textura crujiente. Es muy dulce y apreciada por su larga conservación.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/manzana_fuji.jpg",
+      "food_maturation": [
+        22,
+        26
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Manzanas - Fuji",
+      "food_season": [
+        "otoño"
+      ],
+      "food_type": "Fruta"
+    },
+    "food17": {
+      "food_atention": 3,
+      "food_description": "Es recomendable plantar manzana Gala en Luna Creciente para potenciar su aroma y precocidad en la cosecha. Es una fruta muy aromática, jugosa y perfecta para los niños.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/manzanas_gala.jpg",
+      "food_maturation": [
+        18,
+        22
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Manzanas - Gala",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Fruta"
+    },
+    "food18": {
+      "food_atention": 3,
+      "food_description": "Es recomendable plantar manzana Granny Smith en Luna Creciente para favorecer su acidez equilibrada y firmeza. Destaca por su color verde intenso y su alto contenido en agua.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/manzana_grany.jpg",
+      "food_maturation": [
+        22,
+        28
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Manzanas  - Granny smith",
+      "food_season": [
+        "otoño"
+      ],
+      "food_type": "Fruta"
+    },
+    "food19": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar albaricoques en Luna Creciente para asegurar una floración vigorosa y frutos carnosos. Son una fuente excelente de vitamina A y potasio.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/albaricoque.jpg",
+      "food_maturation": [
+        12,
+        16
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Albaricoques - All types",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
+    "food20": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar aguacate Hass en Luna Creciente, lo que favorece el pegue de los injertos y la cremosidad de la pulpa. Es versátil en la cocina y muy nutritivo.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/aguacate-hass.jpg",
+      "food_maturation": [
+        36,
+        48
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Aguacate - Hass",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Fruta"
+    },
+    "food21": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar coliflor en Luna Creciente para asegurar una pella blanca, compacta y protegida por sus hojas. Es baja en calorías y muy rica en fibra dietética.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/coliflor.jpg",
+      "food_maturation": [
+        14,
+        20
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Coliflores - All types",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food22": {
+      "food_atention": 3,
+      "food_description": "Es recomendable plantar pepino liso en Luna Creciente para favorecer una piel fina, sin espinas y un sabor más suave. Muy valorado en ensaladas gourmet por su textura.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/pepinillo_smooth.jpg",
+      "food_maturation": [
+        8,
+        11
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Pepinos - Smooth",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food23": {
+      "food_atention": 4,
+      "food_description": "Es recomendable sembrar champiñones en Luna Menguante o Luna Nueva para favorecer la colonización del sustrato en condiciones de oscuridad. Son bajos en sodio y ricos en minerales.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/champi%C3%B1ones.jpg",
+      "food_maturation": [
+        4,
+        6
+      ],
+      "food_moonPhase": [
+        "Luna Menguante ",
+        "Luna Nueva"
+      ],
+      "food_name": "Champiñoñes",
+      "food_season": [
+        "todo el año"
+      ],
+      "food_type": "Hongo"
+    },
+    "food24": {
+      "food_atention": 2,
+      "food_description": "Es recomendable plantar ajo violeta en Luna Menguante para potenciar su sabor picante y la intensidad del color de sus túnicas. Muy apreciado en la cocina tradicional por su aroma.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/ajo_morado.jpg",
+      "food_maturation": [
+        20,
+        24
+      ],
+      "food_moonPhase": [
+        "Luna Menguante"
+      ],
+      "food_name": "Ajo morado",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food25": {
+      "food_atention": 2,
+      "food_description": "Es recomendable plantar ajo blanco en Luna Menguante para favorecer la formación de dientes grandes y uniformes. Es el más común y versátil, rico en compuestos de azufre saludables.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/ajo.jpg",
+      "food_maturation": [
+        20,
+        24
+      ],
+      "food_moonPhase": [
+        "Luna Menguante"
+      ],
+      "food_name": "Ajo blanco",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food26": {
+      "food_atention": 3,
+      "food_description": "Es recomendable plantar puerro en Luna Menguante para que la base blanca crezca gruesa, tierna y sin espigarse antes de tiempo. Es ideal para caldos, bajo en grasas y diurético.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/puerros.webp",
+      "food_maturation": [
+        16,
+        20
+      ],
+      "food_moonPhase": [
+        "Luna Menguante"
+      ],
+      "food_name": "Puerros",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food27": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar naranja Lanelate en Luna Creciente para asegurar un desarrollo vigoroso de sus frutos de recolección tardía. Es muy dulce, sin semillas y de gran calidad.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/naranja_lanelate.webp",
+      "food_maturation": [
+        180,
+        240
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Naranjas - Lanelate",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
+    "food28": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar naranja Navelate en Luna Creciente para potenciar su sabor refinado y su textura tierna. Es considerada una de las mejores naranjas de mesa del mundo.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/naranja_navel.png",
+      "food_maturation": [
+        180,
+        220
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Naranjas - Navelate",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Fruta"
+    },
+    "food29": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar naranja Valencia Late en Luna Creciente, lo que favorece un alto contenido de jugo ideal para exprimir. Es la naranja perfecta para refrescarse durante los meses cálidos.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/naranja_valencia_late.webp",
+      "food_maturation": [
+        200,
+        260
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Naranjas - Valencia late",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Fruta"
+    },
+    "food30": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar melocotón de carne amarilla en Luna Creciente para potenciar su dulzura y el color vibrante de su pulpa. Es una fruta veraniega excelente para la piel y la vista.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/melocoton_yellow_flesh.png",
+      "food_maturation": [
+        14,
+        18
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Melocotón - Yellow flesh",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Fruta"
+    },
+    "food31": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar pera Blanquilla en Luna Creciente para favorecer su pequeño tamaño pero gran concentración de agua y azúcar. Muy apreciada por su carne blanca y fundente.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/pera_blanquilla.webp",
+      "food_maturation": [
+        140,
+        180
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Pera - Blanquilla",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Fruta"
+    },
+    "food32": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar pera Conference en Luna Creciente para incentivar su desarrollo alargado y su piel ligeramente rugosa. Es dulce, crujiente y se conserva excepcionalmente bien.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/pera_conference.jpg",
+      "food_maturation": [
+        150,
+        190
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Pera - Conference",
+      "food_season": [
+        "otoño"
+      ],
+      "food_type": "Fruta"
+    },
+    "food33": {
+      "food_atention": 6,
+      "food_description": "Es recomendable plantar fresas en Luna Creciente para favorecer que los estolones enraícen fuerte y produzcan frutos rojos aromáticos. Son bajas en calorías y potentes antioxidantes.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/fresas.jpg",
+      "food_maturation": [
+        8,
+        12
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Fresas - All types",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
+    "food34": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar tomate Cherry en Luna Creciente para estimular que los racimos cuajen con frutos pequeños y muy dulces. Ideales para picar sano o decorar platos.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/tomate_cherry.webp",
+      "food_maturation": [
+        10,
+        14
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Tomates - Cherry",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food35": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar tomate en rama en Luna Creciente para incentivar que el tallo central sea fuerte y sostenga el peso de los racimos. Son muy decorativos y de sabor intenso.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/tomate_trusses.jpg",
+      "food_maturation": [
+        12,
+        16
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Tomates - Trusses",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food36": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar naranja Salustiana en Luna Creciente para potenciar su altísimo contenido de jugo y la ausencia de semillas. Es una de las favoritas para el desayuno.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/naranja_salustiana.jpg",
+      "food_maturation": [
+        160,
+        220
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Naranjas - Salustiana",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Fruta"
+    },
+    "food37": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar naranja Tarocco en Luna Creciente para favorecer la pigmentación roja de su pulpa y su aroma a frambuesa. Es una joya nutricional por sus antocianinas.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/naranja_taroco.jpg",
+      "food_maturation": [
+        170,
+        210
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Naranjas - Tarocco",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Fruta"
+    },
+    "food38": {
+      "food_atention": 7,
+      "food_description": "Es recomendable plantar plátanos de variedades tropicales en Luna Creciente para favorecer un crecimiento rápido del pseudotallo en climas cálidos. Proporcionan potasio y energía duradera.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/banana.jpg",
+      "food_maturation": [
+        45,
+        60
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Bananas",
+      "food_season": [
+        "todo el año"
+      ],
+      "food_type": "Fruta"
+    },
+    "food39": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar nectarina de carne blanca en Luna Creciente para asegurar una piel delicada y una pulpa muy jugosa y dulce. Es más suave al paladar que la amarilla.",
+      "food_image_url": "http://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/nectarinas_white_fesh.webp",
+      "food_maturation": [
+        12,
+        15
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Nectarinas - White flesh",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Fruta"
+    },
+    "food40": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar melocotoneros de selección A/B en Luna Creciente para obtener piezas de calibre superior y piel perfecta. Son la máxima expresión de calidad en fruta de hueso.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/melocoton.jpg",
+      "food_maturation": [
+        15,
+        20
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Melocotones - Selection A/B",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Fruta"
+    },
+    "food41": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar pera Williams en Luna Creciente para potenciar su fragancia inconfundible y su carne extremadamente jugosa. Muy utilizada en la elaboración de postres y aguardientes.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/pera_williams.jpg",
+      "food_maturation": [
+        130,
+        160
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Pera - Williams",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Fruta"
+    },
+    "food42": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar uvas con semilla en Luna Creciente para favorecer un mayor tamaño de la baya y resistencia en el transporte. Sus semillas contienen aceites muy saludables.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/uva.jpg",
+      "food_maturation": [
+        18,
+        25
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Uvas - Con semillas",
+      "food_season": [
+        "otoño"
+      ],
+      "food_type": "Fruta"
+    },
+    "food43": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar albaricoques de gran embalaje en Luna Creciente para obtener una producción masiva sin perder la firmeza necesaria para el transporte. Son dulces y saciantes.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/albaricoque.jpg",
+      "food_maturation": [
+        12,
+        16
+      ],
+      "food_moonPhase": [
+        "Luna Creciente "
+      ],
+      "food_name": "Albaricoques - Large packaging",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
+    "food44": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar brócoli o coliflor en Luna Creciente para incentivar una cabeza floral densa y de color intenso. Son superalimentos cargados de vitaminas y antioxidantes.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/coliflor.jpg",
+      "food_maturation": [
+        14,
+        18
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Coliflores - Todas las variedades",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food45": {
+      "food_atention": 2,
+      "food_description": "Es recomendable sembrar champiñón cerrado en Luna Nueva o Luna Menguante para favorecer la densidad y blancura del hongo en su fase inicial. Es una fuente proteica ligera y sabrosa.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/champi%C3%B1ones.jpg",
+      "food_maturation": [
+        3,
+        5
+      ],
+      "food_moonPhase": [
+        "Luna Nueva ",
+        "Luna Menguante"
+      ],
+      "food_name": "Champiñones - Cerrados",
+      "food_season": [
+        "todo el año"
+      ],
+      "food_type": "Hongo"
+    },
+    "food46": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar nectarinas de producción nacional en Luna Creciente para potenciar el frescor y la calidad de la fruta local. Son ricas en agua y esenciales para la hidratación.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/nectarinas.jpg",
+      "food_maturation": [
+        14,
+        18
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Nectarinas - National average",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Fruta"
+    },
+    "food47": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar melocotones amarillos seleccionados en Luna Creciente para garantizar una pulpa densa, dulce y de calidad gourmet. Son la joya de la corona de la fruta de verano.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/melocoton.jpg",
+      "food_maturation": [
+        15,
+        20
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Melocotones - Selection A/B",
+      "food_season": [
+        "verano"
+      ],
+      "food_type": "Fruta"
+    },
+    "food48": {
+      "food_atention": 4,
+      "food_description": "Es recomendable plantar manzana Fuji nacional en Luna Creciente para asegurar que el fruto alcance su máximo potencial de dulzor y crocancia local. Rica en fibra y muy equilibrada.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/refs/heads/master/manzana_fuji.jpg",
+      "food_maturation": [
+        20,
+        24
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Manzanas - Fuji National",
+      "food_season": [
+        "otoño"
+      ],
+      "food_type": "Fruta"
+    }
+  },
+  "forum_topics": {
+    "compra_semilla": {
+      "threads": {
+        "opiniones": {
+          "-OgHmH1lJNMPvanSDtGR": {
+            "cliente": "UsuarioX",
+            "texto": "Dependiendo de tu tipo de agricultura es ms facil comprar semillas en grnades cantidades",
+            "timestamp": 1765546733310
+          },
+          "-OgHmeN8EF01iCjcUM6d": {
+            "cliente": "UsuarioX",
+            "texto": "Estoy de acuerdo dado que s tienes que comprar una por una y tienes una hectarea, son dos millones de bolsitas que tienes que ir rompiendo par asegurarte de que salga algo",
+            "timestamp": 1765546832983
+          },
+          "-OgHniVbKjm5DBAuvPMq": {
+            "cliente": "Jose Angulo",
+            "texto": "Pureba3",
+            "timestamp": 1765547112051
+          },
+          "-Oiy4FyoQOEWHuC0F_n9": {
+            "cliente": "Anónimo",
+            "texto": "Muy buen dato",
+            "timestamp": 1768420610050
+          },
+          "-OjSUHGRIJY9MBY2O7MH": {
+            "cliente": "Anónimo",
+            "texto": "si",
+            "timestamp": 1768947523746
+          },
+          "-OjVgMFkdI9yTALEH-Dq": {
+            "cliente": "Anónimo",
+            "texto": "Me gustar'ia tener simiente nueva",
+            "timestamp": 1769001284694
+          }
+        }
+      }
+    },
+    "consejos": {
+      "threads": {
+        "opiniones": {
+          "-Ok279gh2v1md-y9SuV3": {
+            "cliente": "Jose Angulo",
+            "texto": "hola",
+            "timestamp": 1769578997888
+          }
+        }
+      }
+    },
+    "precios": {
+      "threads": {
+        "opiniones": {
+          "-OnWV-sw-V07R20Gen9O": {
+            "cliente": "Jose Angulo",
+            "texto": "Hola",
+            "timestamp": 1773309791655
+          }
+        }
+      }
+    }
+  },
+  "message": "Hello, World!",
+  "topics": {
+    "compra_semilla": {
+      "description": "Dónde y cómo comprar semillas fiables",
+      "id": "compra_semilla",
+      "title": "Compra de semilla o semillas"
+    },
+    "consejos": {
+      "description": "Técnicas, tiempos, riego y abono",
+      "id": "consejos",
+      "title": "Consejos de plantación"
+    },
+    "mejores_variedades": {
+      "description": "Recomendaciones por clima y propósito",
+      "id": "mejores_variedades",
+      "title": "Mejores variedades de semillas"
+    },
+    "precios": {
+      "description": "Comparte y consulta precios de semillas, abonos, etc.",
+      "id": "precios",
+      "title": "Precios"
+    }
+  }
+}
