@@ -1,12 +1,15 @@
 import { useState } from "react";
 import HeroSearch from "../organism/HeroSearch";
+import { ProductList } from "../organism/ProductList";
+import { Filters } from "../organism/Filters";
 import { GoTopBTN } from "../atoms/GoTopBTN";
 
 export default function SearchPage() {
-
   const [filters, setFilters] = useState({
     search: "",
     typeProduct: "",
+    atentionLvl: { min: 1, max: 10 },
+    maxDuration: "",
   });
 
   const handleChange = (e) => {
@@ -18,14 +21,27 @@ export default function SearchPage() {
     setFilters((prev) => ({ ...prev, search: value }));
   };
 
-  const handleTypeChange = (value) => {
-    setFilters((prev) => ({ ...prev, typeProduct: value }));
+  const resetFilters = () => {
+    setFilters({
+      search: "",
+      typeProduct: "",
+      atentionLvl: { min: 1, max: 10 },
+      maxDuration: "",
+    });
   };
 
   return (
     <>
-      <HeroSearch classname="mt-10"/>
+      <HeroSearch 
+        filters={filters} 
+        onSearchChange={handleSearchChange} 
+        handleChange={handleChange}
+        classname="mt-10"
+      />
+      
+      
 
+      <ProductList filters={filters} />
       <GoTopBTN />
     </>
   );

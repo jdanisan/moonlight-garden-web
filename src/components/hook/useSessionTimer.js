@@ -6,26 +6,32 @@ export const useSessionTimer = (timeoutMinutes = 10) => {
   const { logout, isLogged } = useAuth();
   const timerRef = useRef(null);
 
+  // Función que ejecuta el cierre de sesión
   const handleAutoLogout = useCallback(() => {
     if (isLogged) {
-      logout();
-      toast("Sesión cerrada por inactividad", { icon: "⏳" });
-      // Limpiar rastro de sesión
+      // console.log("⏰ Tiempo de inactividad alcanzado. Cerrando sesión...");
+      logout(); // Asegúrate de que useAuth exporte esta función ahora
+      toast("Sesión cerrada por inactividad", { 
+        icon: "⏳",
+        style: { borderRadius: '10px', background: '#333', color: '#fff' }
+      });
       sessionStorage.clear();
     }
   }, [logout, isLogged]);
 
+  // Función para reiniciar el contador
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
     
-    // Solo activamos el timer si el usuario está logueado
     if (isLogged) {
-      timerRef.current = setTimeout(handleAutoLogout, timeoutMinutes * 60 * 1000);
+      const ms = timeoutMinutes * 60 * 1000;
+      timerRef.current = setTimeout(handleAutoLogout, ms);
+      // console.log(`⏱️ Timer reiniciado: ${timeoutMinutes} minutos`);
     }
   }, [handleAutoLogout, isLogged, timeoutMinutes]);
 
   useEffect(() => {
-    // Eventos que reinician el contador de actividad
+    // Eventos que consideraremos como "Actividad"
     const activityEvents = [
       "mousedown",
       "mousemove",
@@ -36,16 +42,16 @@ export const useSessionTimer = (timeoutMinutes = 10) => {
     ];
 
     if (isLogged) {
-      // Registrar eventos
+      // Escuchar eventos en la ventana
       activityEvents.forEach((event) =>
         window.addEventListener(event, resetTimer)
       );
       
-      // Iniciar el primer timer
+      // Iniciar el contador apenas el usuario entra
       resetTimer();
     }
 
-    // Limpieza al desmontar o desloguear
+    // Limpieza: muy importante para evitar fugas de memoria
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
       activityEvents.forEach((event) =>
@@ -54,5 +60,5 @@ export const useSessionTimer = (timeoutMinutes = 10) => {
     };
   }, [isLogged, resetTimer]);
 
-  return null; // Este hook no necesita devolver datos, solo ejecutar la lógica
+  return null; 
 };

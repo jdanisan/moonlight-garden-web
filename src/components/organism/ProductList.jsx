@@ -25,6 +25,7 @@ export function ProductList({ filters = null }) {
     return filters?.season || getSystemSeason();
   }, [filters?.season]);
 
+  // Suscripción a Firebase
   useEffect(() => {
     const productsRef = ref(db, "/food");
     const unsubscribe = onValue(productsRef, (snapshot) => {
@@ -42,32 +43,40 @@ export function ProductList({ filters = null }) {
     return () => unsubscribe();
   }, []);
 
+  // Lógica de filtrado completa
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       if (!filters) return true;
 
-      const attentionMin = filters?.atentionLvl?.min ?? 0;
-      const attentionMax = filters?.atentionLvl?.max ?? 10;
-      const [minWeeks] = product.food_maturation || [];
-      
-      // Filtro por Fase Lunar
-      const moonPhase = filters?.moonPhase;
-      if (moonPhase && moonPhase !== "index" && product.food_moonPhase !== moonPhase) {
+      // 1. Filtro de Búsqueda por Texto
+      const searchTerm = filters.search?.toLowerCase() || "";
+      if (searchTerm && !product.food_name?.toLowerCase().includes(searchTerm)) {
         return false;
       }
 
-      // Filtro por Tipo (Fruta, Verdura, etc)
-      const type = filters?.typeProduct;
-      if (type && type !== "index" && product.food_type?.toLowerCase() !== type.toLowerCase()) {
+      // 2. Filtro por Tipo de Producto
+      const type = filters.typeProduct;
+      if (type && type !== "" && product.food_type?.toLowerCase() !== type.toLowerCase()) {
         return false;
       }
 
-      // Filtro por Duración
-      const maxWeeks = parseMaxWeeks(filters?.maxDuration);
-      if (maxWeeks !== null && minWeeks > maxWeeks) return false;
-
-      // Filtro por Nivel de Atención
+      // 3. Filtro por Nivel de Atención (Slider)
+      const attentionMin = filters.atentionLvl?.min ?? 1;
+      const attentionMax = filters.atentionLvl?.max ?? 10;
       if (product.food_atention < attentionMin || product.food_atention > attentionMax) {
+        return false;
+      }
+
+      // 4. Filtro por Duración Máxima
+      const maxWeeks = parseMaxWeeks(filters.maxDuration);
+      const [minWeeksInProduct] = product.food_maturation || [0];
+      if (maxWeeks !== null && minWeeksInProduct > maxWeeks) {
+        return false;
+      }
+
+      // 5. Filtro por Fase Lunar (si existe en tu app)
+      const moonPhase = filters.moonPhase;
+      if (moonPhase && moonPhase !== "index" && product.food_moonPhase !== moonPhase) {
         return false;
       }
 
@@ -75,6 +84,7 @@ export function ProductList({ filters = null }) {
     });
   }, [products, filters]);
 
+  // Clasificación por Temporada
   const inSeasonProducts = filteredProducts.filter((p) =>
     p.food_season?.includes(currentSeason)
   );
@@ -90,14 +100,11 @@ export function ProductList({ filters = null }) {
     <section className="bg-[#f6f1e7] py-8">
       <div className="max-w-6xl mx-auto px-4 space-y-12">
 
-        {/* Sección En Temporada */}
+        {/* SECCIÓN: EN TEMPORADA */}
         {displayedInSeason.length > 0 && (
           <div>
             <h3 className="text-xl font-bold mb-6 text-emerald-900 border-b border-emerald-200 pb-2 flex justify-between items-center">
               <span>En temporada ({currentSeason}) 🌱</span>
-              <span className="text-xs font-normal bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full uppercase tracking-wider">
-                Recomendado
-              </span>
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
               {displayedInSeason.map((product) => (
@@ -112,7 +119,7 @@ export function ProductList({ filters = null }) {
           </div>
         )}
 
-        {/* Sección Fuera de Temporada */}
+        {/* SECCIÓN: FUERA DE TEMPORADA */}
         {displayedOutSeason.length > 0 && (
           <div>
             <h3 className="text-xl font-semibold mb-6 text-gray-400 border-b border-gray-200 pb-2">
@@ -131,25 +138,25 @@ export function ProductList({ filters = null }) {
           </div>
         )}
 
-        {/* Botón Cargar Más */}
+        {/* BOTÓN: CARGAR MÁS */}
         {visibleCount < filteredProducts.length && (
           <div className="flex justify-center pt-4">
             <button
               onClick={() => setVisibleCount(prev => prev + 12)}
               className="bg-emerald-700 text-white px-8 py-3 rounded-xl font-medium hover:bg-emerald-800 transition-all shadow-md active:scale-95"
             >
-              Ver más productos →
+              Ver más productos
             </button>
           </div>
         )}
 
-        {/* Estado Vacío */}
+        {/* ESTADO VACÍO */}
         {filteredProducts.length === 0 && (
           <div className="text-center py-20 bg-white/50 rounded-3xl border-2 border-dashed border-gray-200">
             <p className="text-gray-500 font-medium">
-              No hay productos específicos para la fase <span className="text-emerald-700">"{filters?.moonPhase}"</span>.
+              No se han encontrado productos con estos filtros.
             </p>
-            <p className="text-sm text-gray-400 mt-2">Prueba a seleccionar otro día en el calendario.</p>
+            <p className="text-sm text-gray-400 mt-2">Intenta ajustar los criterios de búsqueda.</p>
           </div>
         )}
       </div>

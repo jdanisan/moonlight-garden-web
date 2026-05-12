@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 
-//TODO: Upgrade the view of the slider
 const DualRangeSlider = ({
   min = 1,
   max = 10,
@@ -15,42 +14,55 @@ const DualRangeSlider = ({
   const maxValRef = useRef(initialMax);
   const range = useRef(null);
 
-  // AÑADE ESTO AQUÍ
+  // Sincronización limpia con el padre (solo si cambian los valores externos)
   useEffect(() => {
-    setMinVal(initialMin);
-    setMaxVal(initialMax);
+    if (initialMin !== minValRef.current) {
+      setMinVal(initialMin);
+      minValRef.current = initialMin;
+    }
+    if (initialMax !== maxValRef.current) {
+      setMaxVal(initialMax);
+      maxValRef.current = initialMax;
+    }
   }, [initialMin, initialMax]);
 
-  // Convert to percentage
-  const getPercent = (value) => Math.round(((value - min) / (max - min)) * 100);
+  const getPercent = useCallback(
+    (value) => Math.round(((value - min) / (max - min)) * 100),
+    [min, max]
+  );
 
-  // Set width of the range selection from the left side
+  // Actualización visual de la barra verde
   useEffect(() => {
     const minPercent = getPercent(minVal);
     const maxPercent = getPercent(maxValRef.current);
-
     if (range.current) {
       range.current.style.left = `${minPercent}%`;
       range.current.style.width = `${maxPercent - minPercent}%`;
     }
   }, [minVal, getPercent]);
 
-  // Set width of the range selection from the right side
   useEffect(() => {
     const minPercent = getPercent(minValRef.current);
     const maxPercent = getPercent(maxVal);
-
     if (range.current) {
       range.current.style.width = `${maxPercent - minPercent}%`;
     }
   }, [maxVal, getPercent]);
 
-  // Get updated values and pass them to the parent component
-  useEffect(() => {
-    if (onChange) {
-      onChange({ min: minVal, max: maxVal });
-    }
-  }, [minVal, maxVal, onChange]);
+  // Manejadores de cambio fluidos
+  const handleMinChange = (event) => {
+    const value = Math.min(Number(event.target.value), maxVal - 1);
+    setMinVal(value);
+    minValRef.current = value;
+    if (onChange) onChange({ min: value, max: maxVal });
+  };
+
+  const handleMaxChange = (event) => {
+    const value = Math.max(Number(event.target.value), minVal + 1);
+    setMaxVal(value);
+    maxValRef.current = value;
+    if (onChange) onChange({ min: minVal, max: value });
+  };
 
   return (
     <div className="flex flex-col w-full max-w-md bg-[#faf3dd] p-8 rounded-2xl border border-[#c8d5b9] shadow-sm">
@@ -70,17 +82,12 @@ const DualRangeSlider = ({
       </div>
 
       <div className="relative h-10 flex items-center">
-        {/* The "invisible" native inputs that handle the logic */}
         <input
           type="range"
           min={min}
           max={max}
           value={minVal}
-          onChange={(event) => {
-            const value = Math.min(Number(event.target.value), maxVal - 1);
-            setMinVal(value);
-            minValRef.current = value;
-          }}
+          onChange={handleMinChange}
           className="thumb thumb--left z-[3] absolute w-full h-0 outline-none pointer-events-none appearance-none"
         />
         <input
@@ -88,15 +95,10 @@ const DualRangeSlider = ({
           min={min}
           max={max}
           value={maxVal}
-          onChange={(event) => {
-            const value = Math.max(Number(event.target.value), minVal + 1);
-            setMaxVal(value);
-            maxValRef.current = value;
-          }}
+          onChange={handleMaxChange}
           className="thumb thumb--right z-[4] absolute w-full h-0 outline-none pointer-events-none appearance-none"
         />
 
-        {/* The visual slider track */}
         <div className="relative w-full h-2 bg-[#c8d5b9] rounded-full">
           <div
             ref={range}
@@ -118,27 +120,34 @@ const DualRangeSlider = ({
       </div>
 
       <style>{`
-  .thumb::-webkit-slider-thumb {
-    background-color: #4a7c59;
-    border: 3px solid #faf3dd;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 24px;
-    width: 24px;
-    margin-top: 4px;
-    pointer-events: all;
-    -webkit-appearance: none;
-    transition: transform 0.2s ease-in-out;
-  }
-
-  .thumb::-webkit-slider-thumb:hover {
-    transform: scale(1.1);
-  }
-
-  .thumb::-webkit-slider-thumb:active {
-    transform: scale(0.95);
-  }
-`}</style>
+        .thumb::-webkit-slider-thumb {
+          background-color: #4a7c59;
+          border: 3px solid #faf3dd;
+          border-radius: 50%;
+          cursor: pointer;
+          height: 24px;
+          width: 24px;
+          margin-top: 0px; /* Corregido para centrar */
+          pointer-events: all;
+          -webkit-appearance: none;
+          transition: transform 0.2s ease-in-out;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .thumb::-webkit-slider-thumb:hover { transform: scale(1.1); }
+        .thumb::-webkit-slider-thumb:active { transform: scale(0.95); }
+        
+        /* Estilos para Firefox */
+        .thumb::-moz-range-thumb {
+          background-color: #4a7c59;
+          border: 3px solid #faf3dd;
+          border-radius: 50%;
+          cursor: pointer;
+          height: 24px;
+          width: 24px;
+          pointer-events: all;
+          border: none;
+        }
+      `}</style>
     </div>
   );
 };

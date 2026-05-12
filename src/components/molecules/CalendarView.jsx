@@ -3,8 +3,7 @@ import { Input } from "../atoms/Input";
 import { getMoonPhase } from "../utils/getMoonPhase";
 import { useAuth } from "../hook/useAuth";
 import { Modal } from "../organism/Modal";
-// Firebase imports
-import { db } from "../../services/firebase"; 
+import { db } from "../../services/firebase";
 import { ref, update, onValue } from "firebase/database";
 
 const phaseIcon = {
@@ -84,6 +83,7 @@ export default function CalendarView() {
       const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${targetCity}`);
       const geoData = await geoRes.json();
       const place = geoData.results?.[0];
+
       if (!place) return;
 
       const { latitude, longitude } = place;
@@ -133,9 +133,11 @@ export default function CalendarView() {
       {showAuthModal && <Modal type="form-user" onClose={() => setShowAuthModal(false)} />}
 
       <div className="w-full max-w-6xl mx-auto py-6 flex flex-col gap-6 lg:flex-row">
-        
-        {/* CALENDARIO (ESTILO ORIGINAL) */}
+
+        {/* CALENDARIO */}
         <div className="flex-1 bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+
+          {/* CABECERA CON NAVEGACIÓN */}
           <div className="flex justify-between items-center mb-6">
             <div>
               <h2 className="text-2xl font-bold text-gray-800">{monthNames[currentMonth]}</h2>
@@ -161,7 +163,7 @@ export default function CalendarView() {
                 <option value="Madrid" /><option value="Barcelona" /><option value="Valencia" />
               </datalist>
             </div>
-            <button 
+            <button
               onClick={() => fetchWeather(manualCity)}
               className="px-6 py-2.5 bg-green-700 text-white rounded-xl font-bold text-sm hover:bg-green-800 transition"
             >
@@ -200,14 +202,13 @@ export default function CalendarView() {
             })}
           </div>
         </div>
-
-        {/* PANEL LATERAL (ESTILO ORIGINAL RESTAURADO) */}
+        {/* PANEL LATERAL */}
         <div className="w-full lg:w-80 flex flex-col gap-4">
           <div className="bg-gradient-to-br from-[#68b0ab] to-[#4a7c59] rounded-3xl p-6 text-white shadow-lg">
             <h3 className="text-lg font-bold mb-4">
               {selectedDate ? new Date(selectedDate).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }) : "Hoy"}
             </h3>
-            
+
             <div className="bg-white/10 rounded-2xl p-4 mb-6 text-sm space-y-2">
               <p>🌙 {selectedData.phase || "Fase desconocida"}</p>
               <p>🌧️ Lluvia: {selectedData.rainProbability ?? "--"}%</p>

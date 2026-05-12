@@ -39,6 +39,10 @@ export const ContextProvider = ({ children }) => {
   // --- ACCIÓN: AÑADIR PLANTA ---
   const onAddToPlanning = useCallback((plantId) => {
     if (!user?.uid) return;
+
+    // Calculamos el nuevo array
+    const updatedPlants = plannedPlants.includes(plantId)
+      ? plannedPlants
     const updatedPlants = plannedPlants.includes(plantId) 
       ? plannedPlants 
       : [...plannedPlants, plantId];
@@ -61,7 +65,7 @@ export const ContextProvider = ({ children }) => {
     if (!user?.uid) return;
 
     const updatedReminders = [...reminders, reminder];
-    
+
     set(ref(db, `users/${user.uid}/reminders`), updatedReminders)
       .then(() => toast.success("Recordatorio creado"))
       .catch(() => toast.error("Error al guardar recordatorio"));
