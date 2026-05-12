@@ -19,6 +19,24 @@ export function UserAuthModal({ variant = "form-user", onClose, onSwitch }) {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [strength, setStrength] = useState(0);
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+
+    if (value.length === 0) {
+      setStrength(0);
+      return;
+    }
+
+    let score = 0;
+    if (value.length > 5) score++;
+    if (/[A-Z]/.test(value) && /[0-9]/.test(value)) score++;
+    if (/[^A-Za-z0-9]/.test(value)) score++;
+
+    setStrength(score || 1);
+  };
 
   const handleResetPassword = async () => {
     if (!email) return setEmailError("Introduce tu email primero");
@@ -38,27 +56,21 @@ export function UserAuthModal({ variant = "form-user", onClose, onSwitch }) {
 
     try {
       if (isRegister) {
-        // --- REGISTRO ---
         const userCred = await createUserWithEmailAndPassword(auth, email, password);
-
-        // Escribir información inicial en Firebase
         await set(ref(db, `users/${userCred.user.uid}`), {
           email: email,
           role: "user",
           createdAt: Date.now(),
-          plannedPlants: [], // User[plannedPlants{}]
-          reminders: []      // User[reminders{}]
+          plannedPlants: [],
+          reminders: []
         });
-
         toast.success("Cuenta creada correctamente");
       } else {
-        // --- LOGIN ---
         await signInWithEmailAndPassword(auth, email, password);
         toast.success("Sesión iniciada");
       }
 
       onClose();
-      // Pequeño delay para asegurar que el estado de auth de Firebase se propague
       setTimeout(() => {
         executePendingAction();
       }, 500);
@@ -78,30 +90,48 @@ export function UserAuthModal({ variant = "form-user", onClose, onSwitch }) {
       </h2>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <input
-          className={`border p-2 rounded w-full outline-none focus:border-green-500 ${emailError ? "border-red-500" : "border-gray-200"}`}
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        {emailError && <p className="text-red-500 text-xs">{emailError}</p>}
+        {/* EMAIL */}
+        <div>
+          <input
+            className={`border p-2 rounded w-full outline-none focus:border-green-500 ${emailError ? "border-red-500" : "border-gray-200"}`}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          {emailError && <p className="text-red-500 text-[10px] mt-1">{emailError}</p>}
+        </div>
 
-        <input
-          className={`border p-2 rounded w-full outline-none focus:border-green-500 ${passwordError ? "border-red-500" : "border-gray-200"}`}
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        {/* PASSWORD */}
+        <div>
+          <input
+            className={`border p-2 rounded w-full outline-none focus:border-green-500 ${passwordError ? "border-red-500" : "border-gray-200"}`}
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={handlePasswordChange}
+            required
+          />
+          
+          {isRegister && password.length > 0 && (
+            <div className="h-1.5 mt-2 bg-gray-100 rounded-full overflow-hidden">
+              <div
+                className={`h-full transition-all duration-500 ${
+                  strength === 1 ? "w-1/3 bg-red-400" : 
+                  strength === 2 ? "w-2/3 bg-yellow-400" : 
+                  "w-full bg-emerald-500"
+                }`}
+              />
+            </div>
+          )}
 
-        {!isRegister && (
-          <p className="text-xs text-right cursor-pointer text-green-700 hover:underline" onClick={handleResetPassword}>
-            ¿Has olvidado la contraseña?
-          </p>
-        )}
+          {!isRegister && (
+            <p className="text-[11px] text-right mt-1 cursor-pointer text-green-700 hover:underline" onClick={handleResetPassword}>
+              ¿Has olvidado la contraseña?
+            </p>
+          )}
+        </div>
 
         <Button
           type="submit"
@@ -112,85 +142,16 @@ export function UserAuthModal({ variant = "form-user", onClose, onSwitch }) {
         />
       </form>
 
-      return (
-      <div className="w-[320px]">
-        <h2 className="text-xl font-bold mb-4">
-          {isRegister ? "Crear cuenta" : "Iniciar sesión"}
-        </h2>
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          {/* EMAIL */}
-          <div>
-            <input
-              className={`border p-2 rounded w-full ${emailError ? "border-red-500" : ""
-                }`}
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {emailError && (
-              <p className="text-red-500 text-sm mt-1">{emailError}</p>
-            )}
-          </div>
-
-          {/* PASSWORD */}
-          <div>
-            <input
-              className={`border p-2 rounded w-full ${passwordError ? "border-red-500" : ""
-                }`}
-              type="password"
-              placeholder="Contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {!isRegister && (
-              <p
-                className="text-sm text-right mt-1 cursor-pointer text-blue-500"
-                onClick={handleResetPassword}
-              >
-                ¿Has olvidado la contraseña?
-              </p>
-            )}
-
-            {/* barra de fuerza SOLO en registro */}
-            {isRegister && (
-              <div className="h-2 mt-2 bg-gray-200 rounded">
-                <div
-                  className={`h-2 rounded transition-all ${strength === 1
-                    ? "w-1/3 bg-red-500"
-                    : strength === 2
-                      ? "w-2/3 bg-yellow-500"
-                      : "w-full bg-green-500"
-                    }`}
-                />
-              </div>
-            )}
-
-            {passwordError && (
-              <p className="text-red-500 text-sm mt-1">{passwordError}</p>
-            )}
-          </div>
-
-          <Button
-            type="submit"
-            label={isRegister ? "Registrarse" : "Entrar"}
-            variant="goBuy" // o crea uno nuevo tipo "authPrimary"
-            className="w-full"
-          />
-        </form>
-
-        {/* 🔁 SWITCH LOGIN / REGISTER */}
-        <p className="text-sm mt-4 text-center">
-          {isRegister ? "¿Ya tienes cuenta?" : "¿No tienes cuenta?"}{" "}
-          <Button
-            label={isRegister ? "Inicia sesión" : "Regístrate"}
-            variant="authLink"
-            onClick={onSwitch}
-          />
-        </p>
-      </div>
-      );
+      <p className="text-sm mt-4 text-center text-gray-600">
+        {isRegister ? "¿Ya tienes cuenta?" : "¿No tienes cuenta?"}{" "}
+        <button 
+          className="text-green-700 font-bold hover:underline" 
+          onClick={onSwitch}
+          type="button"
+        >
+          {isRegister ? "Inicia sesión" : "Regístrate"}
+        </button>
+      </p>
     </div>
   );
 }

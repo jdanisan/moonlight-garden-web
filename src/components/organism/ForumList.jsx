@@ -1,161 +1,171 @@
 import { useEffect, useState, useMemo } from "react";
 import { db } from "../../services/firebase";
-import { ref, onValue, update, increment } from "firebase/database";
+import { ref, onValue, update, increment, push, serverTimestamp } from "firebase/database";
 import { useAuth } from "../hook/useAuth";
-import { Modal } from "../organism/Modal";
+import { Modal } from "../organism/Modal"; 
+import toast from "react-hot-toast";
 
 export function ForumList() {
   const { user } = useAuth();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   
-  // Estados para modales
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [selectedPostForComment, setSelectedPostForComment] = useState(null);
+  const [expandedPostId, setExpandedPostId] = useState(null); 
+  const [commentText, setCommentText] = useState(""); 
 
   useEffect(() => {
-    // Escuchamos la raíz del objeto para tener acceso a 'topics' y 'forum_topics'
     const dbRef = ref(db, "/");
     const unsubscribe = onValue(dbRef, (snapshot) => {
-      const val = snapshot.val();
-      setData(val);
+      setData(snapshot.val());
       setLoading(false);
     });
     return () => unsubscribe();
   }, []);
 
-  const allPosts = useMemo(() => {
-    if (!data?.forum_topics) return [];
+  
+  const groupedPosts = useMemo(() => {
+    if (!data?.forum_topics) return {};
     
-    const posts = [];
     const topicsMeta = data.topics || {};
+    const grouped = {};
 
-    // Iteramos sobre las categorías (compra_semilla, consejos, etc.)
     Object.keys(data.forum_topics).forEach((topicKey) => {
       const threads = data.forum_topics[topicKey].threads?.opiniones;
+      const categoryTitle = topicsMeta[topicKey]?.title || topicKey;
       
       if (threads) {
-        Object.entries(threads).forEach(([id, content]) => {
-          posts.push({
-            id,
-            topicKey, 
-            category: topicsMeta[topicKey]?.title || topicKey, // Cruce de datos con 'topics'
-            author: content.cliente || "Anónimo",
-            text: content.texto,
-            timestamp: content.timestamp,
-            voteCount: content.voteCount || 0,
-            // Contamos los comentarios si el nodo existe
-            commentCount: content.comments ? Object.keys(content.comments).length : 0,
-            // Verificamos si el usuario actual ya ha votado (buscando su UID en el objeto votes)
-            hasVoted: user && content.votes?.[user.uid] ? true : false
-          });
-        });
+        const postsArray = Object.entries(threads).map(([id, content]) => ({
+          id,
+          topicKey,
+          category: categoryTitle,
+          author: content.cliente || "Anónimo",
+          text: content.texto,
+          timestamp: content.timestamp,
+          voteCount: content.voteCount || 0,
+          comments: content.comments 
+            ? Object.entries(content.comments).map(([cId, cVal]) => ({ id: cId, ...cVal }))
+              .sort((a, b) => a.timestamp - b.timestamp)
+            : [],
+          userVoteType: user ? content.votes?.[user.uid] : null
+        })).sort((a, b) => b.timestamp - a.timestamp); 
+
+        if (postsArray.length > 0) {
+          grouped[categoryTitle] = postsArray;
+        }
       }
     });
 
-    // Ordenar por fecha (más reciente arriba)
-    return posts.sort((a, b) => b.timestamp - a.timestamp);
+    return grouped;
   }, [data, user]);
 
-  const handleInteraction = async (type, post) => {
-    // GUARD: Si no está logueado, forzamos el modal de auth
-    if (!user) {
-      setShowAuthModal(true);
-      return;
+  const handleVote = async (targetType, post) => {
+    if (!user) return setShowAuthModal(true);
+    const postPath = `forum_topics/${post.topicKey}/threads/opiniones/${post.id}`;
+    const updates = {};
+    const currentVote = post.userVoteType;
+
+    if (currentVote === targetType) {
+      updates[`${postPath}/voteCount`] = increment(targetType === "up" ? -1 : 1);
+      updates[`${postPath}/votes/${user.uid}`] = null;
+    } else {
+      updates[`${postPath}/voteCount`] = increment(targetType === "up" ? 1 : -1);
+      updates[`${postPath}/votes/${user.uid}`] = targetType;
     }
 
-    if (type === "comment") {
-      setSelectedPostForComment(post);
-    }
-
-    if (type === "vote") {
-      if (post.hasVoted) return; // Evitar votos múltiples
-
-      const postPath = `forum_topics/${post.topicKey}/threads/opiniones/${post.id}`;
-      const updates = {};
-      
-      // Actualización atómica en Firebase
-      updates[`${postPath}/voteCount`] = increment(1);
-      updates[`${postPath}/votes/${user.uid}`] = 1;
-
-      try {
-        await update(ref(db), updates);
-      } catch (err) {
-        console.error("Error al votar:", err);
-      }
-    }
+    try { await update(ref(db), updates); } catch (e) { toast.error("Error al votar"); }
   };
 
-  if (loading) return <div className="py-20 text-center text-emerald-800">Cargando comunidad...</div>;
+  const handleSendComment = async (post) => {
+    if (!user) return setShowAuthModal(true);
+    if (!commentText.trim()) return;
+    const commentPath = `forum_topics/${post.topicKey}/threads/opiniones/${post.id}/comments`;
+    try {
+      await push(ref(db, commentPath), {
+        author: user.email.split('@')[0],
+        text: commentText,
+        timestamp: serverTimestamp(),
+        userId: user.uid
+      });
+      setCommentText("");
+    } catch (e) { toast.error("Error"); }
+  };
+
+  if (loading) return <div className="py-20 text-center text-emerald-800 italic">Cargando secciones...</div>;
 
   return (
-    <section className="bg-[#f6f1e7] py-8">
-      <div className="max-w-3xl mx-auto px-4">
+    <section className="bg-[#f6f1e7] py-8 min-h-screen">
+      <div className="max-w-2xl mx-auto px-4">
         
-        <h2 className="text-2xl font-bold text-emerald-900 mb-6 flex items-center gap-2">
-          Comunidad 🌱
-        </h2>
 
-        <div className="space-y-4">
-          {allPosts.map((post) => (
-            <div 
-              key={post.id} 
-              className="flex gap-4 bg-white border border-emerald-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow"
-            >
-              {/* Lógica de Votos lateral */}
-              <div className="flex flex-col items-center gap-1 min-w-[40px]">
-                <button 
-                  onClick={() => handleInteraction("vote", post)}
-                  className={`text-xl transition ${post.hasVoted ? 'text-emerald-600' : 'text-gray-300 hover:text-emerald-500'}`}
-                >
-                  ▲
-                </button>
-                <span className="text-xs font-bold text-emerald-900">{post.voteCount}</span>
-                <button className="text-xl text-gray-200 hover:text-orange-300 transition">▼</button>
-              </div>
-
-              {/* Contenido del post */}
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-md uppercase">
-                    {post.category}
-                  </span>
-                  <span className="text-[11px] text-gray-400">
-                    u/{post.author} • {new Date(post.timestamp).toLocaleDateString()}
-                  </span>
-                </div>
-
-                <p className="text-gray-700 text-sm mb-4 leading-relaxed whitespace-pre-line">
-                  {post.text}
-                </p>
-
-                <div className="flex gap-5 items-center pt-3 border-t border-gray-50">
-                  <button 
-                    onClick={() => handleInteraction("comment", post)}
-                    className="flex items-center gap-1.5 text-xs font-bold text-emerald-800/50 hover:text-emerald-700 transition"
-                  >
-                    💬 {post.commentCount} Comentarios
-                  </button>
-                </div>
-              </div>
+        {Object.entries(groupedPosts).map(([categoryName, posts]) => (
+          <div key={categoryName} className="mb-12">
+            {/* TÍTULO DE LA CATEGORÍA (Sticky) */}
+            <div className="sticky top-0 z-10 bg-[#f6f1e7]/95 backdrop-blur-sm py-3 mb-4 border-b border-emerald-200">
+              <h3 className="text-sm font-black text-emerald-700 uppercase tracking-[0.2em]">
+                {categoryName}
+              </h3>
             </div>
-          ))}
-        </div>
+
+            <div className="space-y-4">
+              {posts.map((post) => (
+                <div key={post.id} className="bg-white border border-emerald-100 rounded-2xl shadow-sm overflow-hidden">
+                  <div className="p-5 flex gap-4">
+                    {/* VOTOS */}
+                    <div className="flex flex-col items-center gap-1 min-w-[40px]">
+                      <button onClick={() => handleVote("up", post)} className={`text-xl transition ${post.userVoteType === "up" ? "text-emerald-500 scale-110" : "text-gray-300 hover:text-emerald-400"}`}>▲</button>
+                      <span className={`text-xs font-bold ${post.userVoteType === "up" ? "text-emerald-600" : post.userVoteType === "down" ? "text-orange-600" : "text-emerald-900"}`}>{post.voteCount}</span>
+                      <button onClick={() => handleVote("down", post)} className={`text-xl transition ${post.userVoteType === "down" ? "text-orange-500 scale-110" : "text-gray-200 hover:text-orange-300"}`}>▼</button>
+                    </div>
+
+                    {/* CONTENIDO */}
+                    <div className="flex-1">
+                      <div className="mb-2">
+                        <span className="text-[11px] text-gray-400 font-medium">
+                          u/{post.author} • {new Date(post.timestamp).toLocaleDateString()}
+                        </span>
+                      </div>
+                      <p className="text-gray-700 text-sm mb-4 leading-relaxed whitespace-pre-line">{post.text}</p>
+                      <button 
+                        onClick={() => setExpandedPostId(expandedPostId === post.id ? null : post.id)}
+                        className="flex items-center gap-1.5 text-xs font-bold text-emerald-800/50 hover:text-emerald-700 transition"
+                      >
+                        💬 {post.comments.length} Comentarios
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* HILO DE COMENTARIOS */}
+                  {expandedPostId === post.id && (
+                    <div className="bg-gray-50/50 border-t border-gray-50 p-5">
+                      <div className="space-y-4 border-l-2 border-emerald-100 ml-2 pl-4">
+                        {post.comments.map((comment) => (
+                          <div key={comment.id}>
+                            <p className="text-emerald-900 text-[11px] font-bold">{comment.author}</p>
+                            <p className="text-gray-600 text-[12px]">{comment.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-5 flex gap-2">
+                        <input 
+                          type="text"
+                          placeholder="Escribe una respuesta..."
+                          value={commentText}
+                          onChange={(e) => setCommentText(e.target.value)}
+                          onKeyDown={(e) => e.key === 'Enter' && handleSendComment(post)}
+                          className="flex-1 bg-white border border-gray-200 rounded-xl px-4 py-2 text-xs outline-none focus:border-emerald-500"
+                        />
+                        <button onClick={() => handleSendComment(post)} className="bg-emerald-700 text-white px-5 py-2 rounded-xl text-xs font-bold">Responder</button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
-
-      {/* Renderizado de Modales Condicionales */}
-      {/* //TODO: Solucionar el fallo del renderizado sobre el modal */}
-      {showAuthModal && (
-        <Modal type="new-user" onClose={() => setShowAuthModal(false)} />
-      )}
-
-      {selectedPostForComment && (
-        <Modal 
-          type="comment-form" 
-          post={selectedPostForComment} 
-          onClose={() => setSelectedPostForComment(null)} 
-        />
-      )}
+      {showAuthModal && <Modal type="new-user" onClose={() => setShowAuthModal(false)} />}
     </section>
   );
 }
