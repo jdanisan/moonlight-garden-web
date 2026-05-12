@@ -42,10 +42,9 @@ export const ContextProvider = ({ children }) => {
 
     // Calculamos el nuevo array
     const updatedPlants = plannedPlants.includes(plantId)
-      ? plannedPlants
-    const updatedPlants = plannedPlants.includes(plantId) 
-      ? plannedPlants 
-      : [...plannedPlants, plantId];
+      ? plannedPlants : [...plannedPlants, plantId];
+
+    // Escribimos en Firebase (el useEffect de arriba actualizará el estado local)
     set(ref(db, `users/${user.uid}/plannedPlants`), updatedPlants)
       .then(() => toast.success("Planta añadida a tu huerto"))
       .catch(() => toast.error("Error al guardar"));
@@ -53,12 +52,12 @@ export const ContextProvider = ({ children }) => {
 
   // --- ACCIÓN: ELIMINAR PLANTA ---
   const onRemoveFromPlanning = useCallback((plantId) => {
-  if (!user?.uid) return;
-  const updatedPlants = plannedPlants.filter(id => id !== plantId);
-  set(ref(db, `users/${user.uid}/plannedPlants`), updatedPlants)
-    .then(() => toast.success("Planta eliminada de tu huerto"))
-    .catch(() => toast.error("Error al eliminar"));
-}, [user?.uid, plannedPlants]);
+    if (!user?.uid) return;
+    const updatedPlants = plannedPlants.filter(id => id !== plantId);
+    set(ref(db, `users/${user.uid}/plannedPlants`), updatedPlants)
+      .then(() => toast.success("Planta eliminada de tu huerto"))
+      .catch(() => toast.error("Error al eliminar"));
+  }, [user?.uid, plannedPlants]);
 
   // --- ACCIÓN: AÑADIR RECORDATORIO ---
   const addReminder = useCallback((reminder) => {
