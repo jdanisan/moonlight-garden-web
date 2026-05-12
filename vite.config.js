@@ -8,6 +8,7 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+
   server: {
     proxy: {
       "/api": {
@@ -17,5 +18,6 @@ export default defineConfig({
           path.replace(/^\/api/, "/agrifood/api"),
       },
     },
-  },
+  }
+
 })
