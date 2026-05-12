@@ -12,10 +12,10 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://ec.europa.eu",
+        target: "https://agridata.ec.europa.eu",
         changeOrigin: true,
         rewrite: (path) =>
-          path.replace(/^\/api/, "/agrifood/api"),
+          path.replace(/^\/api/, "/extensions/DataPortal/api"),
       },
     },
   }
