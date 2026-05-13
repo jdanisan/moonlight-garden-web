@@ -15,10 +15,10 @@ export function Footer() {
 
         {/* Links */}
         <div className="flex flex-col gap-2 text-sm text-primary-300">
-          <a className="hover:opacity-70" href="/">Home</a>
+          <a className="hover:opacity-70" href="/">Inicio</a>
           <a className="hover:opacity-70"href="/documentation">Documentación</a>
-          <a className="hover:opacity-70"href="/statistics">Estadisticas</a>
-          <a className="hover:opacity-70" href="/search">Busqueda</a>
+          <a className="hover:opacity-70"href="/statistics">Estadísticas</a>
+          <a className="hover:opacity-70" href="/search">Búsqueda</a>
           <a className="hover:opacity-70"href="/calendar">Calendario</a>
           <a className="hover:opacity-70" href="/forum">Foro</a>
         </div>

@@ -5,13 +5,13 @@ import { Button } from "../atoms/Button";
 import { MoonlightIcon } from "../atoms/icons/MoonlightIcon";
 
 const directions = [
-  { href: "/", label: "Home" },
-  { href: "/documentation", label: "Documentation" },
-  { href: "/search", label: "Search" },
-  { href: "/statistics", label: "Statistics" },
-  { href: "/calendar", label: "Calendar" },
-  { href: "/forum", label: "Forum" },
-  { href: "/user", label: "User" },
+  { href: "/", label: "Inicio" },
+  { href: "/documentation", label: "Documentación" },
+  { href: "/search", label: "Búsqueda" },
+  { href: "/statistics", label: "Estadísticas" },
+  { href: "/calendar", label: "Calendario" },
+  { href: "/forum", label: "Foro" },
+  { href: "/user", label: "Usuario" },
 ];
 
 export function NavBar() {
