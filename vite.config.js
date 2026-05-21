@@ -8,16 +8,14 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
-
   server: {
     proxy: {
       "/api": {
-        target: "https://agridata.ec.europa.eu",
+        target: "https://ec.europa.eu",
         changeOrigin: true,
         rewrite: (path) =>
-          path.replace(/^\/api/, "/extensions/DataPortal/api"),
+          path.replace(/^\/api/, "/agrifood/api"),
       },
     },
-  }
-
+  },
 })

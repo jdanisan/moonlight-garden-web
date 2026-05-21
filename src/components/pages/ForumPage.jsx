@@ -8,7 +8,7 @@ export default function ForumPage() {
 
   return (
     <>
-      <h1 className="flex items-center justify-center mt-8 font-['Segoe_UI','Arial','sans-serif']  font-black sm:text-3xl text-2xl m-2.5  text-emerald-900 mb-10 tracking-tight">
+      <h1 className="flex items-center justify-center mt-8 font-['Segoe_UI','Arial','sans-serif']  font-black sm:text-3xl text-2xl m-2.5">
        Foro de la Comunidad 🌱
       </h1>
         <ForumList />
