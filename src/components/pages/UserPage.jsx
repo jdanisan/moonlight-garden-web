@@ -72,7 +72,7 @@ const UserPage = () => {
             col-span-12 md:col-span-6 lg:col-span-8 transition-all duration-500
             ${activeSection === "Mi Jungla" 
               ? "opacity-100 scale-100" 
-              : "lg:opacity-20 lg:grayscale-[50%] lg:scale-[0.95] lg:pointer-events-none"}
+              : "lg:opacity-20 lg:grayscale-50 lg:scale-[0.95] lg:pointer-events-none"}
           `}>
             <MyJungle plannedIds={plannedPlants} />
           </section>

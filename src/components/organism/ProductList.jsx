@@ -125,7 +125,7 @@ export function ProductList({ filters = null }) {
             <h3 className="text-xl font-semibold mb-6 text-gray-400 border-b border-gray-200 pb-2">
               Fuera de temporada
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 opacity-60 grayscale-[30%]">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 opacity-60 grayscale-30">
               {displayedOutSeason.map((product) => (
                 <Cards 
                   key={product.id} 
