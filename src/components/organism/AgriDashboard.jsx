@@ -429,7 +429,6 @@ export default function AgriDashboard() {
                                 )}
                             </div>
                         </div>
-
                         {/* PERSPECTIVA */}
                         <div
                             className="md:col-span-2 rounded-4x1 p-8 shadow-sm flex flex-col justify-between"
