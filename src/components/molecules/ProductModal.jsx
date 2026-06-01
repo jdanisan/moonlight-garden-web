@@ -1,6 +1,7 @@
 import { Button } from "../atoms/Button";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { t } from "../utils/translations";
 
 export function ProductModal({ product, onClose }) {
   if (!product) return null;
@@ -36,10 +37,10 @@ export function ProductModal({ product, onClose }) {
         {/* Title */}
         <div>
           <h2 className="text-3xl font-bold text-green-800 leading-tight">
-            {product.food_name.replaceAll("_", " ")}
+            {t(product.food_name)}
           </h2>
           <p className="text-sm text-green-600 font-medium">
-            Fase lunar ideal: {product.food_moonPhase}
+            Fase lunar ideal: {t(product.food_moonPhase)}
           </p>
         </div>
 
@@ -57,7 +58,7 @@ export function ProductModal({ product, onClose }) {
           <div className="bg-[#F2ECD8] rounded-xl p-4 flex-1 shadow-sm">
             <p className="text-[10px] text-green-700 font-bold uppercase tracking-wider">Tipo</p>
             <p className="font-medium text-green-900 text-sm">
-              {format(product.food_type)}
+              {format(t(product.food_type))}
             </p>
           </div>
         </div>

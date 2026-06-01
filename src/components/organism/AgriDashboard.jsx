@@ -11,6 +11,7 @@ import {
     Cell,
     ReferenceLine,
 } from "recharts";
+import { t } from "../utils/translations";
 
 export default function AgriDashboard() {
     const [data, setData] = useState([]);
@@ -131,29 +132,7 @@ export default function AgriDashboard() {
     const varieties = [...new Set(data.map((d) => d.variety).filter(Boolean))].sort();
     const stages = [...new Set(data.map((d) => d.productStage).filter(Boolean))].sort();
 
-    const TRANSLATIONS = {
-        "Ex-packaging station price": "Precio salida empaquetado",
-        "Farmgate price": "Precio en origen (Granja)",
-        "Wholesale price": "Precio mayorista",
-        "Retail buying price": "Precio minorista",
-        "Apples - All types and varieties": "Manzanas - Todas",
-        "Apples - Fuji": "Manzanas Fuji",
-        "Apples - Golden Delicious": "Manzanas Golden",
-        "Apples - Granny Smith": "Manzanas Granny Smith",
-        "Apples - Red Delicious": "Manzanas Rojas",
-        "Apples - Gala": "Manzanas Gala",
-        "Apples - Braeburn": "Manzanas Braeburn",
-        "Apples - Boskoop": "Manzanas Boskoop",
-        "Apples - Elstar": "Manzanas Elstar",
-        "Apples - Cox orange": "Manzanas Cox Orange",
-        "Apples - Jonagold": "Manzanas Jonagold",
-        "Apples - Jonagored": "Manzanas Jonagored",
-        "Apples - Idared": "Manzanas Idared",
-        "Apples - Pinova": "Manzanas Pinova",
-        "Apples - Conference": "Peras Conference", // por si hay peras mezcladas
-    };
 
-    const t = (text) => TRANSLATIONS[text] || text;
 
     const variation =
         filtered.length > 1 && filtered[0]?.numericPrice
