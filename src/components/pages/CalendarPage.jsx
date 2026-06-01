@@ -4,10 +4,24 @@ import { GoTopBTN } from "../atoms/GoTopBTN";
 import CalendarView from "../molecules/CalendarView";
 import { ProductList } from "../organism/ProductList";
 
-const getSeason = (month) => {
-  if ([2, 3, 4].includes(month)) return "primavera";
-  if ([5, 6, 7].includes(month)) return "verano";
-  if ([8, 9, 10].includes(month)) return "otoño";
+const getSeason = () => {
+  const date = new Date();
+  const month = date.getMonth(); // 0-11
+  const day = date.getDate();
+
+  // Primavera: 20 de marzo hasta 20 de junio
+  if ((month === 2 && day >= 20) || month === 3 || month === 4 || (month === 5 && day <= 20)) {
+    return "primavera";
+  }
+  // Verano: 21 de junio hasta 21 de septiembre
+  if ((month === 5 && day >= 21) || month === 6 || month === 7 || (month === 8 && day <= 21)) {
+    return "verano";
+  }
+  // Otoño: 22 de septiembre hasta 20 de diciembre
+  if ((month === 8 && day >= 22) || month === 9 || month === 10 || (month === 11 && day <= 20)) {
+    return "otoño";
+  }
+  // Invierno: Resto del año
   return "invierno";
 };
 
@@ -19,7 +33,7 @@ export default function CalendarPage() {
 
   const [selectedMoonPhase, setSelectedMoonPhase] = useState(null);
 
-  const currentSeason = getSeason(new Date().getMonth());
+  const currentSeason = getSeason();
 
   const handleMoonPhaseChange = (phase) => {
     setSelectedMoonPhase(phase);
