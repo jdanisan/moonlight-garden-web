@@ -3,7 +3,8 @@ export const TRANSLATIONS = {
   "Ex-packaging station price": "Precio salida empaquetado",
   "Farmgate price": "Precio en origen (Granja)",
   "Wholesale price": "Precio mayorista",
-  "Retail buying price": "Precio minorista",
+  "Retail buying price": "Precio minorista (Compra)",
+  "Retail selling price": "Precio de venta al público",
   "Apples - All types and varieties": "Manzanas",
   "Apples - Fuji": "Manzanas Fuji",
   "Apples - Golden Delicious": "Manzanas Golden",
@@ -19,6 +20,87 @@ export const TRANSLATIONS = {
   "Apples - Idared": "Manzanas Idared",
   "Apples - Pinova": "Manzanas Pinova",
   "Apples - Conference": "Peras Conference",
+
+  // Nuevos añadidos directos de la base de datos europea (Estadísticas)
+  "Apples - National weighted average of all types and varieties": "Manzanas - Promedio nacional",
+  "Apples - Red delicious and other red varieties": "Manzanas Rojas",
+  "Apples for processing - All types and varieties": "Manzanas (Para procesamiento)",
+  "Apricots - All types and varieties - large packaging": "Albaricoques (Embalaje grande)",
+  "Apricots - All types and varieties - small packaging": "Albaricoques (Embalaje pequeño)",
+  "Asparagus - All types and varieties": "Espárragos",
+  "Avocados - All types and varieties": "Aguacates",
+  "Avocados - Hass": "Aguacate Hass",
+  "Bananas - EU Origins": "Plátanos (Origen UE)",
+  "Bananas - Other origins": "Plátanos (Otros orígenes)",
+  "Bananas – EU – All types and varieties": "Plátanos (UE)",
+  "Beans - All types and varieties": "Judías Verdes",
+  "Cabbage - All types and varieties": "Repollo / Col",
+  "Carrots - All types and varieties": "Zanahorias",
+  "Cauliflowers - All types and varieties": "Coliflor",
+  "Cherries - All sweet varieties": "Cerezas Dulces",
+  "Cherries - All types and varieties": "Cerezas",
+  "Clementines - All types and varieties": "Clementinas",
+  "Courgettes - All types and varieties": "Calabacines",
+  "Cucumbers - All types and varieties": "Pepinos",
+  "Cucumbers - Smooth varieties": "Pepino liso",
+  "Cultivated Mushrooms - All types and varieties": "Champiñones cultivados",
+  "Cultivated Mushrooms - Closed": "Champiñón cerrado",
+  "Egg Plants - All types and varieties": "Berenjenas",
+  "Garlic - All types and varieties": "Ajos",
+  "Garlic - Spring": "Ajos tiernos",
+  "Garlic - Violet": "Ajo morado",
+  "Garlic - White": "Ajo blanco",
+  "Leeks - All types and varieties": "Puerros",
+  "Lemons - All types and varieties": "Limones",
+  "Lettuces - All types and varieties": "Lechugas",
+  "Mandarins - All types and varieties": "Mandarinas",
+  "Melons - All types and varieties": "Melones",
+  "Nectarines - All types and varieties": "Nectarinas",
+  "Nectarines - Flat nectarine, size A/B, trays or packages of around 5 kg": "Nectarina plana (Paraguaya)",
+  "Nectarines - National weighted average of all types and varieties": "Nectarinas - Promedio nacional",
+  "Nectarines - White flesh": "Nectarina (Pulpa blanca)",
+  "Nectarines - Yellow flesh": "Nectarina (Pulpa amarilla)",
+  "Nectarines for processing - All types and varieties": "Nectarinas (Para procesamiento)",
+  "Onions - All types and varieties": "Cebollas",
+  "Oranges - Lanelate": "Naranja Lanelate",
+  "Oranges - National weighted average of main varieties covering at least 70 % of the representative market in the reference period of the notification": "Naranjas - Promedio nacional",
+  "Oranges - Navel": "Naranja Navel",
+  "Oranges - Navelate": "Naranja Navelate",
+  "Oranges - Navelinas": "Naranja Navelina",
+  "Oranges - Salustiana": "Naranja Salustiana",
+  "Oranges - Tarocco": "Naranja Tarocco",
+  "Oranges - Valencia late": "Naranja Valencia Late",
+  "Oranges for processing - All types and varieties": "Naranjas (Para procesamiento)",
+  "Peaches - All types and varieties": "Melocotones",
+  "Peaches - Flat": "Melocotón plano (Paraguayo)",
+  "Peaches - National weighted average of all types and varieties": "Melocotones - Promedio nacional",
+  "Peaches - White flesh": "Melocotón (Pulpa blanca)",
+  "Peaches - White flesh - Large packaging": "Melocotón pulpa blanca (Embalaje grande)",
+  "Peaches - White flesh - Small packaging": "Melocotón pulpa blanca (Embalaje pequeño)",
+  "Peaches - Yellow flesh": "Melocotón (Pulpa amarilla)",
+  "Peaches - Yellow flesh - Large packaging": "Melocotón pulpa amarilla (Embalaje grande)",
+  "Peaches - Yellow flesh - Small packaging": "Melocotón pulpa amarilla (Embalaje pequeño)",
+  "Peaches - Yellow flesh - size A/B, trays or packages of around 6 to 10 kg": "Melocotón pulpa amarilla (Clase A/B)",
+  "Peaches for processing - All types and varieties": "Melocotones (Para procesamiento)",
+  "Pears - Abbé Fétel": "Pera Abbé Fétel",
+  "Pears - All types and varieties": "Peras",
+  "Pears - Blanquilla": "Pera Blanquilla",
+  "Pears - Conference": "Pera Conference",
+  "Pears - Williams": "Pera Williams",
+  "Peppers - All types and varieties": "Pimientos",
+  "Plums - All types and varieties": "Ciruelas",
+  "Satsumas - All types and varieties": "Satsumas",
+  "Strawberries - All types and varieties": "Fresas",
+  "Table Grapes - All types and varieties": "Uvas de mesa",
+  "Table Grapes - Seedless in large packaging": "Uvas sin semilla (Embalaje grande)",
+  "Table Grapes - Seedless in small packaging": "Uvas sin semilla (Embalaje pequeño)",
+  "Table Grapes - With seeds in large packaging": "Uvas con semilla (Embalaje grande)",
+  "Tomatoes - Cherry/Special": "Tomates Cherry",
+  "Tomatoes - Round": "Tomate redondo",
+  "Tomatoes - Trusses=Vine/\"Grappes\"": "Tomate en rama",
+  "Tomatoes for processing - All types and varieties": "Tomates (Para procesamiento)",
+  "Ware potatoes, size that do not pass a square mesh of 35 mm x 35 mm but can pass a square mesh of 75 mm x 75 mm, in packages below 10 kg - All types and varieties": "Patatas de consumo",
+  "Water Melons - All types and varieties": "Sandías",
 
   // Nombres de Productos (Base de Datos)
   "Acelga": "Acelga",
@@ -100,19 +182,16 @@ export const TRANSLATIONS = {
 export const t = (text) => {
   if (!text) return text;
   
-  // Limpiar espacios en blanco adicionales al principio y al final (evita fallos por 'Luna Creciente ')
+  // Limpiar espacios en blanco adicionales al principio y al final
   const cleanText = String(text).trim();
 
   // Coincidencia exacta
   if (TRANSLATIONS[cleanText]) return TRANSLATIONS[cleanText];
   
-  // Coincidencia en minúsculas
+  // Búsqueda insensible a mayúsculas/minúsculas
   const lowerText = cleanText.toLowerCase();
-  if (TRANSLATIONS[lowerText]) return TRANSLATIONS[lowerText];
-
-  // Coincidencia capitalizada (por si acaso)
-  const capitalized = lowerText.charAt(0).toUpperCase() + lowerText.slice(1);
-  if (TRANSLATIONS[capitalized]) return TRANSLATIONS[capitalized];
+  const foundKey = Object.keys(TRANSLATIONS).find(k => k.toLowerCase() === lowerText);
+  if (foundKey) return TRANSLATIONS[foundKey];
 
   // Si no está en el diccionario, intentamos quitar guiones bajos
   if (typeof text === 'string' && text.includes('_')) {
