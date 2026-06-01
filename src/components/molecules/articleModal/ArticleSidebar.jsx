@@ -10,7 +10,7 @@ export function ArticleSidebar({ takeaways = [], author }) {
           
           <div className="flex items-center gap-2 text-emerald-800 font-bold uppercase tracking-wider text-sm">
             <Lightbulb size={18} className="text-[#4a7c59]" />
-            Key Takeaways
+            Puntos clave
           </div>
 
           <ul className="space-y-3">

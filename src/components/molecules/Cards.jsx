@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { Button } from "../atoms/Button";
+import { t } from "../utils/translations";
 
 const VARIANTS = {
   default: "",
@@ -64,17 +65,17 @@ export function Cards({ product, variant = "default", season }) {
 
           {product.food_moonPhase && (
             <div className="absolute bottom-2 left-2 bg-black/50 backdrop-blur-md text-white text-[9px] px-2 py-0.5 rounded-md flex items-center gap-1">
-              <span>🌙</span> {product.food_moonPhase}
+              <span>🌙</span> {t(product.food_moonPhase)}
             </div>
           )}
         </div>
 
         <div className="p-4 flex flex-col flex-1">
           <h4 className="font-bold text-gray-800 text-sm mb-1 line-clamp-1">
-            {product.food_name}
+            {t(product.food_name)}
           </h4>
           <p className="text-[11px] text-gray-500 mb-4 capitalize">
-            {product.food_type || "Cultivo"}
+            {t(product.food_type) || "Cultivo"}
           </p>
 
           <div className="mt-auto">
@@ -102,12 +103,12 @@ export function Cards({ product, variant = "default", season }) {
 
       <div className={`p-4 flex flex-col gap-2 flex-1 ${variant === "modal" ? "md:w-1/2" : "bg-primary-200"}`}>
         <h3 className="font-semibold text-center text-gray-800">
-          {product.food_name}
+          {t(product.food_name)}
         </h3>
 
         {product.category && (
           <p className="text-sm text-gray-500 text-center">
-            {product.category}
+            {t(product.category)}
           </p>
         )}
 
@@ -133,7 +134,7 @@ export function Cards({ product, variant = "default", season }) {
                 "No hay descripción disponible para este producto."}
             </p>
             <div className="flex flex-col gap-2 border-t pt-4">
-              <p className="text-sm"><strong>Fase ideal:</strong> {product.food_moonPhase}</p>
+              <p className="text-sm"><strong>Fase ideal:</strong> {t(product.food_moonPhase)}</p>
               <p className={`text-sm font-bold ${active ? "text-emerald-600" : "text-red-500"}`}>
                 {active ? "✓ Disponible en esta temporada" : "✕ No es la mejor temporada"}
               </p>

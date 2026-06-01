@@ -221,144 +221,6 @@
       ],
       "food_type": "Hortaliza"
     },
-    "food2": {
-      "food_atention": 5,
-      "food_description": "Se recomienda plantar calabacín durante la Luna Creciente para potenciar su gran desarrollo foliar y producción de frutos. Es bajo en calorías, rico en fibra y vitamina C.",
-      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/calabacin.png",
-      "food_maturation": [
-        6,
-        8
-      ],
-      "food_moonPhase": [
-        "Luna Creciente"
-      ],
-      "food_name": "Calabacin",
-      "food_season": [
-        "primavera"
-      ],
-      "food_type": "Hortaliza"
-    },
-    "food3": {
-      "food_atention": 5,
-      "food_description": "La plantación ideal es durante el Cuarto Menguante, favoreciendo el crecimiento de raíces y bulbos. Es un potente antioxidante natural y antiinflamatorio con beneficios para el sistema inmunológico.",
-      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/cebolla.png",
-      "food_maturation": [
-        12,
-        20
-      ],
-      "food_moonPhase": [
-        "Cuarto Menguante"
-      ],
-      "food_name": "Cebolla",
-      "food_season": [
-        "invierno",
-        "primavera"
-      ],
-      "food_type": "Hortaliza"
-    },
-    "food4": {
-      "food_atention": 6,
-      "food_description": "Fase ideal la Luna Creciente, la cual favorece el desarrollo de las frutas. Es rica en vitamina C y ayuda a reforzar el sistema inmunológico.",
-      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/clementina.png",
-      "food_maturation": [
-        156,
-        260
-      ],
-      "food_moonPhase": [
-        "Luna Creciente"
-      ],
-      "food_name": "Clementina",
-      "food_season": [
-        "primavera"
-      ],
-      "food_type": "Fruta"
-    },
-    "food5": {
-      "food_atention": 5,
-      "food_description": "Es recomendable plantar judía verde en Luna Creciente, favoreciendo el crecimiento aéreo de la planta y la formación de vainas. Es baja en calorías y rica en fibra.",
-      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/judia_verde.png",
-      "food_maturation": [
-        8,
-        10
-      ],
-      "food_moonPhase": [
-        "Luna Creciente"
-      ],
-      "food_name": "Judia Verde",
-      "food_season": [
-        "primavera"
-      ],
-      "food_type": "Hortaliza"
-    },
-    "food6": {
-      "food_atention": 6,
-      "food_description": "Es recomendable plantar limón en Luna Creciente para estimular la floración y el cuajado de frutos. El limón es antioxidante, fuente de vitamina C y muy versátil.",
-      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/limon.png",
-      "food_maturation": [
-        156,
-        260
-      ],
-      "food_moonPhase": [
-        "Luna Creciente"
-      ],
-      "food_name": "Limon",
-      "food_season": [
-        "primavera"
-      ],
-      "food_type": "Fruta"
-    },
-    "food7": {
-      "food_atention": 6,
-      "food_description": "Es recomendable plantar manzana golden en Luna Creciente para potenciar el desarrollo inicial del árbol y sus ramas. Es dulce, de textura firme y se conserva muy bien.",
-      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/manzana_golden.png",
-      "food_maturation": [
-        156,
-        312
-      ],
-      "food_moonPhase": [
-        "Luna Creciente"
-      ],
-      "food_name": "Manzana golden",
-      "food_season": [
-        "invierno"
-      ],
-      "food_type": "Fruta"
-    },
-    "food8": {
-      "food_atention": 6,
-      "food_description": "Es recomendable plantar naranja navel durante la Luna Creciente, favoreciendo la formación de fruto y vigor general. Es muy jugosa y rica en vitamina C.",
-      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/naranja_navel.png",
-      "food_maturation": [
-        156,
-        260
-      ],
-      "food_moonPhase": [
-        "Luna Creciente"
-      ],
-      "food_name": "Naranja navel",
-      "food_season": [
-        "primavera"
-      ],
-      "food_type": "Fruta"
-    },
-    "food9": {
-      "food_atention": 6,
-      "food_description": "Es recomendable plantar patata en Luna Menguante para estimular el crecimiento subterráneo de los tubérculos. La patata es energética y muy productiva en suelos sueltos.",
-      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/patata.jpg",
-      "food_maturation": [
-        10,
-        14
-      ],
-      "food_moonPhase": [
-        "Luna Menguante"
-      ],
-      "food_name": "Patata",
-      "food_season": [
-        "invierno",
-        "primavera"
-      ],
-      "food_type": "Hortaliza"
-    },
     "food10": {
       "food_atention": 6,
       "food_description": "Es recomendable plantar pera agua en Luna Creciente, enfocando el vigor en el desarrollo vegetativo inicial. La pera agua es jugosa, dulce, ligera, excelente para consumo fresco y con buena adaptación al clima mediterráneo.",
@@ -533,6 +395,23 @@
       ],
       "food_type": "Fruta"
     },
+    "food2": {
+      "food_atention": 5,
+      "food_description": "Se recomienda plantar calabacín durante la Luna Creciente para potenciar su gran desarrollo foliar y producción de frutos. Es bajo en calorías, rico en fibra y vitamina C.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/calabacin.png",
+      "food_maturation": [
+        6,
+        8
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Calabacin",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Hortaliza"
+    },
     "food20": {
       "food_atention": 5,
       "food_description": "Es recomendable plantar aguacate Hass en Luna Creciente, lo que favorece el pegue de los injertos y la cremosidad de la pulpa. Es versátil en la cocina y muy nutritivo.",
@@ -704,6 +583,24 @@
       ],
       "food_type": "Fruta"
     },
+    "food3": {
+      "food_atention": 5,
+      "food_description": "La plantación ideal es durante el Cuarto Menguante, favoreciendo el crecimiento de raíces y bulbos. Es un potente antioxidante natural y antiinflamatorio con beneficios para el sistema inmunológico.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/cebolla.png",
+      "food_maturation": [
+        12,
+        20
+      ],
+      "food_moonPhase": [
+        "Cuarto Menguante"
+      ],
+      "food_name": "Cebolla",
+      "food_season": [
+        "invierno",
+        "primavera"
+      ],
+      "food_type": "Hortaliza"
+    },
     "food30": {
       "food_atention": 5,
       "food_description": "Es recomendable plantar melocotón de carne amarilla en Luna Creciente para potenciar su dulzura y el color vibrante de su pulpa. Es una fruta veraniega excelente para la piel y la vista.",
@@ -874,6 +771,23 @@
       ],
       "food_type": "Fruta"
     },
+    "food4": {
+      "food_atention": 6,
+      "food_description": "Fase ideal la Luna Creciente, la cual favorece el desarrollo de las frutas. Es rica en vitamina C y ayuda a reforzar el sistema inmunológico.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/clementina.png",
+      "food_maturation": [
+        156,
+        260
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Clementina",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
     "food40": {
       "food_atention": 5,
       "food_description": "Es recomendable plantar melocotoneros de selección A/B en Luna Creciente para obtener piezas de calibre superior y piel perfecta. Son la máxima expresión de calidad en fruta de hueso.",
@@ -1027,6 +941,92 @@
         "otoño"
       ],
       "food_type": "Fruta"
+    },
+    "food5": {
+      "food_atention": 5,
+      "food_description": "Es recomendable plantar judía verde en Luna Creciente, favoreciendo el crecimiento aéreo de la planta y la formación de vainas. Es baja en calorías y rica en fibra.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/judia_verde.png",
+      "food_maturation": [
+        8,
+        10
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Judia Verde",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Hortaliza"
+    },
+    "food6": {
+      "food_atention": 6,
+      "food_description": "Es recomendable plantar limón en Luna Creciente para estimular la floración y el cuajado de frutos. El limón es antioxidante, fuente de vitamina C y muy versátil.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/limon.png",
+      "food_maturation": [
+        156,
+        260
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Limon",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
+    "food7": {
+      "food_atention": 6,
+      "food_description": "Es recomendable plantar manzana golden en Luna Creciente para potenciar el desarrollo inicial del árbol y sus ramas. Es dulce, de textura firme y se conserva muy bien.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/manzana_golden.png",
+      "food_maturation": [
+        156,
+        312
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Manzana golden",
+      "food_season": [
+        "invierno"
+      ],
+      "food_type": "Fruta"
+    },
+    "food8": {
+      "food_atention": 6,
+      "food_description": "Es recomendable plantar naranja navel durante la Luna Creciente, favoreciendo la formación de fruto y vigor general. Es muy jugosa y rica en vitamina C.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/naranja_navel.png",
+      "food_maturation": [
+        156,
+        260
+      ],
+      "food_moonPhase": [
+        "Luna Creciente"
+      ],
+      "food_name": "Naranja navel",
+      "food_season": [
+        "primavera"
+      ],
+      "food_type": "Fruta"
+    },
+    "food9": {
+      "food_atention": 6,
+      "food_description": "Es recomendable plantar patata en Luna Menguante para estimular el crecimiento subterráneo de los tubérculos. La patata es energética y muy productiva en suelos sueltos.",
+      "food_image_url": "https://raw.githubusercontent.com/jdanisan/ImgBannerTFG/master/patata.jpg",
+      "food_maturation": [
+        10,
+        14
+      ],
+      "food_moonPhase": [
+        "Luna Menguante"
+      ],
+      "food_name": "Patata",
+      "food_season": [
+        "invierno",
+        "primavera"
+      ],
+      "food_type": "Hortaliza"
     }
   },
   "forum_topics": {
@@ -1035,33 +1035,52 @@
         "opiniones": {
           "-OgHmH1lJNMPvanSDtGR": {
             "cliente": "UsuarioX",
+            "comments": {
+              "-OsOeaKaWGPO_CMqvxUH": {
+                "author": "bjhon8204",
+                "text": "Claro, pero sabiendo esto, para particuleres, que sería mejor grandes superficies u ofertas de supermercados",
+                "timestamp": 1778547058074,
+                "userId": "wHWOVdfFCVPp8Zpyya4QPkZgqqx2"
+              },
+              "comment_id_1": {
+                "cliente": "Jose Angulo",
+                "texto": "Totalmente de acuerdo, el ahorro es clave.",
+                "timestamp": 1765546750000
+              }
+            },
             "texto": "Dependiendo de tu tipo de agricultura es ms facil comprar semillas en grnades cantidades",
-            "timestamp": 1765546733310
+            "timestamp": 1765546733310,
+            "userId": "uid_placeholder_1",
+            "voteCount": 3,
+            "votes": {
+              "algun_otro_uid": 1,
+              "uid_placeholder_1": 1
+            }
           },
           "-OgHmeN8EF01iCjcUM6d": {
             "cliente": "UsuarioX",
             "texto": "Estoy de acuerdo dado que s tienes que comprar una por una y tienes una hectarea, son dos millones de bolsitas que tienes que ir rompiendo par asegurarte de que salga algo",
-            "timestamp": 1765546832983
-          },
-          "-OgHniVbKjm5DBAuvPMq": {
-            "cliente": "Jose Angulo",
-            "texto": "Pureba3",
-            "timestamp": 1765547112051
+            "timestamp": 1765546832983,
+            "userId": "uid_placeholder_1",
+            "voteCount": 2,
+            "votes": {
+              "user_abc": 1
+            }
           },
           "-Oiy4FyoQOEWHuC0F_n9": {
             "cliente": "Anónimo",
+            "comments": {
+              "-OsS1IrlCf8NJsMS1NNp": {
+                "author": "bjhon8204",
+                "text": "¿Qué más podrían decirnos sobre la compra de semillas?",
+                "timestamp": 1778603605535,
+                "userId": "wHWOVdfFCVPp8Zpyya4QPkZgqqx2"
+              }
+            },
             "texto": "Muy buen dato",
-            "timestamp": 1768420610050
-          },
-          "-OjSUHGRIJY9MBY2O7MH": {
-            "cliente": "Anónimo",
-            "texto": "si",
-            "timestamp": 1768947523746
-          },
-          "-OjVgMFkdI9yTALEH-Dq": {
-            "cliente": "Anónimo",
-            "texto": "Me gustar'ia tener simiente nueva",
-            "timestamp": 1769001284694
+            "timestamp": 1768420610050,
+            "userId": "uid_anon",
+            "voteCount": 1
           }
         }
       }
@@ -1072,7 +1091,12 @@
           "-Ok279gh2v1md-y9SuV3": {
             "cliente": "Jose Angulo",
             "texto": "hola",
-            "timestamp": 1769578997888
+            "timestamp": 1769578997888,
+            "userId": "uid_jose",
+            "voteCount": 0,
+            "votes": {
+              "I7V8rnb8YmOTnqBdk17v1sPE4f92": 1
+            }
           }
         }
       }
@@ -1082,14 +1106,28 @@
         "opiniones": {
           "-OnWV-sw-V07R20Gen9O": {
             "cliente": "Jose Angulo",
+            "comments": {
+              "-OsOdWOmjZPSMhvl3f1S": {
+                "author": "bjhon8204",
+                "text": "¿Dónde podría llegar a comprar semillas de Uva, para uvas sin pepitas?",
+                "timestamp": 1778546775711
+              },
+              "-OsSRQmWOMXRE2BWwmKG": {
+                "author": "bjhon8204",
+                "text": "El lidl tiene actualmente una oferta en simiente",
+                "timestamp": 1778610453715,
+                "userId": "wHWOVdfFCVPp8Zpyya4QPkZgqqx2"
+              }
+            },
             "texto": "Hola",
-            "timestamp": 1773309791655
+            "timestamp": 1773309791655,
+            "userId": "uid_jose",
+            "voteCount": 0
           }
         }
       }
     }
   },
-  "message": "Hello, World!",
   "topics": {
     "compra_semilla": {
       "description": "Dónde y cómo comprar semillas fiables",
@@ -1110,6 +1148,33 @@
       "description": "Comparte y consulta precios de semillas, abonos, etc.",
       "id": "precios",
       "title": "Precios"
+    }
+  },
+  "users": {
+    "I7V8rnb8YmOTnqBdk17v1sPE4f92": {
+      "plannedPlants": [
+        "food11",
+        "food12",
+        "food13",
+        "food19",
+        "food1",
+        "food33"
+      ]
+    },
+    "ptYowWsp7nhG7ZWKNsPpcUQhj2B2": {
+      "createdAt": 1778743509768,
+      "email": "rubenapecat27@gmail.com",
+      "plannedPlants": [
+        "food11",
+        "food13",
+        "food2"
+      ],
+      "role": "user"
+    },
+    "wHWOVdfFCVPp8Zpyya4QPkZgqqx2": {
+      "createdAt": 1778173658183,
+      "email": "bjhon8204@gmail.com",
+      "role": "user"
     }
   }
 }
